@@ -1,0 +1,62 @@
+^DamagingExplosion:
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+		Versus:
+			None: 100
+			Wood: 100
+			Light: 100
+			Heavy: 100
+            Concrete: 100
+	Warhead@3EffWater: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Bridge
+
+^DamagingExplosionHE:
+	Inherits: ^DamagingExplosion
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+			Concrete: 100
+
+UnitExplodePlane:
+	Inherits: UnitExplode
+	Warhead@2Eff: CreateEffect
+		Explosions: big_napalm
+        
+FlametankExplode:
+	Warhead@1Dam: SpreadDamage
+		Damage: 11500
+
+HeliCrash:
+	Warhead@1Dam: SpreadDamage
+		Damage: 10000
+        
+UnitExplode:
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+        
+GrenadierExplode:
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 1000
+        
+Napalm.Crate:
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+TiberiumExplosion:
+	Warhead@1Dam: SpreadDamage
+		Damage: 1000
+        
+UnitExplodeSubmarine:
+	Inherits: ^DamagingExplosion
+	Warhead@2Eff: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water
+		ImpactActors: false

@@ -1,0 +1,85 @@
+^BaseWorld:
+	Locomotor@NAVAL:
+		Name: naval
+		Crushes: crate
+		TerrainSpeeds:
+			Water: 100
+
+	Faction@Random:
+		RandomFactionMembers: gdi, nod, sea, ind, pla
+
+    Faction@sea:
+        Name: ASEAN
+        InternalName: sea
+        Description: Association of Southeast Asian Nations\n A coalition of nations from SEA opposing Nod backed Chinese aggression in their\nregion,supported by GDI. While they may not have bleeding edge technology like GDI\nor Nod, they have unparalleled tactical airpower and information warfare.
+    Faction@ind:
+        Name: INDFOR
+        InternalName: ind
+        Description: Independent Forces\nNeither western-aligned or eastern-aligned, neither GDI nor Nod.\nFor these groups, tiberium isn't a resource, to be harvested and refined; \nit's a threat, to be feared and destroyed. What they lack in brute force or advanced\ntechnology, they make up for with m and hard hitting firepower.
+    Faction@pla:
+        Name: PLA
+        InternalName: pla
+        Description: People's Liberation Army\nThe armed forces of the People's Republic of China\nAllies of the Brotherhood of Nod because they're enemies of the West.\nThey let others experiment with bleeding edge technology\nand take the best of what was created and use it to design their own hardware.
+
+
+        
+World:
+	MPStartUnits@mcvonly:
+		Class: none
+		ClassName: MCV Only
+		Factions: gdi, nod, sea, ind, pla
+		BaseActor: mcv
+	MPStartUnits@defaultseaa:
+		Class: light
+		ClassName: Light Support
+		Factions: sea
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e1,e3,e3,towjeep
+	MPStartUnits@heavyseaa:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: sea
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e3,e3,seajeep,2tnk,2tnk
+	MPStartUnits@heavyseab:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: sea
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e1,e2,e2,e2,e3,e3,seajeep,2tnk
+	MPStartUnits@defaultinda:
+		Class: light
+		ClassName: Light Support
+		Factions: ind
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e1,rpg,e3,gtrk
+	MPStartUnits@heavyinda:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: ind
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,rpg,e3,gtrk,1tnk,bggy
+	MPStartUnits@heavyindb:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: ind
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e1,e2,e2,e2,rpg,e3,spaag,1tnk
+	MPStartUnits@defaultplaa:
+		Class: light
+		ClassName: Light Support
+		Factions: pla
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e1,rpg,e3,plajeep
+	MPStartUnits@heavyplaa:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: pla
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,rpg,rpg,plajeep,3tnk,3tnk
+	MPStartUnits@heavyplab:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: pla
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e1,e1,e2,e2,e2,rpg,e3,plajeep,3tnk

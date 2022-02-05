@@ -1,0 +1,385 @@
+Sniper:
+	Warhead@1Dam: SpreadDamage
+		Damage: 20000
+		Versus:
+			None: 100
+			Wood: 5
+			Light: 5
+			Heavy: 5
+            Concrete: 5
+
+^HeavyMG:
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 1500
+		Versus:
+			None: 150
+			Wood: 50
+			Light: 60
+			Heavy: 25
+            Concrete: 25
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piffs
+		ValidTargets: Water, Underwater
+		InvalidTargets: Bridge
+
+^LightMG:
+	Warhead@1Dam: SpreadDamage
+		Damage: 1500
+		Versus:
+			None: 100
+			Wood: 50
+			Light: 50
+			Heavy: 10
+            Concrete: 5
+
+Chaingun:
+	Inherits: ^HeavyMG
+	Range: 5c512
+	Projectile: Bullet
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+            Concrete: 5
+
+Vulcan:
+	Report: minigu4.wav
+
+HeliAGGun:
+	Inherits: ^HeavyMG
+	Burst: 2
+
+M60:
+	Inherits: ^LightMG
+	Burst: 5
+	Report: mgun11.aud
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			Wood: 10
+	Warhead@2Eff: CreateEffect
+		Inaccuracy: 213
+
+M60.AA:
+	Inherits: M60
+	ValidTargets: Helicopter
+	Report: mgun11.aud
+    Range: 2c512
+    Projectile: Bullet
+        Inaccuracy: 1c512
+    Warhead@1Dam: SpreadDamage
+       	ValidTargets: Air
+	-Warhead@2Eff: CreateEffect
+
+50Cal:
+	Inherits: ^HeavyMG
+	ReloadDelay: 30
+	Range: 5c0
+	Report: gun11.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Spread: 192
+		Versus:
+			Wood: 10
+			Light: 80
+
+50Cal.AA:
+    Inherits: 50Cal
+    Range: 2c512
+	ValidTargets: Helicopter
+    Projectile: Bullet
+        Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+       	ValidTargets: Air
+		Damage: 3000
+	-Warhead@2Eff: CreateEffect
+
+KPV:
+	Inherits: ^HeavyMG
+	ReloadDelay: 30
+	Range: 5c0
+	Report: gun11.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Spread: 256
+		Versus:
+			Wood: 10
+			Light: 80
+
+KPV.AA:
+    Inherits: KPV
+    Range: 2c512
+	ValidTargets: Helicopter
+    Projectile: Bullet
+        Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+       	ValidTargets: Air
+		Damage: 3000
+	-Warhead@2Eff: CreateEffect
+
+Tank50cal:
+	Inherits: 50Cal
+    Range: 3c512
+
+MachineGunT55:
+	Inherits: MachineGun
+    Range: 2c512
+	ValidTargets: Ground, Infantry
+    InvalidTargets: Vehicle, Tank, Structure, Wall, Husk, Creep
+    Warhead@1Dam: SpreadDamage
+		Versus:
+			Light: 100
+
+^AACannon:
+	ReloadDelay: 10
+	Range: 8c0
+	Report: aacanon3.aud
+	ValidTargets: Air
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 2000
+		ValidTargets: Air
+		Versus:
+			None: 60
+			Wood: 10
+			Light: 60
+			Heavy: 10
+			Concrete: 20
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion_air
+		ValidTargets: Air, Water, Trees
+
+YakB127:
+	Inherits: ^HeavyMG
+	ReloadDelay: 10
+	Range: 4c512
+	Burst: 3
+	BurstDelays: 2
+	ValidTargets: Ground, Air, Vehicle, Infantry
+    InvalidTargets: Tank, Water, Structure, Wall, Husk, Creep, Aircraft
+	Report: minigu1.aud
+	Projectile: Bullet
+		Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+        ValidTargets: Air,Ground
+		Damage: 2500
+            Versus:
+                None: 200
+                Wood: 30
+                Light: 40
+                Heavy: 5
+                Concrete: 5
+
+GSh-23L:
+	Inherits: ^HeavyMG
+	Burst: 3
+	BurstDelays: 2
+	ReloadDelay: 5
+	ValidTargets: Vehicle, Infantry
+    InvalidTargets: Tank, Water, Structure, Wall, Husk, Creep
+	Report: gun20.aud
+	Range: 3c0
+	Projectile: Bullet
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Damage: 1000
+		Spread: 128
+		Versus:
+            None: 100
+			Wood: 10
+			Light: 33
+			Heavy: 25
+            Concrete: 10
+
+GSh-30-2:
+	Inherits: GSh-23L
+	Burst: 6
+	BurstDelays: 1
+	ReloadDelay: 2
+	Range: 4c512
+	ValidTargets: Ground, Infantry
+    InvalidTargets: Water, Wall, Husk, Creep
+	Warhead@1Dam: SpreadDamage
+		Damage: 1500
+		Spread: 256
+		Versus:
+			Wood: 20
+			Light: 60
+
+Minigun:
+    Inherits: ^HeavyMG
+	Range: 5c0
+	Burst: 4
+	Report: minigu4.wav
+    -Projectile:
+	Projectile: Bullet
+		Speed: 512
+		Blockable: false
+        ContrailWidth: 0c32
+		ContrailLength: 5
+        ContrailColor: C11D2D
+	Warhead@1Dam: SpreadDamage
+        Damage: 3500
+        InvalidTargets: Air
+
+Minigun.AA:
+    Inherits: Minigun
+    InvalidTargets: Ground
+    ValidTargets: Air
+	Warhead@1Dam: SpreadDamage
+        InvalidTargets: Ground
+	-Warhead@2Eff: CreateEffect
+
+
+Minigun.Orca:
+    Inherits: Minigun
+    Report: minigu1.aud
+    InvalidTargets: Tank,Structure
+
+Skyraider.50cal:
+	Inherits: ^HeavyMG
+	ReloadDelay: 5
+	Report: gun11.aud
+	Range: 5c0
+	MinRange: 2c0
+	ValidTargets: Air, Ground
+    InvalidTargets: Tank, Structure
+	Projectile: InstantHit
+		Blockable: false
+		Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 2000
+		Spread: 512
+        ValidTargets: Air, Ground
+		Versus:
+			None: 150
+			Wood: 30
+			Light: 40
+			Heavy: 10
+            Concrete: 5
+		DamageTypes: Prone50Percent, TriggerProne, RippedApartDeath
+
+20mmAutocannon:
+	Inherits: ^HeavyMG
+	ReloadDelay: 12
+	Burst: 4
+	BurstDelays: 2
+	Report: gun20.aud
+	Range: 5c0
+	MinRange: 1c512
+	Projectile: Bullet
+		Blockable: false
+		Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Spread: 256
+		Versus:
+			None: 200
+			Wood: 15
+			Light: 30
+			Heavy: 15
+            Concrete: 5
+		DamageTypes: Prone50Percent, TriggerProne, RippedApartDeath
+
+ZU-23-2:
+	ReloadDelay: 10
+	Range: 5c0
+	Burst: 4
+	BurstDelays: 2
+	Report: gun20.aud
+	ValidTargets: Ground, Water
+	Projectile: Bullet
+		Speed: 1024
+		Inaccuracy: 1c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+        Damage: 2500
+		Versus:
+			None: 100
+			Wood: 20
+			Light: 100
+			Heavy: 15
+            Concrete: 5
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: piffs
+		ImpactActors: false
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piffs
+		ValidTargets: Water, Underwater
+		InvalidTargets: Bridge
+
+ZU-23-2.AA:
+	Inherits: ZU-23-2
+	Range: 6c0
+	Burst: 8
+	ValidTargets: Air
+	Projectile: Bullet
+		Inaccuracy: 2c512
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Versus:
+			Light: 150
+			Heavy: 150
+
+
+ZSU-23-4:
+	Inherits: ZU-23-2
+	Burst: 8
+	ReloadDelay: 20
+	Projectile: Bullet
+		Inaccuracy: 0c512
+
+ZSU-23-4.AA:
+	Inherits: ZSU-23-4
+	Range: 7c0
+	MinRange: 1c512
+	ValidTargets: Air
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Versus:
+			Light: 150
+
+
+20mm:
+	Inherits: APCGun
+	Range: 5c0
+	MinRange: 1c512
+    Burst: 1
+	ReloadDelay: 8
+	InvalidTargets: Tank
+    ValidTargets: Ground
+	Report: gun20.aud
+	Projectile: Bullet
+		Speed: 900
+	Warhead@1Dam: SpreadDamage
+		Damage: 3000
+		Versus:
+			None: 100
+			Wood: 10
+			Light: 100
+			Heavy: 25
+            Concrete: 5
+	Warhead@2Eff: CreateEffect
+		ValidTargets: Ground, Water
+
+20mm.IFV:
+	Inherits: 20mm
+    -InvalidTargets: Tank
+	ReloadDelay: 10
+
+Colt45:
+	Inherits: Sniper
+	Report: gun4.aud
+	ReloadDelay: 4
+	Range: 4c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+

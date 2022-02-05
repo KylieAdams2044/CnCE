@@ -1,0 +1,513 @@
+^BallisticWeapon:
+    ValidTargets: Ground, Infantry, Vehicle, Tank, Water
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+		Versus:
+			None: 15
+			Wood: 33
+			Light: 75
+            Heavy: 100
+			Concrete: 50
+	Warhead@3Eff: CreateEffect
+		ImpactSounds: xplos.aud,kaboom12.aud,kaboom25.aud,kaboom30.aud
+	Warhead@4EffWater: CreateEffect
+		Explosions: small_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water
+		InvalidTargets: Bridge
+	Warhead@5DestroyResource: DestroyResource
+		Size: 0
+        ValidTargets: Ground
+
+
+TurretGun:
+    ReloadDelay: 60
+	Range: 8c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 8000
+
+QLZ87:
+	Inherits: ^BallisticWeapon
+	Burst: 2
+	BurstDelays: 4
+	ReloadDelay: 25
+	Range: 6c0
+	Report: ggun1.aud
+	TargetActorCenter: true
+	Projectile: Bullet
+		Speed: 768
+        Image: 50cal
+		Blockable: false
+		LaunchAngle: 106
+		Inaccuracy: 1c256
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 5000
+		Versus:
+			None: 180
+			Wood: 25
+			Light: 30
+			Heavy: 10
+            Concrete: 5
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+
+S68Dual:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 20
+	Range: 6c0
+	MinRange: 1c0
+	Burst: 8
+	BurstDelays: 8
+	Report: ggun1.aud
+	ValidTargets: Ground, Water
+	Projectile: Bullet
+		Image: 50Cal
+		Speed: 550
+		Inaccuracy: 0c512
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+        Damage: 4500
+		Versus:
+			None: 100
+			Wood: 50
+			Light: 75
+			Heavy: 50
+            Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_frag
+		ValidTargets: Ground, Water, Air
+		ImpactActors: false
+
+S68Dual.AA:
+	Inherits: S68Dual
+	Range: 10c0
+	MinRange: 2c0
+	ValidTargets: Air
+	Projectile: Bullet
+		Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Spread: 176
+		Damage: 5500
+	Warhead@2Eff: CreateEffect
+		Explosions: small_poof
+
+
+70mm:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 30
+	Range: 4c0
+	Report: tnkfire3.aud
+	Projectile: Bullet
+		Speed: 853
+		Inaccuracy: 0c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Versus:
+			None: 24
+			Wood: 88
+			Light: 100
+			Heavy: 88
+            Concrete: 50
+            
+73mmHEF:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 70
+	Range: 5c512
+	Projectile: Bullet
+		Image: DRAGON
+		Speed: 448
+		Inaccuracy: 1c512
+		LaunchAngle: 45
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Spread: 256
+		Versus:
+            None: 200
+			Wood: 75
+			Light: 33
+			Heavy: 20
+            Concrete: 10
+
+76mm:
+	Inherits: 70mm
+
+85mm:
+	Inherits: ^BallisticWeapon
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+90mm:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 25
+	Projectile: Bullet
+		Inaccuracy: 0c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Spread: 96
+		Versus:
+            None: 5
+			Wood: 20
+			Light: 75
+			Heavy: 100
+            Concrete: 50
+
+100mm:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 35
+	Report: tnkfire3.aud
+	Projectile: Bullet
+		Image: DRAGON
+		Speed: 853
+		Inaccuracy: 0c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+105mm:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 30
+	InvalidTargets: Infantry
+	Projectile: Bullet
+		Image: DRAGON
+		Speed: 682
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+		Versus:
+			None: 50
+			Wood: 50
+			Light: 75
+			Heavy: 100
+            Concrete: 50
+
+105mmCanister:
+	Inherits: 105mm
+	ReloadDelay: 55
+	Range: 3c512
+	ValidTargets: Infantry
+	InvalidTargets: Structure, Tank, Vehicle
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 6000
+		Versus:
+			None: 200
+			Wood: 25
+			Light: 25
+			Heavy: 10
+            Concrete: 5
+		DamageTypes: Prone50Percent, TriggerProne, RippedApartDeath
+    -Projectile:
+	Projectile: Bullet
+		Blockable: true
+		Speed: 1364
+	Warhead@3Eff: CreateEffect
+		Explosions: piffs
+		ValidTargets: Ground, Water
+
+105mmSPG:
+	Inherits: 105mm
+	ReloadDelay: 45
+	-ValidTargets: 
+	Range: 6c512
+	MinRange: 1c512
+	Report: tnkfire3.aud
+	Projectile: Bullet
+		Inaccuracy: 1c512
+		LaunchAngle: 45
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 6000
+		Versus:
+			None: 100
+			Wood: 75
+			Light: 75
+			Heavy: 50
+            Concrete: 5
+
+105mm.LTNK:
+	Inherits: 105mm
+	Range: 6c0
+	Projectile: Bullet
+		Inaccuracy: 1c512
+
+105mm.SHRM:
+	Inherits: 105mm
+	ReloadDelay: 55
+	Projectile: Bullet
+		Inaccuracy: 1c512
+
+105mm.LEO1:
+	Inherits: 105mm
+	Range: 6c0
+
+
+105mmAP:
+	Inherits: 105mm
+	ReloadDelay: 20
+	Range: 5c512
+	Report: tnkfire3.aud
+	ValidTargets: Ground, Tank,Vehicle
+	InvalidTargets: Infantry, Structure
+	Projectile: Bullet
+		Inaccuracy: 0c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+		Versus:
+            None: 5
+			Wood: 10
+			Light: 75
+			Heavy: 100
+            Concrete: 50
+
+105mmAutoloader:
+	Inherits: 105mm
+	ReloadDelay: 20
+	-InvalidTargets:
+
+120mm:
+    Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 8000
+	Projectile: Bullet
+		Image: DRAGON
+		Shadow: true
+
+120mmDual:
+    InvalidTargets: Infantry
+	Projectile: Bullet
+		Image: DRAGON
+		Shadow: true
+    Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 8000
+
+122mmSPG:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 55
+	Range: 7c512
+	MinRange: 1c0
+	Report: tnkfire2.aud
+	Projectile: Bullet
+		Blockable: false
+		Inaccuracy: 1c0
+		LaunchAngle: 45
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 11000
+		Versus:
+			None: 150
+			Wood: 25
+			Light: 50
+			Heavy: 25
+            Concrete: 10
+
+122mmTower:
+    Inherits: 122mmSPG
+	TargetActorCenter: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 11000
+		Versus:
+			None: 150
+			Wood: 25
+			Light: 100
+			Heavy: 85
+            Concrete: 20
+
+125mm:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 35
+	Range: 5c0
+	Report: tnkfire2.aud
+	Projectile: Bullet
+		Image: DRAGON
+		Speed: 853
+		Inaccuracy: 0c512
+	Warhead@1Dam: SpreadDamage
+		Spread: 96
+		Damage: 8000
+		Versus:
+			Wood: 20
+
+155mm:
+    Inherits: ArtilleryShell
+	Range: 8c0
+	MinRange: 2c0
+	Projectile: Bullet
+		-ContrailLength: 30
+    Warhead@1Dam:
+		Damage: 15000
+   		Versus:
+			None: 180
+			Wood: 75
+			Light: 60
+			Heavy: 25
+            Concrete: 10
+	Warhead@4DestroyResource: DestroyResource
+		Size: 1
+        ValidTargets: Ground
+
+155mmHE:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 60
+   	MinRange: 1c512
+	Range: 8c0
+	Projectile: Bullet
+		Speed: 306
+		Blockable: false
+		LaunchAngle: 45
+		Inaccuracy: 0c256
+    Warhead@1Dam: SpreadDamage
+		Damage: 15000
+		Spread: 341
+		Versus:
+			None: 180
+			Wood: 75
+			Light: 60
+			Heavy: 25
+            Concrete: 10
+	Warhead@3Eff: CreateEffect
+		Explosions: med_napalm
+		ImpactSounds: xplosml2.aud
+	Warhead@5DestroyResource: DestroyResource
+		Size: 1
+        ValidTargets: Ground
+        
+155mmHVAP:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 40
+    ValidTargets: Ground, Tank
+    InvalidTargets: Infantry, Vehicle, Structure, Husk, Trees, Creep
+	Projectile: Bullet
+		Speed: 1024
+		Image: DRAGON
+    Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Spread: 42
+		Versus:
+			None: 10
+			Wood: 10
+			Light: 65
+			Heavy: 200
+            Concrete: 100
+	-Warhead@2Smu: 
+	Warhead@3Eff: CreateEffect
+		Explosions: piff
+		ImpactActors: false
+		ValidTargets: Ground, Water, Air
+        
+Mortar:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 45
+	Range: 6c0
+	MinRange: 2c0
+	Report: mortar1.wav
+	TargetActorCenter: true
+	Projectile: Bullet
+		Speed: 404
+		Blockable: false
+		LaunchAngle: 170
+		Inaccuracy: 2c256
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 10000
+		Versus:
+			None: 150
+			Wood: 10
+			Light: 25
+			Heavy: 10
+			Concrete: 10
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+
+
+ArtilleryShellTower:
+	Inherits: ArtilleryShell
+	Range: 8c512
+	Projectile: Bullet
+        Inaccuracy: 2c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 12000
+		Spread: 341
+
+Bomb:
+	Inherits: ^BallisticWeapon
+	ReloadDelay: 150
+	Range: 5c512
+	-Report:
+    Projectile: Missile
+		Image: HELLFIRE
+		HorizontalRateOfTurn: 20
+		Speed: 426
+		RangeLimit: 9c614
+		Inaccuracy: 1c512
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 5500
+		Falloff: 250, 100, 50, 18, 7, 0
+		Versus:
+			None: 180
+			Wood: 25
+			Light: 75
+			Heavy: 30
+            Concrete: 20
+	Warhead@3Eff: CreateEffect
+		Explosions: poof
+		ImpactSounds: xplosml2.aud
+	Warhead@5DestroyResource: DestroyResource
+		Size: 1
+        ValidTargets: Ground
+
+Bomb2000:
+    Inherits: Bomb
+	ReloadDelay: 4
+	BurstDelays: 1
+    Projectile: Missile
+        Image: Hellfire
+    Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 10000
+		Falloff: 1000, 750, 250, 36, 18, 7, 0
+	Warhead@5DestroyResource: DestroyResource
+		Size: 2
+        ValidTargets: Ground
+
+RBK-500:
+    Inherits: Bomb
+    Warhead@1Dam: SpreadDamage
+		Spread: 1024
+		Damage: 2500
+		Falloff: 1500, 1000, 500, 250, 18, 7, 0
+    Projectile: Missile
+		Image: MISSILE
+        AirburstAltitude: 1c512
+
+16Inch:
+	Inherits: ArtilleryShell
+	MinRange: 3c0
+	ReloadDelay: 250
+	Range: 20c0
+	Burst: 3
+	Report: tnkfire6.aud
+	TargetActorCenter: true
+	Projectile: Bullet
+		Inaccuracy: 1c938
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 2500
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Versus:
+			None: 60
+			Wood: 35
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+    Warhead@5DestroyResource: DestroyResource
+		Size: 3
+        ValidTargets: Ground

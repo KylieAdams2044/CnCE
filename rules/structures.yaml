@@ -1,0 +1,1825 @@
+FACT:
+	Health:
+		HP: 80000
+	RevealsShroud:
+		Range: 2c0
+    RenderSprites:
+        FactionImages: 
+            nod:fact.nod
+	Power:
+		Amount: 10
+	Production:
+		Produces: Building.GDI, Building.Nod, Building.SEA, Building.IND, Building.PLA, Defence.GDI, Defence.Nod, Defence.SEA, Defence.IND, Defence.PLA
+	ProductionQueue@SEABuilding:
+		Type: Building.SEA
+		DisplayOrder: 0
+		Factions: sea
+		Group: Building
+		LowPowerModifier: 150
+		ReadyAudio: ConstructionComplete
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionQueue@INDBuilding:
+		Type: Building.IND
+		DisplayOrder: 0
+		Factions: ind
+		Group: Building
+		LowPowerModifier: 150
+		ReadyAudio: ConstructionComplete
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionQueue@SEADefense:
+		Type: Defence.SEA
+		DisplayOrder: 1
+		Factions: sea
+		Group: Defence
+		LowPowerModifier: 150
+		ReadyAudio: ConstructionComplete
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionQueue@INDDefense:
+		Type: Defence.IND
+		DisplayOrder: 1
+		Factions: ind
+		Group: Defence
+		LowPowerModifier: 150
+		ReadyAudio: ConstructionComplete
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+    ProductionQueue@PLABuilding:
+		Type: Building.PLA
+		DisplayOrder: 0
+		Factions: pla
+		Group: Building
+		LowPowerModifier: 150
+		ReadyAudio: ConstructionComplete
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionQueue@PLADefense:
+		Type: Defence.PLA
+		DisplayOrder: 1
+		Factions: pla
+		Group: Defence
+		LowPowerModifier: 150
+		ReadyAudio: ConstructionComplete
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	BaseBuilding:
+	ProductionBar@BuildingSEA:
+		ProductionType: Building.SEA
+	ProductionBar@BuildingIND:
+		ProductionType: Building.IND
+	ProductionBar@BuildingPLA:
+		ProductionType: Building.PLA
+    ProductionBar@DefenceSEA:
+		ProductionType: Defence.SEA
+		Color: 8A8A8A
+	ProductionBar@DefenceIND:
+		ProductionType: Defence.IND
+		Color: 8A8A8A
+    ProductionBar@DefencePLA:
+		ProductionType: Defence.PLA
+		Color: 8A8A8A
+
+
+FACT.GDI:
+	Buildable:
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.IND, Building.PLA
+
+FACT.NOD:
+	RenderSprites:
+		Image: fact.nod
+    Buildable:
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.IND, Building.PLA
+
+FACT.SEA:
+	Inherits: FACT
+	RenderSprites:
+		Image: fact.sea
+	Buildable:
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.IND, Building.PLA
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+		ForceFaction: sea
+    Tooltip:
+		Name: Construction Yard (ASEAN)
+
+FACT.IND:
+	Inherits: FACT
+	RenderSprites:
+		Image: fact.ind
+	Buildable:
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.IND, Building.PLA
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+  		ForceFaction: ind
+    Tooltip:
+		Name: Construction Yard (IND)
+
+FACT.PLA:
+	Inherits: FACT
+	RenderSprites:
+		Image: fact.pla
+	Buildable:
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.IND, Building.PLA
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+  		ForceFaction: pla
+    Tooltip:
+		Name: Construction Yard (PLA)
+
+
+GEN:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 48,48
+	HitShape:
+		TargetableOffsets: 630,299,0
+	Valued:
+		Cost: 250
+	Tooltip:
+		Name: Power Generator
+	ProvidesPrerequisite:
+		Prerequisite: anypower
+	Buildable:
+		BuildPaletteOrder: 10
+		Prerequisites: fact
+		Queue: Building.SEA
+		Description: Generates power
+	Building:
+		Footprint: xx ==
+		Dimensions: 2,2
+	Health:
+		HP: 30000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	Power:
+		Amount: 50
+	ScalePowerWithHealth:
+
+POWR:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 48,48
+	HitShape:
+		TargetableOffsets: 630,299,0
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Power Plant
+	ProvidesPrerequisite:
+		Prerequisite: anypower
+	Buildable:
+		BuildPaletteOrder: 80
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Building.SEA
+		Description: Provides more power, cheaper than the\nstandard Power Plant
+	RenderSprites:
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 40000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	Power:
+		Amount: 200
+	ScalePowerWithHealth:
+
+NUKE:
+	Health:
+		HP: 40000
+	RevealsShroud:
+		Range: 2c0
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+
+NUK2:
+	Health:
+		HP: 60000
+	RevealsShroud:
+		Range: 2c0
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+
+PWR2:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^3x2Shape
+	HitShape:
+		TargetableOffsets: -355,-1024,0
+	Buildable:
+		Queue: Building.PLA
+		BuildPaletteOrder: 10
+		Prerequisites: fact
+		Description: PLA Power Plant.
+	RenderSprites:
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Coal Power Plant
+	ProvidesPrerequisite:
+		Prerequisite: anypower
+	Building:
+		Footprint: xxx Xxx ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-1024,0
+	Selectable:
+		Bounds: 72,48
+		DecorationBounds: 72,68,0,-10
+	Health:
+		HP: 80000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	Power:
+		Amount: 150
+	ScalePowerWithHealth:
+
+CMDP:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^3x2Shape
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 0,-896,0, 0,896,0, 840,0,0, -706,0,0, -706,-768,0, -706,640,0
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Command Post
+	ProvidesPrerequisite:
+		Prerequisite: anypower
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Building.IND
+		Description: Provides radar and resupply support powers.\n  Unlocks higher tech buildings.
+	Building:
+		Footprint: xxx x=x ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	Selectable:
+		Bounds: 72,48
+		DecorationBounds: 72,68,0,-12
+	Health:
+		HP: 80000
+	RevealsShroud:
+		Range: 6c0
+	ProvidesRadar:
+	RenderDetectionCircle:
+	DetectCloaked:
+		Range: 5c0
+	WithBuildingBib:
+	Power:
+		Amount: 10
+	ScalePowerWithHealth:
+	ParatroopersPower@resupply:
+		OrderName: Aerial Resupply
+		Icon: paratroopers
+        IconPalette: raplayer
+		UnitType: tran.ind
+		ChargeInterval: 7500
+		Description: Resupply
+		StartFullyCharged: True
+		LongDesc: A cargo plane drops a group of resupply crates\nanywhere on the map. Can drop many things,\n from money to reinforcements to powerful vehicles and more.
+		DropItems: CRATE.IND,CRATE.IND,CRATE.IND
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		Cursor: ability
+		CameraActor: CAMERA.small
+		SupportPowerPaletteOrder: 50
+	SupportPowerChargeBar:
+
+PROC:
+	Health:
+		HP: 90000
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: anypower
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.PLA
+	RevealsShroud:
+		Range: 2c0
+
+OILER:
+	Inherits: ^BaseBuilding
+	Selectable:
+		Bounds: 96,72
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 853
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Oil Refinery
+	Buildable:
+		BuildPaletteOrder: 20
+		Queue: Building.IND
+		Prerequisites: anypower
+		Description: Provides funds to supply the war effort
+	WithIdleOverlay@DERRICK:
+		RequiresCondition: !build-incomplete
+		Sequence: idle-derrick
+	Building:
+		Footprint: xxxx xxxx xxxx ====
+		Dimensions: 4,4
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 50000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	ProvidesPrerequisite:
+		Prerequisite: proc
+	CashTrickler:
+		Interval: 20
+		Amount: 20
+
+OIL2:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 48,48
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Oil Derrick
+	Buildable:
+		Prerequisites: fix,~proc
+		BuildPaletteOrder: 80
+		Queue: Building.IND
+		Description: Provides funds to supply the war effort
+	RenderSprites:
+	Building:
+		Footprint: xx ==
+		Dimensions: 2,2
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 55000
+	RevealsShroud:
+		Range: 2c0
+    WithDeathAnimation:
+	WithBuildingBib:
+	CashTrickler:
+		Interval: 200
+		Amount: 75
+
+
+SILO:
+	Buildable:
+		Queue: Defence.GDI, Defence.Nod, Defence.SEA, Defence.PLA
+	RevealsShroud:
+		Range: 2c0
+	Building:
+		Footprint: xx ==
+		Dimensions: 2,2
+		LocalCenterOffset: 0,-256,0
+	WithBuildingBib:
+		HasMinibib: false
+
+PYLE:
+    ProximityExternalCondition:
+        Condition: BarracksHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+	RevealsShroud:
+		Range: 2c0
+
+HAND:
+    ProximityExternalCondition:
+        Condition: BarracksHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+	RevealsShroud:
+		Range: 2c0
+
+TENT:
+	Inherits: ^BaseBuilding
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Barracks
+	Buildable:
+		BuildPaletteOrder: 30
+		Queue: Building.IND
+		Description: Trains infantry\n  Heals infantry nearby.\n  Basic infantry can be used to capture disabled vehicles.
+        IconPalette: raplayer
+	RenderSprites:
+        PlayerPalette: raremap
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 45000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	RallyPoint:
+	Exit@1:
+		SpawnOffset: -426,85,0
+		ExitCell: 0,1
+	Exit@2:
+		SpawnOffset: -725,640,0
+		ExitCell: 0,2
+	Production:
+		Produces: Infantry.IND
+	GrantExternalConditionToProduced:
+		Condition: produced
+	ProductionQueue:
+		Type: Infantry.IND
+		DisplayOrder: 2
+		Group: Infantry
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionBar:
+		ProductionType: Infantry.IND
+	ProvidesPrerequisite:
+		Prerequisite: barracks
+	Selectable:
+		Bounds: 48,42,0,-5
+   	ActorPreviewPlaceBuildingPreview:
+		OverridePalette: raremap
+    ProximityExternalCondition:
+        Condition: BarracksHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+
+BARR:
+	Inherits: ^BaseBuilding
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 840,-256,0, 840,512,0, 210,-512,0, -71,512,0
+		Type: Rectangle
+			TopLeft: -1024, -1024
+			BottomRight: 1024, 640
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Barracks
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: anypower
+		Queue: Building.SEA
+		Description: Trains infantry.\n  Heals infantry nearby.
+        IconPalette: raplayer
+	RenderSprites:
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-256,0
+	Health:
+		HP: 60000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	RallyPoint:
+	Exit@1:
+		SpawnOffset: -170,810,0
+		ExitCell: 1,2
+	Exit@2:
+		SpawnOffset: -725,640,0
+		ExitCell: 0,2
+	Production:
+		Produces: Infantry.SEA
+	GrantExternalConditionToProduced:
+		Condition: produced
+	ProductionQueue@SEA:
+		Type: Infantry.SEA
+		DisplayOrder: 2
+		Group: Infantry
+		LowPowerModifier: 150
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionBar:
+		ProductionType: Infantry.SEA
+	Power:
+		Amount: -15
+	ProvidesPrerequisite:
+		Prerequisite: barracks
+	Selectable:
+		Bounds: 48,42,0,-5
+    ProximityExternalCondition:
+        Condition: BarracksHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+
+BARR.PLA:
+	Inherits: ^BaseBuilding
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 840,-256,0, 840,512,0, 210,-512,0, -71,512,0
+		Type: Rectangle
+			TopLeft: -1024, -1024
+			BottomRight: 1024, 640
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Barracks
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: anypower
+		Queue: Building.PLA
+		Description: Trains infantry.\n  Heals infantry nearby.
+	RenderSprites:
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+	Health:
+		HP: 60000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+	RallyPoint:
+	Exit@1:
+		SpawnOffset: -170,810,0
+		ExitCell: 1,2
+	Exit@2:
+		SpawnOffset: -725,640,0
+		ExitCell: 0,2
+	Production:
+		Produces: Infantry.PLA
+	GrantExternalConditionToProduced:
+		Condition: produced
+	ProductionQueue:
+		Type: Infantry.PLA
+		DisplayOrder: 2
+		Group: Infantry
+		LowPowerModifier: 150
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionBar:
+		ProductionType: Infantry.PLA
+	Power:
+		Amount: -15
+	ProvidesPrerequisite:
+		Prerequisite: barracks
+	Selectable:
+		Bounds: 48,42,0,-5
+    ProximityExternalCondition:
+        Condition: BarracksHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+
+
+    
+AFLD:
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: proc
+		Queue: Building.Nod
+	Health:
+		HP: 100000
+	Armor:
+		Type: Light
+    RevealsShroud:
+		Range: 5c0
+
+AFLD.IND:
+	Inherits: AFLD
+	Buildable:
+   		Prerequisites: proc
+		Queue: Building.IND
+	Production:
+		Produces: Aircraft.IND
+	ProductionAirdrop:
+		Produces: Vehicle.IND
+		ActorType: tran.ind
+		BaselineSpawn: True
+	Building:
+		Footprint: xxx= ====
+		Dimensions: 4,2
+    -WithIdleOverlay@DISH:
+	ProductionQueue:
+		Type: Vehicle.IND
+	RepairsUnits:
+		HpPerStep: 1000
+		Interval: 15
+		PlayerExperience: 25
+		StartRepairingNotification: Repairing
+	Exit@1:
+		RequiresCondition: !being-captured
+		SpawnOffset: -170,810,0
+		ExitCell: 1,2
+		ProductionTypes: Vehicle.IND
+	Exit@2:
+		RequiresCondition: !being-captured
+		SpawnOffset: -725,640,0
+		ExitCell: 0,2
+		ProductionTypes: Aircraft.IND
+    ProductionBar:
+		ProductionType: Vehicle.IND
+	ProductionQueue@IND:
+		Type: Aircraft.IND
+		DisplayOrder: 4
+		Factions: ind
+		Group: Aircraft
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	Power:
+		Amount: 0
+
+AFLD.PLA:
+	Inherits: AFLD
+	Buildable:
+   		Prerequisites: proc
+		Queue: Building.PLA
+	Selectable:
+		Bounds: 72,48
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1024
+			BottomRight: 1536, 1024
+	Building:
+		Footprint: xxx xxx ===
+		Dimensions: 3,3
+	Production:
+		Produces: Aircraft.PLA
+	ProductionAirdrop:
+		Produces: Vehicle.PLA
+		ActorType: c17
+    -WithIdleOverlay@DISH:
+	ProductionQueue:
+		Type: Vehicle.PLA
+	Exit@1:
+		RequiresCondition: !being-captured
+		SpawnOffset: -170,810,0
+		ExitCell: 1,2
+		ProductionTypes: Vehicle.PLA
+	Exit@2:
+		RequiresCondition: !being-captured
+		SpawnOffset: -725,640,0
+		ExitCell: 0,2
+		ProductionTypes: Aircraft.PLA
+    ProductionBar:
+		ProductionType: Vehicle.PLA
+	ProductionQueue@PLA:
+		Type: Aircraft.PLA
+		DisplayOrder: 4
+		Factions: pla
+		Group: Aircraft
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+
+WEAP:
+	Health:
+		HP: 80000
+	RevealsShroud:
+		Range: 2c0
+	Armor:
+		Type: Light
+    ProximityExternalCondition:
+        Condition: WeapHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+        
+WARF:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^3x2Shape
+	HitShape:
+		TargetableOffsets: 0,0,0, 0,1024,0, 0,-1024,0
+		Type: Rectangle
+			TopLeft: -1536, -1024
+			BottomRight: 1536, 512
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: War Factory
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: proc
+		Queue: Building.SEA
+        IconPalette: raplayer
+	RenderSprites:
+	Building:
+		Footprint: xxx xxx ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	Selectable:
+		Bounds: 72,48
+		DecorationBounds: 72,64,0,-16
+	Health:
+		HP: 100000
+	RevealsShroud:
+		Range: 2c512
+	WithBuildingBib:
+	WithProductionDoorOverlay:
+		RequiresCondition: !build-incomplete
+		Sequence: build-top
+	RallyPoint:
+    Exit@1:
+		RequiresCondition: !being-captured
+		SpawnOffset: 213,-128,0
+		ExitCell: 1,2
+	ProvidesPrerequisite:
+		Prerequisite: vehicleproduction
+	Production:
+		Produces: Vehicle.SEA
+	ProductionQueue:
+		Type: Vehicle.SEA
+		DisplayOrder: 3
+		Group: Vehicle
+		LowPowerModifier: 150
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionBar:
+		ProductionType: Vehicle.SEA
+	Power:
+		Amount: -40
+    ProximityExternalCondition:
+        Condition: WeapHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+        
+CTOW:
+	Inherits: ^BaseBuilding
+	HitShape:
+		TargetableOffsets: 0,0,0, 0,512,0, 420,-598,256
+		Type: Rectangle
+			TopLeft: -1024, -384
+			BottomRight: 1024, 1024
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: Communications Tower
+	ProvidesPrerequisite:
+		Prerequisite: anyhq
+	Buildable:
+		BuildPaletteOrder: 70
+		Prerequisites: ~disabled
+		Queue: Building.IND
+		Description: Provides radar and resupply support powers.\nUnlocks higher-tech units and buildings.
+	Building:
+		LocalCenterOffset: 0,-512,0
+    Selectable:
+		Bounds: 24,24,0,9
+	Health:
+		HP: 25000
+
+ASTP:
+	Inherits: ^BaseBuilding
+	HitShape:
+		TargetableOffsets: 0,0,0, 0,-512,256, 0,-1451,384, 0,512,128, 0,1536,85
+		Type: Rectangle
+			TopLeft: -2560, -1024
+			BottomRight: 2560, 1024
+	Buildable:
+		Queue: Building.SEA
+		BuildPaletteOrder: 70
+		Prerequisites: proc, ~techlevel.medium
+		Description: Provides radar. Produces and reloads aircraft.\n  Special Ability: Paratroopers, Spy Plane
+	RenderSprites:
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Airfield
+	ProvidesPrerequisite:
+		Prerequisite: anyhq
+	Selectable:
+		Bounds: 96,48
+	Building:
+		Footprint: _xx_ xxxx ====
+		Dimensions: 4,3
+		LocalCenterOffset: 0,-640,0
+	Health:
+		HP: 100000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 5c0
+	ProvidesRadar:
+		RequiresCondition: !lowpower
+	Exit@1:
+		RequiresCondition: !being-captured
+		ExitCell: 1,1
+		Facing: 768
+		ProductionTypes: Aircraft.SEA
+	Exit@2:
+		RequiresCondition: !being-captured
+		ExitCell: 1,2
+		Facing: 768
+		ProductionTypes: Aircraft.SEA
+	Exit@3:
+		RequiresCondition: !being-captured
+		ExitCell: 1,3
+		Facing: 768
+		ProductionTypes: Aircraft.SEA
+	WithBuildingBib:
+	WithIdleOverlay@DISH:
+		RequiresCondition: !build-incomplete
+		Sequence: idle-dish
+	RallyPoint:
+	Production:
+		Produces: Aircraft.SEA
+	Reservable:
+	ParatroopersPower@paratroopers:
+		OrderName: Paratroopers
+		Prerequisites: ~techlevel.high
+		Icon: paratroopers
+        IconPalette: raplayer
+		ChargeInterval: 7500
+		Description: Paratroopers
+		LongDesc: A cargo plane drops a squad of infantry\n and some light armor anywhere on the map.
+		DropItems: CRGJEEP,SCTNK,CRGJEEP,SCTNK
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		UnitType: c130
+		QuantizedFacings: 8
+		Cursor: ability
+		CameraActor: CAMERA.small
+		SupportPowerPaletteOrder: 50
+	AirstrikePower@spyplane:
+		OrderName: SpyPlane
+		Prerequisites: ~techlevel.medium
+		Icon: spyplane
+        IconPalette: raplayer
+		ChargeInterval: 7500
+		Description: Spy Plane
+		LongDesc: Reveals an area of the map.
+		EndChargeSpeechNotification: AirstrikeReady
+		SelectTargetSpeechNotification: SelectTarget
+		CameraActor: camera.spyplane
+		CameraRemoveDelay: 150
+		Cursor: ability
+		UnitType: spy
+		QuantizedFacings: 8
+		SupportPowerPaletteOrder: 60
+	SupportPowerChargeBar:
+	Power:
+		Amount: -40
+	WithResupplyAnimation:
+		RequiresCondition: !build-incomplete
+	ProductionQueue@Aircraft:
+		Type: Aircraft.SEA
+		DisplayOrder: 4
+		Factions: sea
+		Group: Aircraft
+		LowPowerModifier: 150
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
+	ProductionBar@SEA:
+		ProductionType: Aircraft.SEA
+   	ActorPreviewPlaceBuildingPreview:
+	RepairsUnits:
+		HpPerStep: 1000
+		Interval: 15
+		PlayerExperience: 25
+		StartRepairingNotification: Repairing
+
+HPAD:
+	Valued:
+		Cost: 1500
+	Buildable:
+		Prerequisites: ~proc
+		Queue: Building.GDI, Building.Nod
+	Health:
+		HP: 80000
+	Armor:
+		Type: Wood
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	WithBuildingBib:
+    GrantConditionOnFaction@GDI:
+        Factions: gdi
+        Condition: GiveOrca
+		RequiresCondition: !build-incomplete
+    GrantConditionOnFaction@Nod:
+        Factions: nod
+        Condition: GiveApache
+		RequiresCondition: !build-incomplete
+    GrantConditionOnFaction@SEA:
+        Factions: sea
+        Condition: GiveHind
+		RequiresCondition: !build-incomplete
+    GrantConditionOnFaction@IND:
+        Factions: ind
+        Condition: GiveHuey
+		RequiresCondition: !build-incomplete
+    FreeActor@GDI:
+        Actor: ORCA
+  		Facing: 256
+        SpawnOffset: 1,1
+        RequiresCondition: GiveOrca
+    FreeActor@Nod:
+        Actor: HELI
+  		Facing: 256
+        SpawnOffset: 1,1
+        RequiresCondition: GiveApache
+    FreeActor@SEA:
+        Actor: HIND
+  		Facing: 256
+        SpawnOffset: 1,1
+        RequiresCondition: GiveHind
+    FreeActor@IND:
+        Actor: HUEY
+  		Facing: 256
+        SpawnOffset: 1,1
+        RequiresCondition: GiveHuey
+	CustomSellValue:
+		Value: 150
+	RevealsShroud:
+		Range: 2c0
+
+HQ:
+	Buildable:
+		Queue: Building.GDI, Building.Nod
+	RevealsShroud:
+		Range: 10c0
+	Health:
+		HP: 100000
+	Armor:
+		Type: Light
+    RenderSprites:
+        FactionImages: 
+            nod:nodhq
+	-AirstrikePower:
+	AirstrikePower@A10:
+		RequiresCondition: GDIUpgradeBuilding
+		PauseOnCondition: lowpower
+		Prerequisites: ~techlevel.superweapons
+		Icon: airstrike
+		ChargeInterval: 7500
+		SquadSize: 2
+		QuantizedFacings: 8
+		Description: Air Strike
+		LongDesc: Deploy an aerial napalm strike.\nBurns buildings and infantry along a line.
+		EndChargeSpeechNotification: AirstrikeReady
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		IncomingSpeechNotification: EnemyPlanesApproaching
+		UnitType: a10
+		DisplayBeacon: True
+		BeaconPoster: airstrike
+		BeaconPosterPalette: beaconposter
+		DisplayRadarPing: True
+		CameraActor: camera
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: airstrikedirection
+		SupportPowerPaletteOrder: 10
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+
+HQ.PLA:
+	Inherits: HQ
+	-AirstrikePower@A10:
+	RenderSprites:
+        Image: plahq
+	Buildable:
+		Queue: Building.PLA
+        
+FIX:
+	Buildable:
+		Prerequisites: anypower
+		Queue: Building.GDI, Building.Nod, Building.SEA, Building.PLA
+	RevealsShroud:
+		Range: 2c0
+	Health:
+		HP: 80000
+	Armor:
+		Type: Wood
+	Building:
+		Footprint: _=_ +++ =+= ===
+		Dimensions: 3,4
+		LocalCenterOffset: 0,-512,0
+	WithBuildingBib:
+		HasMinibib: false
+
+SRVC:
+	Inherits: ^BaseBuilding
+	HitShape:
+		TargetableOffsets: 0,0,0, 0,512,128, 420,-598,213
+		Type: Rectangle
+			TopLeft: -1024, -384
+			BottomRight: 1024, 1024
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Service Depot
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: proc
+		Queue: Building.IND
+		Description: Repairs nearby vehicles.\n  Unlocks advanced units.
+        IconPalette: raplayer
+	Building:
+		Footprint: Xx= xx= ===
+		Dimensions: 3,3
+		LocalCenterOffset: 0,-512,0
+	Selectable:
+		Bounds: 72,72
+	ProvidesPrerequisite:
+		Prerequisite: fix
+	WithSpriteBody:
+	Health:
+		HP: 80000
+	RevealsShroud:
+		Range: 2c0
+	WithBuildingBib:
+    ProximityExternalCondition:
+        Condition: WeapHeal
+        Range: 2c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 2c512
+        
+EYE:
+	Buildable:
+		Prerequisites: ~anyhq, ~techlevel.high
+	RevealsShroud:
+		Range: 10c0
+	Health:
+		HP: 100000
+	Armor:
+		Type: Light
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+
+TMPL:
+	Buildable:
+		Prerequisites: ~anyhq, ~techlevel.high
+	Health:
+		HP: 200000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+
+SCMD:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^2x2Shape
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Command Center
+	ProvidesPrerequisite:
+		Prerequisite: anytech
+	Buildable:
+		BuildPaletteOrder: 100
+		Prerequisites: ~anyhq, ~techlevel.high
+		Queue: Building.SEA
+		Description: Provides radar and spy satellite support power.\nUnlocks Commando.\nRequires power to operate.
+	Building:
+		Footprint: X_ xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Selectable:
+		Bounds: 48,40,0,9
+		DecorationBounds: 48,53,0,-4
+	WithSpriteBody:
+		PauseOnCondition: lowpower
+	Health:
+		HP: 100000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 10c0
+	WithBuildingBib:
+	ProvidesRadar:
+		RequiresCondition: !lowpower
+	AirstrikePower:
+		PauseOnCondition: lowpower
+		Prerequisites: ~techlevel.superweapons
+		Icon: airstrike
+		ChargeInterval: 7500
+		SquadSize: 2
+		QuantizedFacings: 8
+		Description: Air Strike
+        AllowMultiple: true
+		LongDesc: Deploy an aerial stealth fighter strike.
+		EndChargeSpeechNotification: AirstrikeReady
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		UnitType: sjet
+		DisplayBeacon: True
+		BeaconPoster: airstrike
+		BeaconPosterPalette: beaconposter
+		DisplayRadarPing: True
+		CameraActor: camera
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: airstrikedirection
+		SupportPowerPaletteOrder: 10
+	GpsPower:
+		PauseOnCondition: disabled
+		Icon: gps
+		Prerequisites: ~techlevel.high
+		OneShot: true
+		ChargeInterval: 120
+		StartFullyCharged: true
+		Description: GPS Satellite
+		LongDesc: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 10
+        DoorImage: scmd
+        SatelliteImage: flagfly
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 90
+	SupportPowerChargeBar:
+	Power:
+		Amount: -200
+
+ICOM:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^3x2Shape
+	Selectable:
+		Bounds: 72,48
+	HitShape:
+		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
+	Buildable:
+		BuildPaletteOrder: 100
+		Prerequisites: ~fix, ~techlevel.high
+		Queue: Building.IND
+		Description: Provides rocket artillery strike and advanced units.
+	RenderSprites:
+        Image: indhq
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Command Center
+	Building:
+		Footprint: Xx_ Xx= ===
+		Dimensions: 3,3
+		LocalCenterOffset: -256,-512,0
+	Health:
+		HP: 100000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 3c0
+	ProvidesPrerequisite:
+		Prerequisite: anytech
+	WithBuildingBib:
+	AirstrikePower@BM21:
+		Prerequisites: ~techlevel.high
+		Icon: bm21
+		ChargeInterval: 11250
+		SquadSize: 4
+		QuantizedFacings: 8
+		Description: BM-21 Strike
+        AllowMultiple: true
+		LongDesc: A rocket artillery strike.
+		EndChargeSpeechNotification: AirstrikeReady
+		SelectTargetSpeechNotification: SelectTarget
+		UnitType: rckt.ind
+		DisplayBeacon: True
+		BeaconPoster: airstrike
+		BeaconPosterPalette: beaconposter
+		DisplayRadarPing: True
+		CameraActor: camera
+        CameraRemoveDelay: 100
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: airstrikedirection
+		SupportPowerPaletteOrder: 30
+	SupportPowerChargeBar:
+
+PCOM:
+	Inherits: ^BaseBuilding
+	Inherits@shape: ^3x2Shape
+	Selectable:
+		Bounds: 72,48
+	HitShape:
+		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
+	Buildable:
+		BuildPaletteOrder: 100
+		Prerequisites: ~anyhq, ~techlevel.high
+		Queue: Building.PLA
+		Description: Provides rocket artillery strike and advanced units.
+        IconPalette: raplayer
+	RenderSprites:
+        PlayerPalette: raremap
+        Image: stek
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Field Headquarters
+	Building:
+		Footprint: Xx= Xx= ===
+		Dimensions: 3,3
+		LocalCenterOffset: -256,-512,0
+	Health:
+		HP: 100000
+	RevealsShroud:
+		Range: 10c0
+	ProvidesPrerequisite:
+		Prerequisite: anytech
+	WithBuildingBib:
+	AirstrikePower@SCUD:
+		Prerequisites: ~techlevel.high
+		Icon: bm21
+		ChargeInterval: 11250
+		SquadSize: 2
+		QuantizedFacings: 8
+		Description: SCUD Strike
+		LongDesc: A rocket artillery strike.
+		EndChargeSpeechNotification: AirstrikeReady
+		SelectTargetSpeechNotification: SelectTarget
+		UnitType: rckt.pla.h6
+		DisplayBeacon: True
+		BeaconPoster: airstrike
+		BeaconPosterPalette: beaconposter
+		DisplayRadarPing: True
+		CameraActor: camera
+        CameraRemoveDelay: 100
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: airstrikedirection
+		SupportPowerPaletteOrder: 30
+	SupportPowerChargeBar:
+	Power:
+		Amount: -200
+    ActorPreviewPlaceBuildingPreview:
+		OverridePalette: raremap
+
+BNKR:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetAll
+	Inherits@CARGOPIPS: ^CargoPips
+	Tooltip:
+		Name: Bunker
+	Building:
+	Buildable:
+		Queue: Defence.IND
+		BuildPaletteOrder: 40
+		Prerequisites: barracks
+		Description: Static defense with a fireport for\na garrisoned soldier.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+        IconPalette: raplayer
+	Valued:
+		Cost: 600
+	CustomSellValue:
+		Value: 400
+	Health:
+		HP: 45000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 512
+	-QuantizeFacingsFromSequence:
+	BodyOrientation:
+		QuantizedFacings: 8
+    Armament@RIFLE:
+        Weapon: M16
+		MuzzleSequence: muzzle
+    Armament@RPG:
+        Weapon: Rockets
+    Armament@Cmdo:
+        Weapon: Sniper
+		MuzzleSequence: muzzle
+    Armament@Merc:
+        Weapon: Colt45
+		MuzzleSequence: muzzle
+    Armament@Merc1:
+        Weapon: PortaTesla
+	Cargo:
+		Types: Infantry
+		MaxWeight: 4
+		InitialUnits: e1,rpg,e3
+	-SpawnActorsOnSell:
+	AttackGarrisoned:
+		RequiresCondition: !build-incomplete
+		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
+		PortYaws: 0, 176, 341, 512, 682, 853
+		PortCones: 88, 88, 88, 88, 88, 88
+	WithMuzzleOverlay:
+	RenderRangeCircle:
+		FallbackRange: 6c0
+	DetectCloaked:
+		Range: 6c0
+
+GUN:
+	Buildable:
+		Queue: Defence.Nod
+	Armor:
+		Type: Concrete
+	-WithBuildingBib:
+    RevealOnFire:
+	-DetectCloaked:
+    -RenderDetectionCircle:
+
+SAM:
+	Health:
+		HP: 40000
+   	Armament:
+		Weapon: Nike
+		MuzzleSequence: muzzle
+	Armor:
+		Type: Concrete
+    RevealOnFire:
+
+
+SEASAM:
+	Inherits: SAM
+	Buildable:
+		Prerequisites: ~anyhq, ~techlevel.medium
+		Queue: Defence.SEA
+	Health:
+		HP: 35000
+	Armor:
+		Type: Light
+	-AttackPopupTurreted:
+    AttackTurreted:
+		RequiresCondition: !build-incomplete
+	RenderSprites:
+        PlayerPalette: raremap
+	SequencePlaceBuildingPreview:
+		SequencePalette: raremap
+        
+AGUN:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetAll
+	Buildable:
+		BuildPaletteOrder: 50
+		Queue: Defence.IND
+		Prerequisites: fix, ~techlevel.medium
+		Description: Anti-Air base defense.\n  Strong vs Aircraft\n  Weak vs Ground units
+	RenderSprites:
+		Image: AGUN
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: AAA Gun
+	Selectable:
+		Bounds: 24,24
+	Health:
+		HP: 40000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 5c0
+	Turreted:
+		TurnSpeed: 60
+		RealignDelay: -1
+		RequiresCondition: !build-incomplete
+	WithSpriteTurret:
+		RequiresCondition: !attack-air && !build-incomplete
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air && !build-incomplete
+  	Armament@PRIMARY:
+		Weapon: ZU-23-2
+		Recoil: 64
+		RecoilRecovery: 18
+		LocalOffset: 275,32,175, 275,-32,175
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: ZU-23-2.AA
+		Recoil: 64
+		RecoilRecovery: 18
+		LocalOffset: 175,64,299, 175,-64,299
+		MuzzleSequence: muzzle-air
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeOnNewTarget: False
+		RevokeAll: True
+    AttackTurreted:
+		RequiresCondition: !build-incomplete
+		PauseOnCondition: disabled
+	WithMuzzleOverlay:
+	RenderRangeCircle:
+		RangeCircleType: aa
+	-WithDeathAnimation:
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+    RevealOnFire:
+	DetectCloaked:
+		Range: 0c0
+
+
+OBLI:
+	Health:
+		HP: 40000
+	Armor:
+		Type: Light
+    RevealOnFire:
+
+GTWR:
+	Buildable:
+		Queue: Defence.GDI, Defence.SEA, Defence.PLA
+	Health:
+		HP: 40000
+    Armament:
+		Weapon: Chaingun
+		LocalOffset: 256,0,256
+		MuzzleSequence: muzzle
+	Armor:
+		Type: Wood
+	-WithBuildingBib:
+	RevealsShroud:
+		Range: 7c0
+    RevealOnFire:
+	DetectCloaked:
+        Range: 1c0
+
+ATWR:
+	Health:
+		HP: 60000
+	Armor:
+		Type: Light
+	-WithBuildingBib:
+    RevealOnFire:
+	DetectCloaked:
+        Range: 1c512
+		RequiresCondition: !lowpower
+
+RTWR:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 36,36
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 768,-512,0, 768,512,0, -281,-512,0, -630,512,0
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Artillery Platform
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: ~anytech, ~techlevel.medium
+		Queue: Defence.IND
+		BuildDuration: 2080
+		Description: Long range base defense.\ n  Strong vs Tanks, Infantry\n  Weak vs Aircraft
+	RenderSprites:
+        Image: d30
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		LocalCenterOffset: 0,-256,0
+	Health:
+		HP: 45000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 2c512
+	WithBuildingBib:
+	Turreted:
+		TurnSpeed: 20
+		RealignDelay: -1
+		RequiresCondition: !build-incomplete
+	WithSpriteTurret:
+		RequiresCondition: !build-incomplete
+		Recoils: false
+	WithTurretAttackAnimation:
+		Sequence: recoil
+	Armament:
+		Weapon: 122mmSPG
+		LocalOffset: 950,0,150
+		MuzzleSequence: muzzle
+	AttackTurreted:
+		RequiresCondition: !build-incomplete
+	WithMuzzleOverlay:
+	-WithDeathAnimation:
+	-RenderDetectionCircle:
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+    RevealOnFire:
+
+RCKT:
+	Inherits: ^Defense
+	Inherits@AUTOTARGET: ^AutoTargetAll
+	Selectable:
+		Bounds: 24,24
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Missile Emplacement 
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: ~anyhq, ~techlevel.medium
+		Queue: Defence.SEA
+		Description: All-purpose defensive structure.\n  Strong vs all\n  Weak vs Tanks
+        IconPalette: raplayer
+	RenderSprites:
+	Building:
+	Health:
+		HP: 55000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	Turreted:
+		TurnSpeed: 36
+		InitialFacing: 192
+		RealignDelay: -1
+		RequiresCondition: !build-incomplete
+	WithSpriteTurret:
+		RequiresCondition: !build-incomplete
+		Recoils: false
+	Armament@PRIMARY:
+		Weapon: TowerATGM
+		LocalOffset: 256,128,256, 256,-128,256
+	Armament@SECONDARY:
+		Weapon: TowerATGMAA
+		LocalOffset: 256,128,256, 256,-128,256
+	AttackTurreted:
+		RequiresCondition: !build-incomplete
+	WithMuzzleOverlay:
+	-WithDeathAnimation:
+	DetectCloaked:
+		Range: 1c0
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+    RevealOnFire:
+
+RGUN:
+	Inherits: ^Defense
+	Inherits@IDISABLE: ^DisabledOverlay
+	Inherits@AUTOTARGET: ^AutoTargetAll
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 48,48
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 768,-512,0, 768,512,0, -281,-512,0, -630,512,0
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Railgun Turret
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: ~anytech, ~techlevel.medium
+		Queue: Defence.PLA
+		BuildDuration: 2080
+		Description: Railgun base defense.\n  Strong vs all
+	RenderSprites:
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		LocalCenterOffset: 0,-256,0
+	Health:
+		HP: 45000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c512
+	WithBuildingBib:
+	AutoTargetPriority@GroundUnit:
+		ValidTargets: Tank,Vehicle
+		Priority: 2
+	Turreted:
+		TurnSpeed: 26
+		LocalCenterOffset: 0,-256,0
+		RealignDelay: -1
+		RequiresCondition: !build-incomplete
+    WithSpriteTurret:
+		RequiresCondition: !attack-air && !build-incomplete
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air && !build-incomplete
+	Armament@GROUND:
+		Weapon: Railgun
+		LocalOffset: 900,0,512
+		PauseOnCondition: lowpower && reload-air
+		MuzzleSequence: muzzle
+		ReloadingCondition: reload-ground
+	Armament@AIR:
+		Name: secondary
+		Weapon: Railgun.AA
+		LocalOffset: 750,0,950
+		PauseOnCondition: lowpower && reload-ground
+		MuzzleSequence: muzzle
+		ReloadingCondition: reload-air
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 50
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	AttackTurreted:
+		RequiresCondition: !build-incomplete
+	WithMuzzleOverlay:
+	Power:
+		Amount: -100
+	-WithDeathAnimation:
+	DetectCloaked:
+		Range: 1c512
+		RequiresCondition: !lowpower
+	-BodyOrientation:
+	ClassicFacingBodyOrientation:
+    RevealOnFire:
+
+
+SBAG:
+	Buildable:
+		-Prerequisites: 
+		Queue: Defence.GDI, Defence.SEA
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 10
+
+CYCL:
+	Buildable:
+		Queue: Defence.Nod, Defence.PLA
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 10
+
+BARB:
+	Inherits: ^Wall
+	Valued:
+		Cost: 25
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Barbed Wire Fence
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: fact
+		Queue: Defence.IND
+		Description: Stops infantry and light vehicles.\nCan be crushed by tanks.
+	Armor:
+		Type: Light
+	LineBuild:
+		NodeTypes: barb
+	LineBuildNode:
+		Types: barb
+	WithWallSpriteBody:
+		Type: barb
+
+BRIK:
+	Buildable:
+		-Prerequisites: 
+		Queue: Defence.GDI, Defence.Nod, Defence.SEA, Defence.IND, Defence.PLA
+    Building:
+        AllowPlacementOnResources: true
+	Health:
+		HP: 50000
+
+DOME:
+	Inherits: ^Building
+	Inherits@IDISABLE: ^DisabledOverlay
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 48,48
+	HitShape:
+		UseTargetableCellsOffsets: false
+		TargetableOffsets: 0,0,0, 630,-384,0, 630,384,0, -700,-512,0, -700,512,0
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 90
+		Prerequisites: ~disabled
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Radar Dome
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 100000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 15c0
+	WithBuildingBib:
+	ProvidesRadar:
+		RequiresCondition: !lowpower
+	RenderDetectionCircle:
+	DetectCloaked:
+		Range: 5c0
+		RequiresCondition: !lowpower
+	Power:
+		Amount: -40
+   	ActorPreviewPlaceBuildingPreview:
+		OverridePalette: raremap
+	RenderSprites:
+        PlayerPalette: raremap
+
+ACTWR:
+	Inherits: ^Building
+	Inherits@shape: ^2x2Shape
+	Selectable:
+		Bounds: 48,48
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 90
+		Prerequisites: ~disabled
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Aircraft Control Tower
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 40000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 10c0
+	RenderDetectionCircle:
+	DetectCloaked:
+		Range: 5c0
+		RequiresCondition: !lowpower
+	Power:
+		Amount: -30
+   	ActorPreviewPlaceBuildingPreview:
+		OverridePalette: raremap
+	RenderSprites:
+        PlayerPalette: raremap
+
+
+BARRACKS:
+
+VEHICLEPRODUCTION:
+
+ANYPOWER:
+
+ANYHQ:
+
+ANYTECH:
+	AlwaysVisible:
+	Interactable:
+	Tooltip:
+		Name: a command center
+	Buildable:
+		Description: a command center

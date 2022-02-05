@@ -1,0 +1,1700 @@
+TRAN:
+	RevealsShroud:
+		Range: 4c0
+    RenderSprites:
+	Aircraft:
+		Speed: 200
+	Carryall:
+		BeforeLoadDelay: 10
+		BeforeUnloadDelay: 15
+		LocalOffset: 0, 0, -256
+	Buildable:
+		Description: Fast Transport Helicopter.\n  Can carry a light vehicle.\n  Unarmed.
+	Cargo:
+		Types: Infantry, Vehicles
+
+HIP:
+	Inherits: ^Helicopter
+	Inherits@TRANSPORT: ^Transport
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: Hip Transport
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 10
+        Prerequisites: ~techlevel.medium
+		Queue: Aircraft.SEA, Aircraft.IND, Aircraft.PLA
+		Description: Fast Transport Helicopter.\n  Can carry a light vehicle.\n  Armed with rocket pods
+	RenderSprites:
+        Image: rhip
+	Aircraft:
+		TurnSpeed: 30
+		Speed: 180
+		AltitudeVelocity: 0c75
+	Health:
+		HP: 10000
+	Armor:
+		Type: Heavy
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 4c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: B8V20
+		LocalOffset: 128,-213,-85, 128,213,-85
+	AutoTarget:
+		ScanRadius: 4
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		AttackType: Hover
+	WithIdleOverlay@ROTORAIR:
+		Sequence: rotor
+		Offset: 200,0,-50
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Sequence: slow-rotor
+		Offset: 200,0,-50
+		RequiresCondition: !airborne
+	Cargo:
+		Types: Infantry
+		MaxWeight: 10
+		AfterUnloadDelay: 40
+	SpawnActorOnDeath:
+		Actor: HIP.Husk
+	Selectable:
+		DecorationBounds: 36,36
+	Carryall:
+		BeforeLoadDelay: 10
+		BeforeUnloadDelay: 15
+		LocalOffset: 0, 0, -256
+	Cargo:
+		Types: Infantry, Vehicles
+
+HELI:
+	Tooltip:
+		Name: Apache Gunship
+	Buildable:
+        Prerequisites: ~techlevel.medium
+		Queue: Aircraft.Nod, Aircraft.SEA
+    RevealOnFire: 
+   	RevealsShroud:
+		Range: 4c0
+	Armament@PRIMARY:
+		Weapon: 20mmAutocannon
+		LocalOffset: 256,0,-185
+		MuzzleSequence: muzzle
+		-PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Hellfire
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+    -ReloadAmmoPool:
+	AttackAircraft:
+		OpportunityFire: true
+	AmmoPool:
+        Armaments: secondary
+	Rearmable:
+		RearmActors: hpad, afld.ind, afld.pla, astp
+   	JamsMissiles:
+ 		Chance: 75
+	AutoTarget:
+		ScanRadius: 20
+	AutoTargetPriority@Ground:
+		ValidTargets: Infantry
+		Priority: 2
+	WithAmmoPipsDecoration:
+		RequiresSelection: false
+
+ORCA:
+	Buildable:
+        Prerequisites: ~techlevel.medium
+    RevealOnFire: 
+	Aircraft:
+		TurnSpeed: 38
+   	RevealsShroud:
+		Range: 3c0
+	Armament@PRIMARY:
+		Weapon: Minigun.Orca
+		LocalOffset: 256,0,-185
+		MuzzleSequence: muzzle
+		-PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: OrcaAGMissiles
+		LocalOffset: 427,-171,-213, 427,171,-213
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+    -ReloadAmmoPool:
+	AttackAircraft:
+		OpportunityFire: true
+	AmmoPool:
+        Armaments: secondary
+        ReloadDelay: 15
+	Rearmable:
+		RearmActors: hpad, afld.ind, afld.pla, astp
+   	JamsMissiles:
+ 		Chance: 95
+	AutoTarget:
+		ScanRadius: 10
+	AutoTargetPriority@Ground:
+		ValidTargets: Vehicles
+		Priority: 2
+	WithAmmoPipsDecoration:
+		RequiresSelection: false
+        
+GAZL:
+	Inherits: ^Helicopter
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 650
+	Tooltip:
+		Name: Gazelle
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 20
+		Queue: Aircraft.IND
+		Description: Helicopter Gunship with ATGMs.\n  Strong vs Buildings, Tanks\n  Weak vs Infantry
+	Aircraft:
+		TurnSpeed: 28
+		Speed: 170
+	Health:
+		HP: 10000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 6c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: HOT
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	AutoTarget:
+		ScanRadius: 4
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		AttackType: Hover
+	AmmoPool:
+		Ammo: 4
+		AmmoCondition: ammo
+	Rearmable:
+		RearmActors: hpad, afld.ind, afld.pla, astp
+	WithIdleOverlay@ROTORAIR:
+		Offset: 50,0,160
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 50,0,160
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: GAZL.Husk
+	Selectable:
+		DecorationBounds: 30,24
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		PipCount: 4
+	SmokeTrailWhenDamaged:
+		Offset: -227,10,0
+
+HIND:
+	Inherits: ^Helicopter
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Hind
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 10
+        Prerequisites: ~techlevel.medium
+		Queue: Aircraft.IND
+		Description: Helicopter Gunship with Chainguns and rockets.\n  Strong vs Infantry, Light Vehicles and\n  Aircraft\n  Weak vs Tanks
+        IconPalette: raplayer
+	RenderSprites:
+	Aircraft:
+		TurnSpeed: 25
+		Speed: 190
+	Health:
+		HP: 25000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 5c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: YakB127
+		LocalOffset: 128,-153,-85, 128,153,-85
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: GSh-30-2
+		LocalOffset: 128,-113,-85, 128,113,-85
+		MuzzleSequence: muzzle
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: B8V20
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+   	JamsMissiles:
+ 		Chance: 50
+	AutoTarget:
+		ScanRadius: 20
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		AttackType: Hover
+		Armaments: primary,secondary,tertiary
+	Rearmable:
+		RearmActors: hpad, afld.ind, afld.pla, astp
+	WithIdleOverlay@ROTORAIR:
+		Offset: 256,0,160
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 256,0,160
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	AutoTargetPriority@Ground:
+		ValidTargets: Infantry
+		Priority: 2
+	WithMuzzleOverlay:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 1
+		AfterUnloadDelay: 40
+	SpawnActorOnDeath:
+		Actor: HIND.Husk
+	Selectable:
+		DecorationBounds: 30,24
+
+PLAH:
+	Inherits: ^Helicopter
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Z-10 Gunship
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: ~techlevel.medium
+		Queue: Aircraft.PLA
+		Description: Helicopter Gunship with Chainguns.\n  Strong vs Infantry, Light Vehicles and\n  Aircraft\n  Weak vs Tanks
+	RenderSprites:
+	Aircraft:
+		TurnSpeed: 28
+		Speed: 180
+	Health:
+		HP: 12500
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 3c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: HeliAGGun
+		LocalOffset: 256,0,-185
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Hellfire
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	AmmoPool:
+        Armaments: secondary
+	AutoTarget:
+		ScanRadius: 4
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		AttackType: Hover
+	AmmoPool:
+		Ammo: 10
+		AmmoCondition: ammo
+	WithIdleOverlay@ROTORAIR:
+		Offset: 50,0,185
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 50,0,185
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: PLAH.Husk
+	Rearmable:
+		RearmActors: hpad, afld.ind, afld.pla, astp
+	Selectable:
+		DecorationBounds: 30,24
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+
+
+HUEY:
+	Inherits: ^Helicopter
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Huey
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 10
+        Prerequisites: ~disabled
+		Queue: Aircraft.IND
+		Description: Helicopter Gunship with rockets.\n  Can carry a squad of infantry or a light vehicle.\n  Cannot use weapons while loaded with infantry or carrying a vehicle.
+        IconPalette: raplayer
+	RenderSprites:
+        PlayerPalette: raremap
+	Aircraft:
+		TurnSpeed: 35
+		Speed: 110
+	Health:
+		HP: 12500
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: Hydra70
+		LocalOffset: 128,-213,-85, 128,213,-85
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: HeliAGGun
+		LocalOffset: 128,-113,-85, 128,113,-85
+		MuzzleSequence: muzzle
+   	JamsMissiles:
+ 		Chance: 25
+	AutoTarget:
+		ScanRadius: 20
+	AttackAircraft:
+		FacingTolerance: 80
+		PersistentTargeting: false
+		AttackType: Hover
+        RequiresCondition: !loaded
+	Rearmable:
+		RearmActors: hpad, hpad.ind, astp, afld.ind
+	WithIdleOverlay@ROTORAIR:
+		Offset: 0,0,85
+		Sequence: rotor
+		RequiresCondition: airborne
+	AutoTargetPriority@Ground:
+		ValidTargets: Vehicles
+		Priority: 2
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 0,0,85
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: HUEY.Husk
+	Selectable:
+		DecorationBounds: 30,24
+   	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		InitialUnits: E1,E1,E1,E1,E2
+        LoadedCondition: loaded
+	Carryall:
+		BeforeLoadDelay: 10
+		BeforeUnloadDelay: 15
+		LocalOffset: 0, 0, -256
+	Cargo:
+		Types: Infantry, Vehicles
+
+BHWK:
+	Inherits: ^Helicopter
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@TRANSPORT: ^Transport
+	Buildable:
+        Queue: Aircraft.SEA, Aircraft.GDI
+		BuildPaletteOrder: 20
+		Prerequisites: ~techlevel.medium
+		Description: Helicopter gunship armed\nwith dual chainguns.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks
+        IconPalette: raplayer
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Blackhawk
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 10000
+	RevealsShroud:
+		Range: 4c0
+		Type: GroundPosition
+    GrantConditionOnAttack:
+        Condition: MainGun
+        ArmamentNames: primary
+        MaximumInstances: 1
+        RevokeOnNewTarget: true
+	Armament@PRIMARY:
+		Weapon: Minigun
+		LocalOffset: 85,-163,-85, 85,163,-85
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Weapon: Minigun.AA
+		LocalOffset: 85,-163,-85, 85,163,-85
+		MuzzleSequence: muzzle
+        RequiresCondition: !MainGun
+	AttackAircraft:
+		FacingTolerance: 270
+		PersistentTargeting: false
+		AttackType: Hover
+   	JamsMissiles:
+ 		Chance: 55
+	WithMuzzleOverlay:
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 180
+	WithIdleOverlay@ROTORAIR:
+		Sequence: rotor
+		Offset: 128,0,156
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Sequence: slow-rotor
+		Offset: 128,0,156
+		RequiresCondition: !airborne
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: BHWK.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -427,0,0
+	Selectable:
+		DecorationBounds: 38,32
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+	Carryall:
+		BeforeLoadDelay: 10
+		BeforeUnloadDelay: 15
+		LocalOffset: 0, 0, -256
+	Cargo:
+		Types: Infantry, Vehicles
+        
+SCT:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft.IND
+		BuildPaletteOrder: 20
+		Description: Scout Plane.\n  Weak vs All
+	RenderSprites:
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Scout Plane
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 5c0
+		Type: GroundPosition
+	Aircraft:
+		CruiseAltitude: 2060
+		TurnSpeed: 24
+		Speed: 100
+		RepulsionSpeed: 20
+		MaximumPitch: 56
+		IdleTurnSpeed: 4
+        IdleSpeed: 90
+   		IdleBehavior: None
+	AttackAircraft:
+		FacingTolerance: 80
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+   	JamsMissiles:
+ 		Chance: 15
+	HitShape:
+   		Type: Circle
+            Radius: 196
+	Selectable:
+	SpawnActorOnDeath:
+		Actor: SCT.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -553,0,171
+		Interval: 2
+
+RAID:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft.SEA
+		BuildPaletteOrder: 20
+		Description: Fast Ground-Attack Plane.\n  Strong vs Light Buildings, Light Vehicles, Infantry\n  Weak vs Vehicles, Anti-Air, Buildings
+	RenderSprites:
+        Image: CAS
+	AutoTargetPriority@Ground:
+		ValidTargets: Infantry
+		Priority: 2
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Skyraider
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+	Armor:
+		Type: Light
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 1c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: Skyraider.50cal
+		LocalOffset: 512,-21,0
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Hydra70
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		FacingTolerance: 80
+        AttackType: Strafe
+        StrafeRunLength: 6c512
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 16
+		Speed: 200
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		IdleTurnSpeed: 4
+        IdleSpeed: 100
+   		-IdleBehavior:
+   	JamsMissiles:
+ 		Chance: 55
+	AutoTarget:
+		ScanRadius: 20
+	AmmoPool:
+		Ammo: 14
+		AmmoCondition: ammo
+        ReloadDelay: 15
+        Armaments: secondary
+	WithMuzzleOverlay:
+	HitShape:
+   		Type: Circle
+            Radius: 256
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SpawnActorOnDeath:
+		Actor: RAID.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	Rearmable:
+		RearmActors: afld.ind, afld.pla, astp
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+
+MIG:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Aircraft.SEA
+		BuildPaletteOrder: 30
+		Prerequisites: ~anytech, ~techlevel.high
+		Description: Fast Air superiority Plane.\n  Strong vs Vehicles, Aircraft\n  Weak vs Anti-Air
+	RenderSprites:
+        Image: su30
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Su-30
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 1c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: AAM
+		LocalOffset: 256,-213,0
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Bomb
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo
+	AutoTarget:
+		ScanRadius: 20
+	AttackAircraft:
+		FacingTolerance: 80
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 20
+		Speed: 250
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		IdleTurnSpeed: 5
+        IdleSpeed: 125
+   		-IdleBehavior:
+	AutoTargetPriority@Air:
+		ValidTargets: Aircraft
+		Priority: 3
+	AmmoPool:
+		Ammo: 4
+		AmmoCondition: ammo
+   	JamsMissiles:
+ 		Chance: 75
+	HitShape:
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SpawnActorOnDeath:
+		Actor: MIG.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -453,0,171
+		Interval: 2
+	Rearmable:
+		RearmActors: astp, afld.ind, afld.pla
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+
+FROG:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft.IND
+		BuildPaletteOrder: 40
+		Prerequisites: ~anytech
+		Description: Fast Ground-Attack Plane.\n  Strong vs Buildings, Vehicles, Infantry\n  Weak vs Aircraft, Anti-Air
+	RenderSprites:
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Frogfoot
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+	Armor:
+		Type: Heavy
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 1c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: GSh-30-2
+		LocalOffset: 512,0,0
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: GSh-23L
+		LocalOffset: 256,-213,0,256,213,0
+		MuzzleSequence: muzzle
+	Armament@TERTIARY:
+		Name: tertiary
+		Weapon: Bomb
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo
+	Armament@QUATERNARY:
+		Name: quaternary
+		Weapon: AAM
+		LocalOffset: 0,-440,0, 0,440,0
+		PauseOnCondition: !ammo
+	AutoTarget:
+		ScanRadius: 25
+	AttackAircraft:
+		FacingTolerance: 80
+        AttackType: Strafe
+        StrafeRunLength: 4c512
+        Armaments: primary,secondary,tertiary,quaternary
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 32
+		Speed: 250
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		IdleTurnSpeed: 8
+        IdleSpeed: 150
+   		-IdleBehavior:
+	AutoTargetPriority@Ground:
+		ValidTargets: Vehicles
+		Priority: 2
+	AmmoPool:
+		Ammo: 10
+        Armaments: tertiary,quaternary
+		AmmoCondition: ammo
+   	JamsMissiles:
+ 		Chance: 75
+	WithMuzzleOverlay:
+	HitShape:
+   		Type: Circle
+            Radius: 256
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SpawnActorOnDeath:
+		Actor: FROG.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	Rearmable:
+		RearmActors: astp,afld.ind,afld.pla
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+
+EURO:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Aircraft.SEA
+		BuildPaletteOrder: 30
+		Prerequisites: ~disabled
+		Description: Fast Air superiority Plane.\n  Strong vs Vehicles, Aircraft\n  Weak vs Anti-Air
+	RenderSprites:
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Eurofighter
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 1c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: AAM
+		LocalOffset: 256,-213,0
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Bomb
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo
+	AutoTarget:
+		ScanRadius: 20
+	AttackAircraft:
+		FacingTolerance: 80
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 20
+		Speed: 225
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		IdleTurnSpeed: 5
+        IdleSpeed: 125
+   		-IdleBehavior:
+	AutoTargetPriority@Ground:
+		ValidTargets: Structures, Vehicles
+		Priority: 2
+	AutoTargetPriority@Air:
+		ValidTargets: Aircraft
+		Priority: 3
+	AmmoPool:
+		Ammo: 8
+		AmmoCondition: ammo
+   	JamsMissiles:
+ 		Chance: 95
+	HitShape:
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SpawnActorOnDeath:
+		Actor: EURO.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	Rearmable:
+		RearmActors: astp,afld.ind,afld.pla
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+
+
+F18:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Aircraft.SEA
+		BuildPaletteOrder: 30
+		Prerequisites: ~disabled
+		Description: Fast Air superiority Plane.\n  Strong vs Vehicles, Aircraft\n  Weak vs Anti-Air
+        IconPalette: raplayer
+	RenderSprites:
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: F18
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 5000
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 1c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: AAM
+		LocalOffset: 256,-213,0
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Bomb
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo
+	AutoTarget:
+		ScanRadius: 20
+	AttackAircraft:
+		FacingTolerance: 80
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 20
+		Speed: 225
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		IdleTurnSpeed: 5
+        IdleSpeed: 125
+   		-IdleBehavior:
+	AutoTargetPriority@Ground:
+		ValidTargets: Structures, Vehicles
+		Priority: 2
+	AutoTargetPriority@Air:
+		ValidTargets: Aircraft
+		Priority: 3
+	AmmoPool:
+		Ammo: 4
+		AmmoCondition: ammo
+   	JamsMissiles:
+ 		Chance: 95
+	HitShape:
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SpawnActorOnDeath:
+		Actor: F18.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	Rearmable:
+		RearmActors: astp,afld.ind,afld.pla
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+
+F22:
+	Inherits: ^CombatPlane
+	Inherits@selection: ^SelectableCombatUnit
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Aircraft.PLA
+		BuildPaletteOrder: 40
+		Prerequisites: ~anytech, ~techlevel.high
+		Description: Fast Stealth Fighter Plane.\n  Strong vs Buildings, Vehicles, Infantry, Aircraft\n  Weak vs Anti-Air
+	RenderSprites:
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Raptor
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 75000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 1c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Name: primary
+		Weapon: AAM
+		LocalOffset: 256,-213,0
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Bomb
+		LocalOffset: 0,-640,0, 0,640,0
+		PauseOnCondition: !ammo
+	AutoTarget:
+		ScanRadius: 25
+	AttackAircraft:
+		FacingTolerance: 80
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 32
+		Speed: 280
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		IdleTurnSpeed: 8
+        IdleSpeed: 150
+   		-IdleBehavior:
+	AutoTargetPriority@Ground:
+		ValidTargets: Vehicles
+		Priority: 2
+	AmmoPool:
+		Ammo: 4
+		AmmoCondition: ammo
+   	JamsMissiles:
+ 		Chance: 75
+	HitShape:
+        Type: Circle
+            Radius: 512
+	Selectable:
+		Bounds: 36,28,0,2
+		DecorationBounds: 40,29,0,1
+	SpawnActorOnDeath:
+		Actor: f22.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	Rearmable:
+		RearmActors: astp,afld.ind,afld.pla
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+	-AppearsOnRadar:
+
+
+SJET:
+	Inherits: ^Plane
+	Interactable:
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: ~disabled
+		Description: Stealthy Ground-Attack Plane.\n  Strong vs all\n  Weak vs Anti-Air
+        IconPalette: raplayer
+	RenderSprites:
+        Image: f111
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: F-111
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	AttackBomber:
+		Armaments: bombs
+		FacingTolerance: 80
+	Armament@BOMBS:
+		Name: bombs
+		Weapon: Bomb2000
+		LocalOffset: 0,-256,-43, 0,256,-43
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 16
+		Speed: 500
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+        IdleSpeed: 75
+   	JamsMissiles:
+ 		Chance: 95
+	-AppearsOnRadar:
+	AmmoPool:
+		Ammo: 2
+		AmmoCondition: ammo
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+
+TRAN.IND:
+	Inherits: ^Helicopter
+	Inherits@TRANSPORT: ^Transport
+	Interactable:
+	-HitShape:
+    -Repairable:
+    -Explodes:
+	Tooltip:
+		Name: Hip 
+	Valued:
+		Cost: 1200
+	ParaDrop:
+		DropRange: 4c0
+		ChuteSound: chute1.aud
+	Buildable:
+	RenderSprites:
+		Image: HIP
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	HiddenUnderFog:
+		AlwaysVisibleRelationships: None
+		Type: CenterPosition
+	-Selectable:
+    RejectsOrders:
+	Aircraft:
+		TurnSpeed: 35
+		Speed: 220
+		CruiseAltitude: 2560
+		IdleBehavior: LeaveMap
+		Repulsable: False
+	Cargo:
+		MaxWeight: 10
+		AfterUnloadDelay: 40
+	DamageMultiplier@INVULNERABLE:
+		Modifier: 0
+	-SpawnActorOnDeath:
+	WithIdleOverlay@ROTORAIR:
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	GrantConditionOnPrerequisite@GLOBALC17STEALTH:
+		Condition: global-C17-stealth
+		Prerequisites: global-C17-stealth
+	-AppearsOnRadar:
+    WithCargoPipsDecoration:
+        RequiresSelection: true
+	Cloak:
+		InitialDelay: 0
+		CloakDelay: 0
+		CloakTypes: C17
+		RequiresCondition: global-C17-stealth
+	-MapEditorData:
+
+HIND.IND:
+	Inherits: ^Helicopter
+	Interactable:
+	Tooltip:
+        Name: Hind Gunship
+	Valued:
+		Cost: 1200
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	RenderSprites:
+        Image: hind
+	Aircraft:
+		TurnSpeed: 25
+		Speed: 175
+		IdleBehavior: LeaveMap
+		Repulsable: False
+	-Selectable:
+	RejectsOrders:
+	AttackBomber:
+		Armaments: gun, rockets, cannon
+		FacingTolerance: 80
+	Armament@GUNS:
+		Name: gun
+		Weapon: YakB127 
+		LocalOffset: 512,20,-185
+		MuzzleSequence: muzzle
+	Armament@ROCKETS:
+		Name: rockets
+		Weapon: B8V20 
+		LocalOffset: 85,-263,-85, 85,263,-85
+	Armament@CANNON:
+		Name: cannon
+		Weapon: GSh-23L
+		LocalOffset: 256,0,-185
+		MuzzleSequence: muzzle
+	WithIdleOverlay@ROTORAIR:
+		Offset: 0,0,85
+		Sequence: rotor
+		RequiresCondition: airborne
+	WithIdleOverlay@ROTORGROUND:
+		Offset: 0,0,85
+		Sequence: slow-rotor
+		RequiresCondition: !airborne
+	SpawnActorOnDeath:
+		Actor: HIND.Husk
+	-AppearsOnRadar:
+
+FROG.IND:
+	Inherits: ^Plane
+	Interactable:
+	Tooltip:
+		Name: Su-25
+	Valued:
+		Cost: 2000
+	Health:
+		HP: 25000
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	RenderSprites:
+        Image: frog
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 280
+		Repulsable: False
+	AttackBomber:
+		Armaments: gun, bombs, rockets
+		FacingTolerance: 80
+	Armament@GUNS:
+		Name: gun
+		Weapon: GSh-30-2
+		LocalOffset: 1024,0,-85
+	WithMuzzleOverlay:
+	Armament@BOMBS:
+		Name: bombs
+		Weapon: RBK-500
+		LocalOffset: 0,-156,-43, 0,156,-43
+	Armament@ROCKETS:
+		Name: rockets
+		Weapon: S-25
+		LocalOffset: 0,-256,-43, 0,256,-43
+	HitShape:
+		Type: Rectangle
+			TopLeft: -512, -512
+			BottomRight: 512, 512
+	-MapEditorData:
+
+RCKT.IND:
+	Inherits: ^Plane
+	Interactable:
+	Tooltip:
+		Name: !!shouldnt be seen!!
+	Valued:
+		Cost: 2000
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	RenderSprites:
+        Image: 50cal
+	Aircraft:
+		CruiseAltitude: 15000
+		TurnSpeed: 16
+		Speed: 120
+		Repulsable: False
+	AttackBomber:
+		Armaments: scud
+	Armament@SCUD:
+		Name: scud
+		Weapon: BM21Strike
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Ammo: 16
+		AmmoCondition: ammo
+	-MapEditorData:
+	-AppearsOnRadar:
+
+
+RCKT.PLA:
+	Inherits: ^Plane
+	Interactable:
+	Tooltip:
+		Name: !!shouldnt be seen!!
+	Valued:
+		Cost: 2000
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	RenderSprites:
+        Image: 50cal
+	Aircraft:
+		CruiseAltitude: 15000
+		TurnSpeed: 16
+		Speed: 120
+		Repulsable: False
+	AttackBomber:
+		Armaments: scud
+	Armament@SCUD:
+		Name: scud
+		Weapon: SCUDStrike
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Ammo: 4
+		AmmoCondition: ammo
+	-MapEditorData:
+	-AppearsOnRadar:
+
+RCKT.PLA.H6:
+	Inherits: ^Plane
+	Interactable:
+	Tooltip:
+		Name: Strategic Bomber
+	Valued:
+		Cost: 2000
+	UpdatesPlayerStatistics:
+		AddToAssetsValue: false
+	RenderSprites:
+        Image: badr
+	Aircraft:
+		CruiseAltitude: 7500
+		TurnSpeed: 16
+		Speed: 120
+		Repulsable: False
+	AttackBomber:
+		Armaments: scud
+	Armament@SCUD:
+		Name: scud
+		Weapon: SCUDStrike
+		PauseOnCondition: !ammo
+	AmmoPool:
+		Ammo: 2
+		AmmoCondition: ammo
+	-MapEditorData:
+
+SPY:
+	Inherits: ^Plane
+	Tooltip:
+		Name: Recon Plane
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 28
+		Speed: 373
+		Repulsable: False
+		MaximumPitch: 56
+	RenderSprites:
+        Image: f16
+	AttackBomber:
+	-Voiced:
+	-Targetable@AIRBORNE:
+	SpawnActorOnDeath:
+		Actor: SPY.Husk
+	SmokeTrailWhenDamaged:
+		Offset: -1c43,0,0
+		Interval: 2
+	RejectsOrders:
+	Interactable:
+	-MapEditorData:
+	-AppearsOnRadar:
+
+
+BADR:
+	Inherits: ^Plane
+	ParaDrop:
+		DropRange: 4c0
+		ChuteSound: chute1.aud
+	Health:
+		HP: 30000
+	Aircraft:
+		CruiseAltitude: 2560
+		TurnSpeed: 20
+		Speed: 180
+		Repulsable: False
+		MaximumPitch: 56
+	Cargo:
+		MaxWeight: 2
+	Interactable:
+	Tooltip:
+		Name: Badger
+	RenderSprites:
+        Image: c17
+	SpawnActorOnDeath:
+		Actor: BADR.Husk
+	SmokeTrailWhenDamaged@0:
+		Offset: -432,560,0
+		Interval: 2
+	SmokeTrailWhenDamaged@1:
+		Offset: -432,-560,0
+		Interval: 2
+	GivesExperience:
+		Experience: 1000
+	HitShape:
+		Type: Circle
+			Radius: 427
+    	-AppearsOnRadar:
+
+C17:
+
+C130:
+	Inherits: C17
+	RenderSprites:
+        Image: c130
+	ParaDrop:
+		DropRange: 4c0
+		ChuteSound: chute1.aud
+   	Aircraft:
+		Speed: 180
+
+
+
+A10:
+	Inherits: ^Plane
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: A10 Bomber
+	UpdatesPlayerStatistics:
+		AddToArmyValue: false
+	Buildable:
+		Prerequisites: ~disabled
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 200
+		Repulsable: False
+		AirborneCondition: airborne
+	Targetable@GROUND:
+		TargetTypes: Ground, Vehicle
+		RequiresCondition: !airborne
+	Targetable@AIRBORNE:
+		TargetTypes: Air
+		RequiresCondition: airborne
+	Health:
+		HP: 6000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 0c0
+   	JamsMissiles:
+		Range: 1c512
+ 		Chance: 25
+        DeflectionRelationships: enemy
+	AttackBomber:
+		Armaments: gun, bombs
+	Armament@GUNS:
+		Name: gun
+		Weapon: Vulcan
+		LocalOffset: 1024,0,-85
+	WithMuzzleOverlay:
+	Armament@BOMBS:
+		Name: bombs
+		Weapon: Napalm
+		PauseOnCondition: !ammo
+		LocalOffset: 0,-256,-43, 0,256,-43
+	HitShape:
+		Type: Rectangle
+			TopLeft: -512, -512
+			BottomRight: 512, 512
+    AmmoPool:
+		Ammo: 5
+		AmmoCondition: ammo
+        Armaments: bombs
+	SpawnActorOnDeath:
+		Actor: A10.Husk
+	WithAmmoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+	-MapEditorData:
+
+
+TRAN.Husk:
+	RevealsShroud:
+		Range: 0c0
+
+HELI.Husk:
+	RevealsShroud:
+		Range: 0c0
+
+ORCA.Husk:
+	RevealsShroud:
+		Range: 0c0
+
+A10.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: A-10 Bomber
+	Contrail@1:
+		Offset: -640,171,0
+		TrailLength: 15
+	Contrail@2:
+		Offset: -640,-171,0
+		TrailLength: 15
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 200
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,0
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: a10
+
+HIP.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Hip Transport
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 180
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	WithIdleOverlay:
+		Sequence: rotor
+	RenderSprites:
+		Image: hip
+
+PLAH.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Z-10
+	Aircraft:
+		TurnSpeed: 35
+		Speed: 110
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: plah
+
+GAZL.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Gazelle
+	Aircraft:
+		TurnSpeed: 35
+		Speed: 110
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: gazl
+
+
+HIND.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Hind
+	Aircraft:
+		TurnSpeed: 25
+		Speed: 190
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: hind
+
+HUEY.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Huey
+	Aircraft:
+		TurnSpeed: 35
+		Speed: 110
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: huey
+        PlayerPalette: raremap
+        
+BHWK.Husk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Blackhawk
+	Aircraft:
+		TurnSpeed: 16
+		Speed: 180
+	WithIdleOverlay:
+		Sequence: rotor
+	SmokeTrailWhenDamaged:
+		Offset: -427,0,0
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: bhwk
+
+
+SCT.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Scout Plane
+	Contrail:
+		Offset: -853,0,0
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 149
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,0
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: sct
+
+RAID.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Skyraider
+	Contrail:
+		Offset: -853,0,0
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 149
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,0
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: cas
+
+MIG.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: MiG Attack Plane
+	Contrail@1:
+		Offset: -725,683,0
+	Contrail@2:
+		Offset: -725,-683,0
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: su30
+        
+FROG.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Frogfoot
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: frog
+
+F18.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: F18
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: f18
+
+
+EURO.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Eurofighter
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: euro
+
+
+F22.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Raptor
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: f22
+
+SJET.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: MiG Attack Plane
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: sjet
+        PlayerPalette: raremap
+
+SPY.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Recon Plane
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 186
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+		MinDamage: Undamaged
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+	RenderSprites:
+		Image: spy
+
+
+BADR.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Badger
+	Aircraft:
+		TurnSpeed: 20
+		Speed: 149
+	SmokeTrailWhenDamaged@0:
+		Offset: -432,560,0
+		Interval: 2
+		MinDamage: Undamaged
+	SmokeTrailWhenDamaged@1:
+		Offset: -432,-560,0
+		Interval: 2
+		MinDamage: Undamaged
+	RenderSprites:
+		Image: badr

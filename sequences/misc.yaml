@@ -1,0 +1,170 @@
+explosion:
+	piff: piff
+	piffs: piffpiff
+	water_piff: wpiff
+	water_piffs: wpifpif
+	small_explosion: veh-hit3
+	med_explosion: veh-hit2
+	flak_explosion_ground: flak
+	small_explosion_air: flak
+	large_splash: h2o_exp1
+	med_splash: h2o_exp2
+	small_splash: h2o_exp3
+	large_explosion: frag1
+		Offset: -2,0
+	corpse: corpse1
+		ZOffset: -512
+		Tick: 1600
+		UseTilesetExtension: true
+		TilesetOverrides:
+			DESERT: TEMPERAT
+			INTERIOR: TEMPERAT
+
+beacon:
+	Defaults:
+		ZOffset: 2535
+	circles: fpls
+		Length: *
+		ZOffset: 2047
+	pinficon: pinficon
+		Length: *
+		Offset: 0,-42
+
+parach:
+	open:
+		Length: 5
+	idle:
+		Start: 5
+		Length: 11
+
+parach-shadow:
+	idle:
+		Length: *
+
+parabomb:
+	open:
+		Length: 8
+		ZOffset: 1023
+	idle:
+		Start: 8
+		Length: 5
+		ZOffset: 1023
+
+camera:
+	idle:
+		Length: *
+
+gpsdot:
+	Infantry:
+	Vehicle:
+		Start: 1
+	Ship:
+		Start: 2
+	Helicopter:
+		Start: 3
+	Plane:
+		Start: 4
+	Harvester:
+		Start: 5
+	Structure:
+		Start: 6
+	Oil:
+		Start: 7
+	Hospital:
+		Start: 8
+	Biohazard:
+		Start: 9
+	Communications:
+		Start: 10
+	Forward:
+		Start: 11
+
+icon:
+	paratroopers: pinficon.shp
+	gps: gpssicon
+	spyplane: smigicon.shp
+	bm21: bm21icon.shp
+
+paradirection:
+	arrow-t: mouse2
+		Start: 1
+		Y: -7
+		Offset: 0, -19, 0
+	arrow-tr: mouse2
+		Start: 2
+		X: 6
+		Y: -5
+		Offset: 15, -15, 0
+	arrow-r: mouse2
+		Start: 3
+		X: 7
+		Offset: 19, 0, 0
+	arrow-br: mouse2
+		Start: 4
+		X: 6
+		Y: 5
+		Offset: 15, 15, 0
+	arrow-b: mouse2
+		Start: 5
+		Y: 7
+		Offset: 0, 19, 0
+	arrow-bl: mouse2
+		Start: 6
+		X: -6
+		Y: 5
+		Offset: -15, 15, 0
+	arrow-l: mouse2
+		Start: 7
+		X: -8
+		Offset: -19, 0, 0
+	arrow-tl: mouse2
+		Start: 8
+		X: -6
+		y: 5
+		Offset: -15, -15, 0
+
+crate.ind:
+	idle: icrate
+		ZOffset: -511
+
+litning:
+    RenderSprites:
+        Palette: raremap
+	bright:
+		Length: 4
+		ZOffset: 1023
+	dim:
+		Start: 4
+		Length: 4
+		ZOffset: 1023
+
+ssmmsl:
+	idle:
+		Facings: 32
+		ZOffset: 1023
+
+122mmrocket:
+	idle:
+		Facings: 32
+		ZOffset: 1023
+
+hellfire:
+	idle: 
+		Facings: 32
+		ZOffset: 1023
+
+hydra:
+	idle:
+		Facings: 32
+		ZOffset: 1023
+
+50cal:
+	idle:
+		ZOffset: 1023
+
+
+scudmsl:
+	idle: 
+		Facings: 32
+		ZOffset: 1023
+

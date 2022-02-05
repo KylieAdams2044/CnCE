@@ -1,0 +1,819 @@
+fact.nod:
+	build: nodfact
+		Start: 4
+		Length: 20
+		Tick: 100
+	idle: nodfact
+		Length: 4
+		Tick: 100
+	damaged-idle: nodfact
+		Start: 24
+		Length: 4
+		Tick: 100
+	damaged-build: nodfact
+		Start: 28
+		Length: 20
+		Tick: 100
+	dead: nodfact
+		Start: 48
+		Tick: 800
+	make: nodfactmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+	icon: nfacticnh.tem
+		AddExtension: False
+
+fact.sea:
+	build: fact
+		Start: 4
+		Length: 20
+		Tick: 100
+	idle: fact
+		Length: 4
+		Tick: 100
+	damaged-idle: fact
+		Start: 24
+		Length: 4
+		Tick: 100
+	damaged-build: fact
+		Start: 28
+		Length: 20
+		Tick: 100
+	dead: fact
+		Start: 48
+		Tick: 800
+	make: factmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+		TilesetOverrides:
+			INTERIOR: TEMPERAT
+	icon: sfacticnh.tem
+		AddExtension: False
+
+fact.ind:
+	build: fact
+		Start: 4
+		Length: 20
+		Tick: 100
+	idle: fact
+		Length: 4
+		Tick: 100
+	damaged-idle: fact
+		Start: 24
+		Length: 4
+		Tick: 100
+	damaged-build: fact
+		Start: 28
+		Length: 20
+		Tick: 100
+	dead: fact
+		Start: 48
+		Tick: 800
+	make: factmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+	icon: ifacticnh.tem
+		AddExtension: False
+    
+fact.pla:
+	build: fact
+		Start: 4
+		Length: 20
+		Tick: 100
+	idle: fact
+		Length: 4
+		Tick: 100
+	damaged-idle: fact
+		Start: 24
+		Length: 4
+		Tick: 100
+	damaged-build: fact
+		Start: 28
+		Length: 20
+		Tick: 100
+	dead: fact
+		Start: 48
+		Tick: 800
+	make: factmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+	icon: pfacticnh.tem
+		AddExtension: False
+
+gen:
+	idle:
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 2
+		Tick: 800
+	make: genmake
+		Length: *
+		Tick: 80
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+    TilesetOverrides:
+		WINTER: TEMPERAT
+		JUNGLE: TEMPERAT
+		SNOW: TEMPERAT
+        DESERT: TEMPERAT
+	icon: genicnh.shp
+		AddExtension: False
+
+powr:
+	idle:
+		Length: 1
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 2
+	make: powrmake
+		Length: *
+		Tick: 80
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: powricnh.shp
+		AddExtension: False
+
+cmdp:
+	idle:
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 2
+		Tick: 800
+    make: cmdpmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+		Offset: 0,0
+	icon: cmdpicnh.tem
+		AddExtension: False
+		Offset: 0,0
+
+pwr2:
+	idle:
+		Length: 1
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 2
+		Tick: 800
+	make: pwr2make
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+	icon: pwr2icnh.tem
+		AddExtension: False
+
+oiler:
+	idle: oilr
+	damaged-idle: oilr
+		Start: 1
+	dead: oilr
+		Start: 2
+		Tick: 800
+	idle-derrick: oiler
+		Length: 9
+		Tick: 120
+		Offset: -25,0,0 
+	make: oilrmake
+		Length: *
+		Tick: 80 
+	bib: bib1
+		UseTilesetExtension: true
+		Length: *
+	icon: oilricnh.shp
+		AddExtension: False
+
+oil2:
+	idle:
+		Start: 0
+		Length: 9
+		Tick: 400
+	damaged-idle:
+		Start: 10
+		Length: 9
+		Tick: 400
+	dead:
+		Start: 20
+	make: oil2make
+		Length: *
+		Tick: 80
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: oil2icnh.tem
+		AddExtension: False
+
+silo:
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+
+
+tent:
+	idle:
+		Length: 10
+	damaged-idle:
+		Start: 10
+		Length: 10
+	dead:
+		Start: 10
+		Tick: 80
+	make: tentmake
+		Length: *
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: tenticon
+
+barr:
+	idle:
+		Offset: 0,-6
+	damaged-idle:
+		Start: 1
+		Offset: 0,-6
+	dead:
+		Start: 2
+		Tick: 80
+		Offset: 0,-6
+	make: barrmake
+		Length: *
+		Offset: 0,-6
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: barricon
+
+barr.pla:
+	idle: plabarr
+		Length: 10
+		Tick: 100
+	damaged-idle: plabarr
+		Start: 10
+		Length: 10
+		Tick: 100
+	dead: plabarr
+		Start: 20
+		Tick: 800
+	make: plabarrmake
+		Length: *
+		Tick: 80
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: pyleicnh.tem
+		AddExtension: False
+
+afld.ind:
+	idle: gtwr
+		Offset: -25,0,0 
+	damaged-idle: gtwr
+		Start: 1
+		Offset: -25,0,0 
+	active: gtwr
+		Offset: -25,0,0 
+	damaged-active: gtwr
+		Start: 1
+		Offset: -25,0,0 
+	dead: gtwr
+		Start: 2
+		Tick: 800
+		Offset: -25,0,0 
+	make: gtwrmake
+		Length: *
+		Tick: 80
+		Offset: -25,0,0 
+	bib: bib1
+		UseTilesetExtension: true
+		Length: *
+	icon: afldicnh.tem
+		AddExtension: False
+
+afld.pla:
+	idle: plaafld
+		Start: 4
+        Length: 4
+		Tick: 160
+		ZOffset: -1023
+	damaged-idle: plaafld
+		Start: 12
+        Length: 4
+		Tick: 160
+		ZOffset: -1023
+	active: plaafld
+        Start: 1
+		Length: 4
+		Tick: 160
+		ZOffset: -1023
+	damaged-active: plaafld
+		Start: 8
+		Length: 4
+		Tick: 160
+		ZOffset: -1023
+	dead: plaafld
+		Start: 9
+		ZOffset: -1023
+		Tick: 800
+	make: plaafldmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+		ZOffset: -1025
+	icon: afldicnh.tem
+		AddExtension: False
+
+
+warf:
+	idle:
+	damaged-idle:
+		Start: 1
+	dead:
+		Start: 1
+		Tick: 80
+	place: warfmake
+		Start: 14
+	make: warfmake
+		Length: *
+	build-top: warf2
+		Start: 0
+		Length: 4
+	damaged-build-top: warf2
+		Start: 4
+		Length: 4
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+		Offset: 0,0
+	icon: warficon
+
+nodhq:
+	idle:
+		Length: 16
+		Tick: 100
+	damaged-idle:
+		Start: 16
+		Length: 16
+		Tick: 100
+	dead:
+		Start: 32
+		Tick: 800
+	make: nodhqmake
+		Length: *
+		Tick: 80
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: hqicnh.tem
+		AddExtension: False
+
+indhq:
+	idle: nodhq
+		Length: 16
+		Tick: 100
+	damaged-idle: nodhq
+		Start: 16
+		Length: 16
+		Tick: 100
+	dead: nodhq
+		Start: 32
+		Tick: 800
+	make: hqmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+	icon: eyeicnh.tem
+		AddExtension: False
+
+plahq:
+	idle:
+		Length: 16
+		Tick: 100
+	damaged-idle:
+		Start: 16
+		Length: 16
+		Tick: 100
+	dead:
+		Start: 32
+		Tick: 800
+	make: plahqmake
+		Length: *
+		Tick: 80
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: hqicnh.tem
+		AddExtension: False
+
+hpad:
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+
+ctow:
+	idle: gdsh
+	damaged-idle: gdsh
+		Start: 1
+	dead: gdsh
+		Start: 2
+		Tick: 800
+	make: gdshmake
+		Length: *
+	icon: gdshcameo.shp
+		AddExtension: False
+		TilesetOverrides:
+			DESERT: TEMPERAT
+            
+astp:
+    idle: 
+		Start: 0
+        Length: 1
+		Offset: 0,-4
+    damaged-idle:
+   		Start: 1
+        Length: 1
+		Offset: 0,-4
+	idle-dish: astpidle
+		Length: 16
+		Tick: 160
+		ZOffset: -360
+		Offset: 15, 7, 100
+	damaged-idle-dish: astpidle
+		Start: 16
+		Length: 16
+		Tick: 160
+		ZOffset: -360
+		Offset: 15, 7, 100
+	dead:
+		Start: 2
+		Tick: 800
+	active:
+		Length: 1
+		Tick: 160
+		Offset: 0,-4
+	damaged-active:
+		Start: 1
+		Length: 1
+		Tick: 160
+		Offset: 0,-4
+	make: astpmake
+		Length: *
+		Offset: 0,-4
+		Tick: 80
+	bib: bib1
+		UseTilesetExtension: true
+		Length: *
+	icon: afldicnh.tem
+		AddExtension: False
+
+fix:
+	bib: bib2
+		UseTilesetExtension: true
+		Length: *
+
+fix.ind:
+	idle: ofix
+		Offset: 0,1
+		ZOffset: -1c511
+	damaged-idle: ofix
+		Start: 7
+		Offset: 0,1
+		ZOffset: -1c511
+	active: ofix
+		Start: 1
+		Length: 6
+		Offset: 0,1
+		ZOffset: -1c511
+	damaged-active: ofix
+		Start: 8
+		Length: 6
+		Offset: 0,1
+		ZOffset: -1c511
+	dead: ofix
+		Start: 1
+		Tick: 800
+	make: ofixmake
+		Length: *
+		Offset: 0,1
+	bib: mbFIX
+		UseTilesetExtension: true
+		TilesetOverrides:
+			WINTER: TEMPERAT
+			JUNGLE: TEMPERAT
+			SNOW: TEMPERAT
+		Length: *
+		Offset: 0,-9
+	icon: ofixicon
+
+srvc:
+	idle: 
+	damaged-idle: 
+		Start: 1
+	dead: 
+		Start: 1
+		Tick: 800
+	make: srvcmake
+		Length: *
+		Tick: 80
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+	icon: srvcicnh
+
+
+scmd:
+	idle: seahq
+		Length: 16
+		Tick: 100
+	damaged-idle: seahq
+		Start: 16
+		Length: 16
+		Tick: 100
+	active: flagfly
+		Length: *
+	dead: seahq
+		Start: 32
+		Tick: 800
+	make: seahqmake
+		Length: *
+		Tick: 80
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+	icon: eyeicnh.tem
+		AddExtension: False
+
+stek:
+	idle:
+	damaged-idle: 
+		Start: 1
+	dead: 
+		Start: 1
+		Tick: 800
+	make: stekmake
+		Length: *
+	bib: bib2
+		Length: *
+		UseTilesetExtension: true
+	icon: stekicon
+
+bnkr:
+	idle: rckt
+	damaged-idle: rckt
+		Start: 1
+	dead: rckt
+		Start: 1
+		Tick: 800
+	make: rcktmake
+		Length: *
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: pboxicon
+
+
+agun:
+	idle: gunmake # Empty first frame. We need WithSpriteBody for the make anim, and WSB needs at least a placeholder default sequence to work
+	turret:
+		Facings: 32
+		UseClassicFacings: True
+	air:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	damaged-turret:
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+	turret-air:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	make: agunmake
+		Length: *
+		Tick: 80
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	muzzle-air: apcmuz
+		Length: 3
+		Stride: 6
+		Facings: 8
+	bib: mbGTWR
+		UseTilesetExtension: true
+		TilesetOverrides:
+			WINTER: TEMPERAT
+			JUNGLE: TEMPERAT
+			SNOW: TEMPERAT
+		Length: *
+    icon: agunicnh.tem
+		AddExtension: False
+
+seasam:
+	Defaults:
+		Offset: 0,-2
+	idle: seasammake # Empty first frame (sammake has no empty frames). We need WithSpriteBody for the make anim, and WSB needs at least a placeholder default sequence to work
+	idle: seasam
+		Facings: 32
+		UseClassicFacings: True
+		Offset: -1,-2
+	damaged-idle: seasam
+		Start: 34
+		Facings: 32
+		UseClassicFacings: True
+		Offset: -1,-2
+	dead:
+		Start: 67
+		Tick: 800
+	place:
+		Start: 0
+	make: seasammake
+		Length: *
+		Offset: -1,-2
+	muzzle: samfire
+		Length: 18
+		Facings: 8
+		Offset: -1,6
+	bib: mbSAM
+		Length: *
+		Offset: 0,1
+		UseTilesetExtension: true
+	icon: samicnh.tem
+		AddExtension: False
+
+rtwr:
+	idle: rtwrmake # Empty first frame (agunmake has no empty frames). We need WithSpriteBody for the make anim, and WSB needs at least a placeholder default sequence to work
+	make: rtwrmake
+		Length: *
+	turret:
+		Facings: 32
+		UseClassicFacings: True
+	recoil:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	damaged-turret:
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	damaged-recoil:
+		Start: 96
+		Facings: 32
+		UseClassicFacings: True
+	dead:
+		Start: 1
+		Tick: 800
+	muzzle: gunfire2
+		Start: 1
+		Length: 4
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: rtwricnh.shp
+		AddExtension: False
+
+d30:
+	idle: d30make # Empty first frame (agunmake has no empty frames). We need WithSpriteBody for the make anim, and WSB needs at least a placeholder default sequence to work
+	turret: d30
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,5
+	make: d30make
+		Length: *
+		Offset: 0,5
+	recoil:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,5
+	damaged-turret:
+		Start: 0
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,5
+	damaged-recoil:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,5
+	muzzle: gunfire2
+		Start: 1
+		Length: 4
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: d30icnh.tem
+		AddExtension: False
+
+rckt:
+	idle:
+	damaged-idle:
+		Start: 1
+	make: rcktmake
+		Length: *
+	turret: ssam
+		Facings: 32
+		UseClassicFacings: True
+		Offset: 0,-5
+	dead:
+		Start: 1
+		Tick: 800
+	muzzle: gunfire2
+		Length: *
+	bib: mbGTWR
+		UseTilesetExtension: true
+		TilesetOverrides:
+			WINTER: TEMPERAT
+			JUNGLE: TEMPERAT
+			SNOW: TEMPERAT
+		Length: *
+		Offset: 0,-2
+	icon: pboxicon
+
+rgun:
+	idle: rgunmake # Empty first frame. We need WithSpriteBody for the make anim, and WSB needs at least a placeholder default sequence to work
+	turret:
+		Facings: 32
+		UseClassicFacings: True
+	turret-air:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	damaged-turret:
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	damaged-turret-air:
+		Start: 96
+		Facings: 32
+		UseClassicFacings: True
+	make: rgunmake
+		Length: *
+		Tick: 80
+	muzzle: gunfire2
+		Length: *
+	bib: bib3
+		UseTilesetExtension: true
+		Length: *
+	icon: rgunicnh.tem
+		AddExtension: False
+
+
+barb:
+	icon: barbicnh.tem
+		AddExtension: False
+
+
+dome:
+	idle:
+		Offset: 0,-4
+	damaged-idle:
+		Start: 1
+		Offset: 0,-4
+	make: domemake
+		Length: *
+		Offset: 0,-4
+	dead: 
+		Start: 1
+		Tick: 800
+	bib: bib3
+		Length: *
+		UseTilesetExtension: true
+	icon: domeicon
+    
+actwr:
+	idle:
+	damaged-idle:
+		Start: 1
+	make: actwrmake
+		Length: *
+		Offset: 0,-4
+	dead: 
+		Start: 1
+		Tick: 800
+	icon: actwr.tem
+
+

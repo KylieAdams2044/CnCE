@@ -1,0 +1,38 @@
+
+dd:
+	idle:
+		Facings: 16
+	turret: rrtytur
+		Facings: 32
+	icon: ddicon
+
+
+ss:
+	idle:
+		Facings: 16
+	icon: ssicon
+
+bb:
+	idle:
+		Facings: 16
+	turret: bbtur
+		Facings: 32
+	turretb: bbturb
+		Facings: 32
+	muzzle: gunfire2
+		Length: *
+	icon: bbicnh.tem
+
+pt:
+	idle:
+		Facings: 16
+	turret: mgun
+		Facings: 32
+	muzzle: gunfire2
+		Length: 5
+	icon: pticon
+
+msub:
+	idle:
+		Facings: 16
+	icon: msubicon

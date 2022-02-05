@@ -1,0 +1,208 @@
+sct:
+	idle:
+		Facings: 32
+	icon: scticnh.shp
+   		AddExtension: False
+
+raid:
+	idle:
+		Facings: 16
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: raidicnh.shp
+   		AddExtension: False
+
+cas:
+	idle:
+		Facings: 32
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: raidicnh.shp
+   		AddExtension: False
+
+euro:
+	idle:
+		Facings: 32
+	icon: euroicnh.tem
+   		AddExtension: False
+
+mig:
+	idle:
+		Facings: 32
+	icon: migicon
+
+su30:
+	idle:
+		Facings: 32
+	icon: su30icnh.tem
+   		AddExtension: False
+
+
+frog:
+	idle:
+		Facings: 32
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: frogicnh.tem
+   		AddExtension: False
+
+f16:
+	idle:
+		Facings: 32
+	icon: f18icnh.tem
+   		AddExtension: False
+
+f18:
+	idle:
+		Facings: 32
+	icon: f18icnh.tem
+   		AddExtension: False
+
+f22:
+	idle:
+		Facings: 32
+	icon: f22icnh.tem
+   		AddExtension: False
+
+f111:
+	idle:
+		Facings: 32
+        
+sjet:
+	idle:
+		Facings: 32
+	icon: sjeticnh.shp
+   		AddExtension: False
+
+heli:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotorlg
+		Length: 4
+	slow-rotor: lrotorlg
+		Start: 4
+		Length: 8
+	icon: heliicnh.tem
+   		AddExtension: False
+
+gazl:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotor
+		Length: 4
+	slow-rotor: lrotor
+		Start: 4
+		Length: 8
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: gazlicnh.tem
+		AddExtension: False
+
+
+plah:
+	idle: 
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotorlg
+		Length: 4
+	slow-rotor: lrotorlg
+		Start: 4
+		Length: 8   
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: plahicnh.tem
+   		AddExtension: False
+
+hip:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotorlg
+		Length: 4
+        Offset: 0, -10, -32
+	slow-rotor: lrotorlg
+		Start: 4
+		Length: 8
+        Offset: 0, -10, -32
+	icon: hipicnh.shp
+   		AddExtension: False
+
+rhip:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotorlg
+		Length: 4
+        Offset: 0, -10, -32
+	slow-rotor: lrotorlg
+		Start: 4
+		Length: 8
+        Offset: 0, -10, -32
+	icon: hipicnh.shp
+   		AddExtension: False
+
+
+hind:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotorlg
+		Length: 4
+	slow-rotor: lrotorlg
+		Start: 4
+		Length: 8
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: hindicnh.shp
+   		AddExtension: False
+
+huey:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: lrotorlg2blade
+		Length: 4
+	slow-rotor: lrotorlg2blade
+		Start: 4
+		Length: 8
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: hueyicnh.shp
+   		AddExtension: False
+    
+bhwk:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	rotor: yrotorlg
+		Length: 4
+	slow-rotor: yrotorlg
+		Start: 4
+		Length: 8
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: bhwkicnh.shp
+   		AddExtension: False
+
+spy:
+	idle:
+		Facings: 16
+	icon: migicon
+
+badr:
+	idle:
+		Facings: 16
+        
+c130:
+	idle:
+		Facings: 32

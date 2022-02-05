@@ -1,0 +1,235 @@
+CAMERA:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 10c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+
+camera.paradrop:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (support power proxy camera)
+	RevealsShroud:
+		Range: 6c0
+
+camera.spyplane:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (support power proxy camera)
+
+
+powerproxy.paratroopers:
+	AlwaysVisible:
+	ParatroopersPower:
+		Icon: paratroopers
+		Description: Paratroopers
+		LongDesc: A cargo plane drops a squad of infantry\nanywhere on the map.
+		DropItems: E1,E1,E1,E3,E3
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+
+CRATE.IND:
+	Inherits: ^Crate
+    RenderSprites:
+		Image: CRATE.IND
+		AddExtension: False
+	GiveCashCrateAction:
+		Amount: 1000
+		SelectionShares: 25
+		UseCashTick: true
+	LevelUpCrateAction:
+		SelectionShares: 20
+	HealActorsCrateAction:
+		Sound: heal2.aud
+		SelectionShares: 10
+		Sequence: heal
+	RevealMapCrateAction:
+		SelectionShares: 5
+		Sequence: reveal-map
+	DuplicateUnitCrateAction:
+		SelectionShares: 5
+		MaxAmount: 5
+		MinAmount: 1
+		MaxDuplicateValue: 1500
+	GiveMcvCrateAction:
+		SelectionShares: 0
+		NoBaseSelectionShares: 75
+		Units: mcv
+	GiveUnitCrateAction@huey:
+		NoBaseSelectionShares: 5
+		SelectionShares: 15
+		Units: huey
+	GiveUnitCrateAction@towjeep:
+		NoBaseSelectionShares: 25
+		SelectionShares: 25
+		Units: seajeep,towjeep
+	GiveUnitCrateAction@jeep:
+		NoBaseSelectionShares: 25
+		SelectionShares: 25
+		Units: crgjeep,jeep
+		Prerequisites: !anytech
+	GiveUnitCrateAction@rovr:
+		NoBaseSelectionShares: 25
+		SelectionShares: 25
+		Units: jeep,rovr
+		Prerequisites: !anytech
+	GiveUnitCrateAction@bggy:
+		NoBaseSelectionShares: 25
+		SelectionShares: 25
+		Units: bggy,bggy
+		Prerequisites: !anytech
+	GiveUnitCrateAction@humveezu:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: jeepgtrk,jeepgtrk
+	GiveUnitCrateAction@m35zu:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: hgtrk,hgtrk
+	GiveUnitCrateAction@bmp:
+		NoBaseSelectionShares: 25
+		SelectionShares: 50
+		Units: bmp,bmp
+	GiveUnitCrateAction@btr:
+		NoBaseSelectionShares: 25
+		SelectionShares: 50
+		Units: btr,btr
+	GiveUnitCrateAction@shilka:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: zsu,zsu
+	GiveUnitCrateAction@sparka:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: sprk,sprk
+	GiveUnitCrateAction@ltnk:
+		NoBaseSelectionShares: 25
+		SelectionShares: 50
+		Units: ltnk, ltnk
+	GiveUnitCrateAction@t34:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: 1tnk.t34, 1tnk.t34, 1tnk.t34
+	GiveUnitCrateAction@t55:
+		NoBaseSelectionShares: 25
+		SelectionShares: 50
+		Units: 1tnk, 1tnk
+	GiveUnitCrateAction@sherman:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: 1tnk.shrm, 1tnk.shrm
+	GiveUnitCrateAction@leo1:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: 1tnk.leo1, 1tnk.leo1
+	GiveUnitCrateAction@m60:
+		NoBaseSelectionShares: 25
+		SelectionShares: 40
+		Units: 1tnk.m60, 1tnk.m60
+    GiveUnitCrateAction@m602k:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: 1tnk.m602k, 1tnk.m602k
+	GiveUnitCrateAction@abrams:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: mtnk
+	GiveUnitCrateAction@t72:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: 2tnk
+	GiveUnitCrateAction@ztz96:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: 3tnk
+	GiveUnitCrateAction@leo2:
+		NoBaseSelectionShares: 25
+		SelectionShares: 20
+		Units: 4tnk
+	GiveUnitCrateAction@m113:
+		NoBaseSelectionShares: 25
+		SelectionShares: 6
+		Units: apc
+	GiveUnitCrateAction@hapc:
+		NoBaseSelectionShares: 25
+		SelectionShares: 6
+		Units: hapc
+	GiveUnitCrateAction@bike:
+		NoBaseSelectionShares: 25
+		SelectionShares: 6
+		Units: bike
+	GiveUnitCrateAction@arty:
+		NoBaseSelectionShares: 25
+		SelectionShares: 5
+		Units: arty
+	GiveUnitCrateAction@m109:
+		NoBaseSelectionShares: 25
+		SelectionShares: 5
+		Units: hwtz.m109,hwtz.m109
+	GiveUnitCrateAction@mlrs:
+		NoBaseSelectionShares: 25
+		SelectionShares: 5
+		Units: msam
+	GiveUnitCrateAction@ftnk:
+		NoBaseSelectionShares: 25
+		SelectionShares: 4
+		Units: ftnk
+	GiveUnitCrateAction@mammoth:
+		NoBaseSelectionShares: 25
+		SelectionShares: 3
+		Units: htnk
+	GiveUnitCrateAction@stnk:
+		NoBaseSelectionShares: 15
+		SelectionShares: 3
+		Units: stnk
+	GiveUnitCrateAction@ssma:
+		NoBaseSelectionShares: 1
+		SelectionShares: 2
+		Units: mlrs
+	GiveUnitCrateAction@ssmb:
+		NoBaseSelectionShares: 1
+		SelectionShares: 2
+		Units: ssm
+	GiveUnitCrateAction@ssmc:
+		NoBaseSelectionShares: 1
+		SelectionShares: 2
+		Units: scud
+	GiveUnitCrateAction@arv:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: arv
+	GiveUnitCrateAction@squadlighta:
+		NoBaseSelectionShares: 25
+		SelectionShares: 50
+		Units: e1,e1,dog,e4,e6,medi
+	GiveUnitCrateAction@squadlightb:
+		NoBaseSelectionShares: 25
+		SelectionShares: 50
+		Units: e1,e1,dog,mech,e2
+	GiveUnitCrateAction@squadcmdoa:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: megn,shok,medi
+		Prerequisites: anytech
+ 	GiveUnitCrateAction@squadcmdob:
+		NoBaseSelectionShares: 25
+		SelectionShares: 10
+		Units: rmbo,megn,e7
+		Prerequisites: anytech
+	GiveUnitCrateAction@6footturkey:
+		NoBaseSelectionShares: 1
+		SelectionShares: 1
+		Units: rapt,rapt,rapt

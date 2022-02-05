@@ -1,0 +1,72 @@
+GenericVoice:
+	Variants:
+		ind: .v01,.v03
+		sea: .v01,.v03
+		pla: .v01,.v03
+	Voices:
+		Select: await1,ready,report1,yessir1
+		Action: ackno,affirm1,noprob,ritaway,roger,ugotit
+		Die: nuyell1,nuyell4,nuyell5,nuyell6,dedman1,dedman2,dedman3,dedman4,dedman5,dedman7,dedman8,dedman10
+		Burned: yell1
+		Zapped: nuyell3
+		Poisoned: nuyell12
+	DisableVariants: Die, Burned, Zapped, Poisoned
+
+VehicleVoice:
+	Variants:
+		ind: .v00,.v02
+		sea: .v00,.v02
+		pla: .v00,.v02
+	Voices:
+		Select: vehic1,yessir1,report1,await1,unit1
+		Action: ackno,affirm1,movout1
+		Unload: movout1
+        
+        
+DogVoice:
+	Voices:
+		Select: dogw3px
+		Action: dogy1
+		Move: dogy1
+		Attack: dogg5p
+		Die: dogw5,dogw7
+		Burned: dogw6
+		Zapped: dogw6
+		Poisoned: dogw6
+
+RangerVoice:
+	Variants:
+		ind: .v04
+	Voices:
+		Select: await1,ready,report1,yessir1
+		Action: ackno,affirm1,noprob,ritaway,roger,ugotit
+		Die: nuyell1,nuyell4,nuyell5,nuyell6,dedman1,dedman2,dedman3,dedman4,dedman5,dedman7,dedman8,dedman10
+		Burned: yell1
+		Zapped: nuyell3
+		Poisoned: nuyell12
+	DisableVariants: Die, Burned, Zapped, Poisoned
+
+
+TanyaVoice:
+	Voices:
+		Select: yo2,yes2,yeah2
+		Move: onit2,cmon2,rokroll2
+		Action: tuffguy2,bombit2
+		Die: tandeth1
+		Poisoned: tandeth1
+		Burned: tandeth1
+		Zapped: tandeth1
+		Build: laugh2
+		Kill: gotit2,lefty2
+		Demolish: keepem2,tuffguy2
+
+ShokVoice:
+	Voices:
+		Select: jjuice1,jjump1,jyes1
+		Move: jdance1,jchrge1,jpower1
+		Attack: jburn1,jcrisp1,jshock1,jlight1
+		Action: jyes1,jchrge1
+		Die: dedman1,dedman2,dedman3,dedman4,dedman5,dedman7,dedman8,dedman10
+		Burned: dedman10
+		Zapped: dedman6
+		Poisoned: dedman6

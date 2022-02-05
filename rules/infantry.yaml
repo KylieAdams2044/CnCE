@@ -1,0 +1,410 @@
+E1:
+	Buildable:
+		BuildPaletteOrder: 10
+		Prerequisites: ~barracks
+		Queue: Infantry.GDI, Infantry.Nod, Infantry.SEA, Infantry.IND, Infantry.PLA
+    RenderSprites:
+        FactionImages: 
+            ind:e1ind
+	RevealsShroud:
+		Range: 4c0
+	Mobile:
+		Speed: 56
+    WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	Health:
+		HP: 10000
+
+E2:
+	-Crushable:
+	Buildable:
+		Prerequisites: ~techlevel.medium
+	RevealsShroud:
+		Range: 3c0
+	Mobile:
+		Speed: 56
+	Health:
+		HP: 10000
+	-Explodes:
+
+E3:
+	-Crushable:
+	Buildable:
+		BuildPaletteOrder: 10
+		Prerequisites: ~barracks
+		Queue: Infantry.GDI, Infantry.Nod, Infantry.SEA
+	RevealsShroud:
+		Range: 3c0
+	Mobile:
+		Speed: 56
+    WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	Health:
+		HP: 7500
+
+RPG:
+    Inherits: E3
+	Tooltip:
+		Name: RPG Gunner
+	Buildable:
+		Queue: Infantry.IND, Infantry.PLA
+        IconPalette: raplayer
+	Armament:
+		Weapon: RPG
+
+E4:
+	-Crushable:
+	Buildable:
+		Prerequisites: ~techlevel.medium
+		Queue: Infantry.Nod, Infantry.IND, Infantry.PLA
+	RevealsShroud:
+		Range: 3c0
+    WithInfantryBody:
+		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	Health:
+		HP: 14000
+
+E5:
+	-Crushable:
+	RevealsShroud:
+		Range: 4c0
+	Health:
+		HP: 14000
+
+E6:
+	Buildable:
+		Prerequisites: ~techlevel.medium
+		Queue: Infantry.GDI, Infantry.Nod, Infantry.SEA, Infantry.IND, Infantry.PLA
+	Health:
+		HP: 5000
+	Captures@CAPTURES:
+		CaptureTypes: building, husk
+        RequiresCondition: !INDCapture
+      
+E7:
+	Inherits: ^Soldier
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Sniper
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: ~anytech, ~techlevel.high
+		Queue: Infantry.SEA
+		Description: Elite commando infantry.\n  Strong vs Infantry\n  Weak vs Vehicles\n  Invisible when not moving.
+        IconPalette: raplayer
+	Mobile:
+		Speed: 71
+	Health:
+		HP: 14000
+	Passenger:
+		CustomPipType: red
+	RevealsShroud:
+		Range: 8c512
+	Cloak:
+		InitialDelay: 90
+		CloakDelay: 10
+		UncloakOn: Move, Unload, Dock, Damage, Heal
+		PauseOnCondition: cloak-force-disabled
+	AutoTarget:
+		ScanRadius: 3
+	Armament:
+		Weapon: Sniper
+	WithInfantryBody:
+        StandSequences: prone-idle
+		DefaultAttackSequence: prone-shoot
+	WithMuzzleOverlay:
+
+      
+MEDI:
+	Inherits: ^Soldier
+	Buildable:
+		Prerequisites: ~disabled
+		Description: Heals nearby infantry.\n  Unarmed
+        IconPalette: raplayer
+	RenderSprites:
+        PlayerPalette: raremap
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: Medic
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 16000
+	Mobile:
+		Speed: 50
+	RevealsShroud:
+		Range: 3c0
+	Armament:
+		Weapon: Heal
+		Cursor: heal
+		OutsideRangeCursor: heal
+		TargetRelationships: Ally
+		ForceTargetRelationships: None
+	WithInfantryBody:
+		IdleSequences: idle
+		StandSequences: stand
+		DefaultAttackSequence: heal
+	AutoTarget:
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry
+
+
+MECH:
+	Inherits: ^Soldier
+	Buildable:
+		BuildPaletteOrder: 100
+		Prerequisites: ~disabled
+		Queue: Infantry.IND
+		Description: Repairs nearby vehicles and restores\nhusks to working condition by capturing them.\n  Unarmed
+        IconPalette: raplayer
+	RenderSprites:
+        PlayerPalette: raremap
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Mechanic
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 16000
+	Mobile:
+		Speed: 50
+	RevealsShroud:
+		Range: 3c0
+	Armament:
+		Weapon: Repair
+		Cursor: repair
+		OutsideRangeCursor: repair
+		TargetRelationships: Ally
+		ForceTargetRelationships: None
+	AttackFrontal:
+	CaptureManager:
+	Captures:
+		CaptureTypes: husk
+		PlayerExperience: 25
+	Infiltrates:
+		Types: Husk
+		ValidRelationships: Ally
+		EnterCursor: goldwrench
+		PlayerExperience: 25
+	WithInfantryBody:
+		IdleSequences: idle
+		DefaultAttackSequence: repair
+		StandSequences: stand
+	AutoTarget:
+		ScanRadius: 25
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Vehicle,Tank
+
+MEGN:
+	Inherits: ^Soldier
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
+	Buildable:
+		Prerequisites: ~disabled
+		Description: Elite commando infantry. Armed with\ndual pistols and C4.\nMaximum 1 can be trained.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4
+        IconPalette: raplayer
+	RenderSprites:
+        PlayerPalette: raremap
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Mercenary
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 10000
+	Mobile:
+		Speed: 71
+		Voice: Move
+	Guard:
+		Voice: Move
+	RevealsShroud:
+		Range: 5c0
+	Cloak:
+		InitialDelay: 90
+		CloakDelay: 90
+		UncloakOn: Move, Attack, Unload, Dock, Damage, Heal
+	Demolition:
+		DetonationDelay: 45
+		Voice: Demolish
+	Passenger:
+		CustomPipType: red
+		Voice: Move
+	Armament@PRIMARY:
+		Weapon: Colt45
+		LocalOffset: 0,0,0, 0,0,0
+	Armament@SECONDARY:
+		Weapon: Colt45
+		LocalOffset: 0,0,0, 0,0,0
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Colt45
+		MuzzleSequence: garrison-muzzle
+	WithInfantryBody:
+		AttackSequences:
+			primary: shoot-left, shoot-right
+		StandSequences: stand
+	ExternalCondition@PRODUCED:
+		Condition: produced
+	VoiceAnnouncement:
+		RequiresCondition: produced
+		Voice: Build
+	Voiced:
+		VoiceSet: TanyaVoice
+
+
+RMBO:
+	Buildable:
+        Prerequisites: ~eye, ~techlevel.high
+	Health:
+		HP: 16000
+
+DOG:
+	Inherits: ^Soldier
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: ~barracks
+		Queue: Infantry.SEA, Infantry.IND
+		Description: Anti-infantry unit.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+        IconPalette: raplayer
+	Valued:
+		Cost: 75
+	Tooltip:
+		Name: Attack Dog
+		GenericName: Dog
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Selectable:
+		Bounds: 12,17,-1,-4
+		DecorationBounds: 12,17,-1,-4
+	Health:
+		HP: 2400
+	Mobile:
+		Speed: 99
+		Voice: Move
+		PauseOnCondition: attack-cooldown || eating
+	Guard:
+		Voice: Move
+	Passenger:
+		Voice: Move
+	RevealsShroud:
+		Range: 3c512
+	Armament:
+		Weapon: DogJaw
+		ReloadingCondition: attack-cooldown
+	-AttackFrontal:
+	AttackLeap:
+		Voice: Attack
+		PauseOnCondition: attacking || attack-cooldown
+	AttackMove:
+		Voice: Move
+	GrantConditionOnAttack:
+		Condition: eating
+		RevokeDelay: 45
+	GrantConditionWhileAiming:
+		Condition: run
+	AutoTarget:
+		InitialStance: AttackAnything
+	-Captures@CAPTURES:
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry
+	WithInfantryBody:
+		MoveSequence: walk
+		StandSequences: stand
+		DefaultAttackSequence: eat
+		RequiresCondition: !run
+	WithInfantryBody@RUN:
+		MoveSequence: run
+		RequiresCondition: run
+	SpeedMultiplier:
+		Modifier: 150
+		RequiresCondition: run
+	Voiced:
+		VoiceSet: DogVoice
+	-TakeCover:
+
+SHOK:
+	Inherits: ^Soldier
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
+	Buildable:
+		BuildPaletteOrder: 130
+		Prerequisites: ~disabled
+		Description: Elite infantry with portable Tesla coils.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
+	RenderSprites:
+        PlayerPalette: raremap
+	Valued:
+		Cost: 350
+	Tooltip:
+		Name: Mercenary
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 10000
+	Mobile:
+		Speed: 71
+		Voice: Move
+	RevealsShroud:
+		Range: 5c0
+	Cloak:
+		InitialDelay: 90
+		CloakDelay: 90
+		UncloakOn: Move, Attack, Unload, Dock, Damage, Heal
+	Armament:
+		Weapon: PortaTesla
+		LocalOffset: 427,0,341
+	TakeCover:
+		ProneOffset: 227,0,-245
+	AttackFrontal:
+		Voice: Attack
+	AttackMove:
+		Voice: Move
+	Passenger:
+		CustomPipType: red
+		Voice: Move
+	Guard:
+		Voice: Move
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle1,idle2
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		StandSequences: parachute
+		RequiresCondition: parachute
+	Voiced:
+		VoiceSet: ShokVoice
+
+PVICE:
+
+STEG:
+
+TREX:
+
+TRIC:
+
+RAPT:

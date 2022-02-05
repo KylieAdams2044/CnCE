@@ -1,0 +1,330 @@
+OMCV.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Mobile Construction Vehicle (Destroyed)
+	TransformOnCapture:
+		IntoActor: omcv
+	RenderSprites:
+        PlayerPalette: raremap
+		Image: omcv.destroyed
+ARV.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: ARV (Destroyed)
+	TransformOnCapture:
+		IntoActor: arv
+	RenderSprites:
+		Image: arv.destroyed
+
+ROVR.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Land Rover (Destroyed)
+	TransformOnCapture:
+		IntoActor: rovr
+	RenderSprites:
+		Image: rovr.destroyed
+
+MUTT.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: SPG Jeep (Destroyed)
+	TransformOnCapture:
+		IntoActor: mutt
+	RenderSprites:
+		Image: mutt.destroyed
+
+CRGJEEP.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Troop Transport (Destroyed)
+	TransformOnCapture:
+		IntoActor: crgjeep
+	RenderSprites:
+		Image: crgjeep.destroyed
+
+TOWJEEP.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: TOW Carrier (Destroyed)
+	TransformOnCapture:
+		IntoActor: towjeep
+	RenderSprites:
+		Image: towjeep.destroyed
+
+SEAJEEP.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Humvee (Destroyed)
+	TransformOnCapture:
+		IntoActor: seajeep
+	RenderSprites:
+		Image: seajeep.destroyed
+
+PLAJEEP.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Light Strike Vehicle (Destroyed)
+	TransformOnCapture:
+		IntoActor: plajeep
+	RenderSprites:
+		Image: jeep.destroyed
+
+SAMJEEP.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Avenger(Destroyed)
+	TransformOnCapture:
+		IntoActor: samjeep
+	RenderSprites:
+		Image: samjeep.destroyed
+
+
+TRUK.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Troop Truck (Destroyed)
+	TransformOnCapture:
+		IntoActor: TRUK
+	RenderSprites:
+		Image: truk.destroyed
+
+GTRK.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Technical (Destroyed)
+	TransformOnCapture:
+		IntoActor: GTRK
+	RenderSprites:
+		Image: gtrk.destroyed
+
+JEEPGTRK.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Technical (Destroyed)
+	TransformOnCapture:
+		IntoActor: JEEPGTRK
+	RenderSprites:
+		Image: jeepgtrk.destroyed
+
+HGTRK.Husk:
+	Inherits: ^LightHusk
+	Tooltip:
+		Name: Heavy Technical (Destroyed)
+	TransformOnCapture:
+		IntoActor: HGTRK
+	RenderSprites:
+		Image: hgtrk.destroyed
+
+
+BTR.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: BTR (Destroyed)
+	TransformOnCapture:
+		IntoActor: btr
+	RenderSprites:
+		Image: btr.destroyed
+
+HAPC.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Heavy APC (Destroyed)
+	TransformOnCapture:
+		IntoActor: hapc
+	RenderSprites:
+		Image: hapc.destroyed
+
+MRV.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: MRV (Destroyed)
+	TransformOnCapture:
+		IntoActor: mrv
+	RenderSprites:
+		Image: mrv.destroyed
+        
+BMP.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: BMP (Destroyed)
+	TransformOnCapture:
+		IntoActor: bmp
+	RenderSprites:
+		Image: bmp.destroyed
+
+ZSU.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: ZSU (Destroyed)
+	TransformOnCapture:
+		IntoActor: zsu
+	RenderSprites:
+		Image: zsu.destroyed
+
+SPRK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Sparka (Destroyed)
+	TransformOnCapture:
+		IntoActor: sprk
+	RenderSprites:
+		Image: sprk.destroyed
+
+MORT.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Mortar Carrier (Destroyed)
+	TransformOnCapture:
+		IntoActor: mort
+	RenderSprites:
+		Image: mort.destroyed
+        
+TNKD.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Tank Destroyer (Destroyed)
+	TransformOnCapture:
+		IntoActor: tnkd
+	RenderSprites:
+		Image: tnkd.destroyed
+
+SCTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Scout Tank (Destroyed)
+	TransformOnCapture:
+		IntoActor: sctnk
+	RenderSprites:
+		Image: sctnk.destroyed
+
+
+1TNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: T-55 (Destroyed)
+	TransformOnCapture:
+		IntoActor: 1tnk
+	RenderSprites:
+		Image: 1tnk.destroyed
+
+1TNK.T34.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: T-34 (Destroyed)
+	TransformOnCapture:
+		IntoActor: 1tnk.t34
+	RenderSprites:
+		Image: t34.destroyed
+
+1TNK.SHRM.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Sherman (Destroyed)
+	TransformOnCapture:
+		IntoActor: 1tnk.shrm
+	RenderSprites:
+		Image: shrm.destroyed
+
+1TNK.LEO1.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Leopard (Destroyed)
+	TransformOnCapture:
+		IntoActor: 1tnk.leo1
+	RenderSprites:
+		Image: leo1.destroyed
+
+1TNK.M60.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: M-60 Tank (Destroyed)
+	TransformOnCapture:
+		IntoActor: 1tnk.m60
+	RenderSprites:
+		Image: m60.destroyed
+
+1TNK.M602k.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: M-60/2000 Tank (Destroyed)
+	TransformOnCapture:
+		IntoActor: 1tnk.m602k
+	RenderSprites:
+		Image: m602k.destroyed
+
+2TNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Medium Tank (Destroyed)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 2tnk
+	RenderSprites:
+		Image: 2tnk.destroyed
+
+3TNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Heavy Tank (Destroyed)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 3tnk
+	RenderSprites:
+		Image: 3tnk.destroyed
+
+4TNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Heavy Tank (Destroyed)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: 4tnk
+	RenderSprites:
+		Image: 4tnk.destroyed
+
+SAMTNK.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: SAM Carrier (Destroyed)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: samtnk
+	RenderSprites:
+		Image: samtnk.destroyed
+
+
+HWTZ.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Howitzer (Destroyed)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: hwtz
+	RenderSprites:
+		Image: hwtz.destroyed
+
+HWTZ.M109.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Howitzer (Destroyed)
+	ThrowsParticle@turret:
+		Anim: turret
+	TransformOnCapture:
+		IntoActor: hwtz.m109
+	RenderSprites:
+		Image: hwtz.m109.destroyed
+
+RRTY.Husk:
+	Inherits: ^Husk
+	Tooltip:
+		Name: Rocket Artillery (Destroyed)
+	TransformOnCapture:
+		IntoActor: rrty
+	RenderSprites:
+		Image: rrty.destroyed

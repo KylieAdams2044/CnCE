@@ -1,0 +1,627 @@
+^MissileWeapon:
+	Range: 6c0
+	Projectile: Missile
+        JammedDiversionRange: 10
+        LockOnProbability: 70
+        LockOnInaccuracy: 0c512
+    	-ContrailLength: 10
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 5000
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Heavy: 100
+            Concrete: 50
+	Warhead@5EffWater: CreateEffect
+		Explosions: med_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Bridge
+
+^AntiAirMissile:
+	Inherits: ^MissileWeapon
+	ValidTargets: Air
+	Projectile: Missile
+		Arm: 1
+		Speed: 298
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Versus:
+			Light: 84
+	-Warhead@2Smu:
+
+Rockets:
+	Range: 4c0
+
+RPG:
+	Inherits: ^MissileWeapon
+	ValidTargets: Ground, Air
+	Range: 3c512
+    Projectile: Missile
+		Speed: 426
+        LockOnProbability: 5
+		HorizontalRateOfTurn: 10
+		VerticalRateOfTurn: 10
+		RangeLimit: 8c0
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 6000
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+            Concrete: 10
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+        
+Stinger:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 80
+	ValidTargets: Air
+	Range: 12c0
+	MinRange: 2c256
+    Projectile: Missile
+        Image: DRAGON
+        Jammable: false
+		RangeLimit: 15c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 6000
+        ValidTargets: Air
+	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+        
+OrcaAGMissiles:
+	ReloadDelay: 10
+	Range: 4c768
+	MinRange: 1c256
+	InvalidTargets: Infantry
+    Burst: 2
+    BurstDelays: 2
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 6000
+		Versus:
+			None: 5
+			Wood: 10
+			Light: 50
+			Heavy: 75
+            Concrete: 50
+
+Hydra70:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 120
+    Burst: 8
+    BurstDelays: 1
+	Range: 4c768
+	MinRange: 1c256
+	ValidTargets: Ground, Water
+	Projectile: Bullet
+		Speed: 1024
+		Image: HYDRA
+		Shadow: true
+		Inaccuracy: 1c512
+		TrailImage: smokey
+		ContrailLength: 8
+    Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 2500
+		Versus:
+			None: 75
+			Wood: 25
+			Light: 50
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosions: small_frag
+		ImpactSounds: xplos.aud
+        
+B8V20:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 220
+	Range: 5c768
+	MinRange: 1c256
+    Burst: 5
+	BurstDelays: 2
+	ValidTargets: Ground, Water
+	Projectile: Bullet
+		Speed: 1024
+		Image: DRAGON
+		Inaccuracy: 3c512
+		Shadow: true
+		TrailImage: smokey
+		ContrailLength: 8
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Spread: 256
+		Versus:
+			None: 10
+			Wood: 20
+			Light: 70
+			Heavy: 75
+            Concrete: 50
+        
+S-25:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 220
+	Range: 4c768
+	MinRange: 1c256
+    Burst: 6
+	Projectile: Bullet
+		Speed: 768
+		Image: DRAGON
+		Inaccuracy: 3c512
+		Shadow: true
+		TrailImage: smokey
+		ContrailLength: 8
+	Warhead@1Dam: SpreadDamage
+		Damage: 3500
+		Spread: 768
+		Versus:
+			None: 100
+			Wood: 3
+			Light: 50
+			Heavy: 50
+            Concrete: 10
+		Falloff: 750, 368, 135, 50, 18, 7, 0
+
+AAM:
+	Inherits: ^AntiAirMissile
+	ReloadDelay: 64
+	Range: 6c768
+	MinRange: 1c256
+	Report: missile6.aud
+	InvalidTargets: Ground
+	ValidTargets: Aircraft,Helicopter
+	Projectile: Missile
+		HorizontalRateOfTurn: 80
+		Speed: 768
+		RangeLimit: 15c0
+		CloseEnough: 0c600
+	Warhead@1Dam: SpreadDamage
+		Damage: 10000
+		Spread: 768
+        InvalidTargets: Ground
+		Versus:
+			None: 0
+			Wood: 0
+			Light: 250
+			Heavy: 200
+            Concrete: 10
+
+Hellfire:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 75
+	Range: 8c0
+	ValidTargets: Tank
+	InvalidTargets: Vehicle, Infantry, Structure, Air, Trees, Creep
+	Projectile: Missile
+		Arm: 1
+		HorizontalRateOfTurn: 80
+		Speed: 512
+		RangeLimit: 11c0
+        Image: Hellfire
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+		ValidTargets: Ground,Air
+		Versus:
+			None: 10
+			Wood: 20
+			Light: 150
+			Heavy: 150
+            Concrete: 100
+
+HOT:
+	Inherits: Hellfire
+	ValidTargets: Ground
+	-InvalidTargets:
+	Range: 6c512
+	Projectile: Missile
+		Arm: 1
+		HorizontalRateOfTurn: 64
+		Speed: 256
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+
+MammothMissiles:
+	ReloadDelay: 80
+    InvalidTargets: Tank, Vehicle, Structure
+	Warhead@1Dam: SpreadDamage
+		Damage: 7500
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+            Concrete: 5
+
+GLATGM:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 125
+	Range: 5c0
+	Report: missile7.aud
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		RangeLimit: 8c0
+
+GLATGMAA:
+	Inherits: GLATGM
+	MinRange: 1c256
+	ValidTargets: Helicopter
+    InvalidTargets: Infantry, Ground
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+        ValidTargets: Helicopter
+		Versus:
+			None: 0
+			Wood: 0
+			Light: 200
+			Heavy: 200
+            Concrete: 0
+            
+TOW:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 60
+	Range: 5c512
+	Image: Hydra
+	ValidTargets: Ground, Helicopter
+    InvalidTargets: Infantry
+    -Projectile:
+	Projectile: Missile
+		Arm: 0
+		Blockable: false
+		Inaccuracy: 128
+		Image: DRAGON
+		Shadow: true
+		HorizontalRateOfTurn: 15
+		TrailImage: smokey
+		ContrailLength: 48
+        ContrailWidth: 0c32
+        ContrailColor: 343434
+		Speed: 298
+		RangeLimit: 7c204
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Damage: 8000
+		Versus:
+			None: 10
+			Wood: 20
+			Light: 150
+			Heavy: 150
+            Concrete: 25
+
+TOW.LTNK:
+	Inherits: TOW
+    Burst: 2
+	BurstDelays: 30
+	ReloadDelay: 100
+    ValidTargets: Tank
+    InvalidTargets: Vehicle, Infantry, Structure
+
+227mm:
+	Range: 8c512
+	MinRange: 2c0
+	Burst: 2
+	BurstDelays: 4
+	Projectile: Bullet
+    	-ContrailLength: 10
+	Warhead@1Dam: SpreadDamage
+		Damage: 7500
+		Versus:
+			None: 180
+			Wood: 75
+			Light: 60
+			Heavy: 25
+            Concrete: 50
+   		Falloff: 135, 50, 18, 7, 0
+
+122mm:
+	Inherits: 227mm
+	Range: 7c0
+	MinRange: 2c0
+	Burst: 5
+	BurstDelays: 2
+	ValidTargets: Ground, Water
+	Projectile: Bullet
+		Blockable: false
+		Speed: 512
+		Inaccuracy: 2c0
+		Image: HELLFIRE
+		LaunchAngle: 40
+		TrailImage: smokey
+	Warhead@1Dam: SpreadDamage
+		Spread: 192
+		Damage: 2500
+		Versus:
+			None: 180
+			Wood: 50
+			Light: 70
+			Heavy: 140
+            Concrete: 40
+	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+
+227mm.stnk:
+	Range: 5c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+        
+227mm.stnkAA:
+	Range: 5c0
+    Projectile: Missile
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+
+TowerMissile:
+	Range: 8c512
+    Burst: 2
+	ReloadDelay: 40
+	Warhead@1Dam: SpreadDamage
+        Damage: 9000
+		Versus:
+			None: 180
+			Wood: 25
+			Light: 60
+			Heavy: 25
+            Concrete: 15
+
+TowerAAMissile:
+	ReloadDelay: 40
+	Warhead@1Dam: SpreadDamage
+        Damage: 9000
+		Versus:
+			None: 5
+			Wood: 5
+			Light: 60
+			Heavy: 25
+            Concrete: 5
+
+TowerATGM:
+	Inherits: TowerMissile
+	Report: missile6.aud
+	Range: 8c0
+	Projectile: Missile
+		Image: 122mmrocket
+    
+TowerATGMAA:
+	Inherits: TowerAAMissile
+	Report: missile6.aud
+	Range: 8c0
+	Projectile: Missile
+		Image: 122mmrocket
+    
+Nike:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 20
+   	Range: 15c0
+	Report: rocket2.aud
+	ValidTargets: Air
+	Burst: 2
+	BurstDelays: 5
+	Projectile: Missile
+		RangeLimit: 20c0
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+	Warhead@4EffAir: CreateEffect
+		Explosions: small_building
+
+    
+Tor-M1:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 75
+	Range: 10c0
+	MinRange: 1c0
+	Report: rocket2.aud
+	ValidTargets: Air
+	Projectile: Missile
+		Image: MISSILE
+		HorizontalRateOfTurn: 60
+		Speed: 500
+		RangeLimit: 15c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 682
+		Damage: 20000
+		ValidTargets: Air, Aircraft, Helicopter
+		Versus:
+			None: 20
+			Wood: 84
+			Light: 100
+			Heavy: 74
+	-Warhead@2Smu:
+	Warhead@4EffAir: CreateEffect
+		Explosions: poof
+    
+HonestJohn:
+	Inherits: ^MissileWeapon
+	Range: 12c0
+	ReloadDelay: 100
+	Damage: 10000
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Image: PATRIOT
+		RangeLimit: 15c0
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Falloff: 200, 150, 75, 50, 18, 7, 0
+		Versus:
+			None: 180
+			Wood: 100
+			Light: 60
+			Heavy: 25
+            Concrete: 50
+    	ValidTargets: Ground, Water
+        InvalidTargets: Air
+	Warhead@2Smu: LeaveSmudge
+	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+		ImpactSounds: xplobig4.aud
+	Warhead@4DestroyResource: DestroyResource
+		Size: 0
+        ValidTargets: Ground
+    
+SCUD:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 240
+	Range: 10c0
+	MinRange: 4c0
+	Report: missile6.aud
+	-Projectile:
+	Projectile: Bullet
+		Speed: 170
+		Blockable: false
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 5c512
+		Image: SSMMSL
+		Shadow: True
+		LaunchAngle: 62
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 10000
+		Falloff: 200, 150, 75, 50, 18, 7, 0
+		ValidTargets: Ground, Water
+		Versus:
+			None: 90
+			Wood: 100
+			Light: 70
+			Heavy: 140
+            Concrete: 70
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath, Incendiary
+	Warhead@3Eff: CreateEffect
+		Explosions: med_napalm, small_building
+		ImpactSounds: kaboom12.aud
+	Warhead@4DestroyResource: DestroyResource
+		Size: 2
+        ValidTargets: Ground
+
+SCUD.vertical:
+	Inherits: SCUD
+	Projectile: Missile
+		Arm: 0
+        LockOnProbability: 0
+        MinimumLaunchAngle: 512
+        MaximumLaunchAngle: 512
+        MaximumLaunchSpeed: 100
+        MinimumLaunchSpeed: 120
+        Acceleration: 0c5
+		Blockable: false
+		Inaccuracy: 1c512
+		Image: SCUDMSL
+		Shadow: true
+        ExplodeWhenEmpty: false
+        CruiseAltitude: 10c512
+		VerticalRateOfTurn: 60
+		TrailImage: smokey
+        TrailInterval: 4
+		Speed: 350
+		RangeLimit: 50c512
+
+BM21Strike:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 8
+	Report: missile6.aud
+	Projectile: Missile
+		Speed: 350
+		Blockable: false
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 5c512
+		Image: MISSILE
+		Shadow: True
+		RangeLimit: 15c614
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 7500
+		Falloff: 200, 150, 100, 75, 50, 18, 7, 0
+		ValidTargets: Ground, Water
+		Versus:
+			None: 90
+			Wood: 70
+			Light: 50
+			Heavy: 100
+            Concrete: 70
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+ 	Warhead@3Eff: CreateEffect
+		Explosions: small_poof
+	Warhead@4DestroyResource: DestroyResource
+		Size: 0
+        ValidTargets: Ground
+
+SCUDStrike:
+	Inherits: ^MissileWeapon
+	ReloadDelay: 15
+	Report: missile6.aud
+	Projectile: Missile
+		Speed: 250
+		Blockable: false
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 5c512
+		Image: SCUDMSL
+		Shadow: True
+		RangeLimit: 25c614
+        Jammable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 20000
+		Falloff: 100, 75, 50, 18, 7, 0
+		ValidTargets: Ground, Water
+		Versus:
+			None: 90
+			Wood: 100
+			Light: 70
+			Heavy: 140
+            Concrete: 75
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath, Incendiary
+	Warhead@3Eff: CreateEffect
+		Explosions: poof
+		ImpactSounds: xplosml2.aud
+	Warhead@4DestroyResource: DestroyResource
+		Size: 1
+        ValidTargets: Ground
+
+TorpTube:
+	ReloadDelay: 100
+	Range: 9c0
+	Report: torpedo1.aud
+	ValidTargets: Water, WaterActor, Underwater, Bridge
+	BurstDelays: 20
+	Projectile: Missile
+		Image: torpedo
+		Arm: 3
+		Speed: 85
+		TrailImage: bubbles
+		HorizontalRateOfTurn: 4
+		RangeLimit: 10c819
+		BoundToTerrainType: Water
+		Palette: shadow
+		MaximumLaunchAngle: 0
+		CruiseAltitude: 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 18000
+		ValidTargets: WaterActor, Underwater, Bridge
+		Versus:
+			Wood: 75
+			Light: 75
+			Heavy: 100
+			Concrete: 500
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom15.aud
+		ValidTargets: Ground, WaterActor, Underwater, GroundActor, Bridge
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water
+		InvalidTargets: Bridge

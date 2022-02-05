@@ -1,0 +1,974 @@
+omcv:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	icon: omcvicon
+    
+omcv.destroyed:
+	idle: omcv
+		Facings: 32
+		UseClassicFacings: True
+
+arv:
+	idle: arv
+		Facings: 32
+		UseClassicFacings: True
+    muzzle: litning
+        Length: *
+	icon: arvicnh.tem
+        AddExtension: False
+
+arv.destroyed:
+	idle: arv
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+rovr:
+	idle: 
+		Facings: 32
+		UseClassicFacings: True
+	icon: jeepicnh.tem
+        AddExtension: False
+
+rovr.destroyed:
+	idle: rovr
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512      
+	 
+jeep:
+	turret-air: jeep
+		Start: 64
+		Facings: 32
+        
+crgjeep:
+	idle: jeepcrg
+		Facings: 32
+		UseClassicFacings: True
+	turret: mgun
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: jeepcrgicnh.shp
+		AddExtension: False
+
+crgjeep.destroyed:
+	idle: jeepcrg
+		Facings: 32
+		UseClassicFacings: True
+	turret: mgun
+		Facings: 32
+		UseClassicFacings: True
+
+seajeep:
+	idle: jeepsea
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeepsea
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-air: jeepsea
+		Start: 64
+		Facings: 32
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: jeepicnh.tem
+		AddExtension: False
+
+seajeep.destroyed:
+	idle: jeepsea
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeepsea
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+plajeep:
+	idle: jeeppla
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeeppla
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: jeepicnh.tem
+		AddExtension: False
+
+plajeep.destroyed:
+	idle: jeeppla
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeeppla
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+
+towjeep:
+	idle: jeeptow
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeeptow
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: jeeptowicnh.tem
+		AddExtension: False
+
+towjeep.destroyed:
+	idle: jeeptow
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeeptow
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+samjeep:
+	idle: jeepsam
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeepsam
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: jeepsamicnh.tem
+		AddExtension: False
+
+samjeep.destroyed:
+	idle: jeepsam
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeepsam
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+truk:
+	idle: truck
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeep
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: trukicnh.shp
+		AddExtension: False
+
+truk.destroyed:
+	idle: truck
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: jeep
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+gtrk:
+	idle: gtrk
+		Facings: 32
+		UseClassicFacings: True
+	turret: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-air: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: gtrkicnh.shp
+		AddExtension: False
+
+gtrk.destroyed:
+	idle: gtrk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+jeepgtrk:
+	idle: jeepsam
+		Facings: 32
+		UseClassicFacings: True
+	turret: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-air: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: gtrkicnh.shp
+		AddExtension: False
+
+jeepgtrk.destroyed:
+	idle: jeepsam
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+hgtrk:
+	idle: truckflat
+		Facings: 32
+		UseClassicFacings: True
+	turret: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret-air: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: gtrkicnh.shp
+		AddExtension: False
+
+hgtrk.destroyed:
+	idle: truckflat
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: gtrk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+mutt:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeeptow
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: *
+    icon: mutticnh.tem
+		AddExtension: False
+
+mutt.destroyed:
+	idle: mutt
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: jeeptow
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+apc:
+	turret: jeeptow
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	close:
+		Start: 32
+		Length: 3
+	unload:
+		Start: 32
+
+apc.destroyed:
+	idle: apc
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: jeeptow
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+btr:
+	idle: btr
+		Facings: 32
+		UseClassicFacings: True
+	turret: btr
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+    icon: btricnh.tem
+		AddExtension: False
+
+btr.destroyed:
+	idle: btr
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: btr
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+
+mrv:
+	idle: mrv
+		Facings: 32
+		UseClassicFacings: True
+	turret: mrv
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: *
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	close:
+		Start: 32
+		Length: 3
+	icon: mrvicnh.shp
+		AddExtension: False
+
+mrv.destroyed:
+	idle: mrv
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: mrv
+        Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+bmp:
+	idle: bmp
+		Facings: 32
+		UseClassicFacings: True
+	turret: bmp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	icon: bmpicnh.tem
+		AddExtension: False
+
+bmp.destroyed:
+	idle: bmp
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: bmp
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+hapc:
+	idle: hapc
+		Facings: 32
+		UseClassicFacings: True
+	turret: jeep
+        Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	icon: hapcicnh.tem
+		AddExtension: False
+
+hapc.destroyed:
+	idle: hapc
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: jeep
+        Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+tnkd:
+	idle: 0tnk
+		Facings: 32
+		UseClassicFacings: True
+	turret: 0tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: tnkdicnh.tem
+		AddExtension: False
+
+tnkd.destroyed:
+	idle: 0tnk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: 0tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+zsu:
+	idle: zsu
+		Facings: 32
+		UseClassicFacings: True
+	turret: zsu
+		Start: 32
+		Facings: 32
+	turret-air: zsu
+		Start: 32
+		Facings: 32
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	muzzle-air: apcmuz
+		Length: 3
+		Stride: 6
+		Facings: 8
+	icon: spaagicnh.tem
+		AddExtension: False
+
+zsu.destroyed:
+	idle: zsu
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: zsu
+		Start: 32
+		Facings: 32
+		ZOffset: -512
+
+sprk:
+	idle: sprk
+		Facings: 32
+		UseClassicFacings: True
+	turret: sprk
+		Start: 32
+		Facings: 32
+	turret-air: sprk
+		Start: 64
+		Facings: 32
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	muzzle-air: apcmuz
+		Length: 3
+		Stride: 6
+		Facings: 8
+	icon: spaagicnh.tem
+		AddExtension: False
+
+sprk.destroyed:
+	idle: sprk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: sprk
+		Start: 32
+		Facings: 32
+		ZOffset: -512
+
+sctnk:
+	idle: sctnk
+		Facings: 32
+		UseClassicFacings: True
+	turret: sctnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	turret50cal: mutt
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: sctnkicnh.shp
+		AddExtension: False
+
+sctnk.destroyed:
+	idle: sctnk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: sctnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret50cal: mutt
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+ltnk:
+	idle: ifv
+		Facings: 32
+		UseClassicFacings: True
+	turret: ifv
+		Start: 38
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: minigun
+		Length: 6
+		Facings: 8
+	close:
+		Start: 32
+		Length: 3
+	unload:
+		Start: 32
+        
+ltnk.destroyed:
+	idle: ifv
+	turret: ifv
+		Start: 38
+        
+1tnk:
+	idle: 1tnk
+		Facings: 32
+		UseClassicFacings: True
+	turret: 1tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 1tnkicnh.tem
+		AddExtension: False
+
+1tnk.destroyed:
+	idle: 1tnk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: 1tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+t34:
+	idle: t34
+		Facings: 32
+		UseClassicFacings: True
+	turret: t34
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 1tnkicnh.tem
+		AddExtension: False
+
+t34.destroyed:
+	idle: t34
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: t34
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+shrm:
+	idle: shrm
+		Facings: 32
+		UseClassicFacings: True
+	turret: shrm
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 1tnkicnh.tem
+		AddExtension: False
+
+shrm.destroyed:
+	idle: shrm
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: shrm
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+leo1:
+	idle: leo1
+		Facings: 32
+		UseClassicFacings: True
+	turret: leo1
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 1tnkicnh.tem
+		AddExtension: False
+
+leo1.destroyed:
+	idle: leo1
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: leo1
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+m60:
+	idle: 
+		Facings: 32
+		UseClassicFacings: True
+	turret: 
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 1tnkicnh.tem
+		AddExtension: False
+
+m60.destroyed:
+	idle: m60
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: m60
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+m602k:
+	idle: m60
+		Facings: 32
+		UseClassicFacings: True
+	turret: mtnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: mtnkicnh.tem
+		AddExtension: False
+
+m602k.destroyed:
+	idle: m60
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: mtnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+
+2tnk:
+	idle: 2tnk
+		Facings: 32
+		UseClassicFacings: True
+	turret: 2tnk
+		Offset: 0,0,15
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	50cal: mgun
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+    muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 2tnkicnh.shp
+		AddExtension: False
+
+2tnk.destroyed:
+	idle: 2tnk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: 2tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+3tnk:
+	idle: 3tnk
+		Facings: 32
+		UseClassicFacings: True
+	turret: 3tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+	icon: 3tnkicnh.tem
+		AddExtension: False
+
+3tnk.destroyed:
+	idle: 3tnk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: 3tnk
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+4tnk:
+	idle: leo2
+		Facings: 32
+		UseClassicFacings: True
+	turret: leo2
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: 5
+    muzzle2: minigun
+		Length: 6
+		Facings: 8
+	icon: 4tnkicnh.tem
+		AddExtension: False
+
+4tnk.destroyed:
+	idle: leo2
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: leo2
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+mtnk:
+	50cal: mgun
+		Facings: 32
+		UseClassicFacings: True
+    50calmuzzle: minigun
+    canistermuzzle: canister
+        Length: 3
+		Facings: 8
+
+
+mtnk.destroyed:
+	50cal: mgun
+		Facings: 32
+		UseClassicFacings: True
+
+samtnk:
+	idle: 1tnk
+		Facings: 32
+		UseClassicFacings: True
+	turret: msam
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	icon: mlrsicnh.tem
+		AddExtension: False
+
+samtnk.destroyed:
+	idle: 1tnk
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: msam
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+mort:
+	idle: mort
+		Facings: 32
+		UseClassicFacings: True
+	muzzle: gunfire2
+		Length: *
+	icon: morticnh.tem
+		AddExtension: False
+
+mort.destroyed:
+	idle: mort
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+hwtz:
+	idle: hwtz
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: hwtz
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	muzzle: gunfire2
+		Length: *
+	icon: hwtzicnh.tem
+		AddExtension: False
+
+hwtz.destroyed:
+	idle: hwtz
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: hwtz
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+hwtz.m109:
+	idle: m109
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: m109
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	muzzle: gunfire2
+		Length: *
+	icon: hwtzicnh.tem
+		AddExtension: False
+
+hwtz.m109.destroyed:
+	idle: m109
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: m109
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+rrty:
+	idle: rrty
+		Facings: 32
+		UseClassicFacings: True
+	turret: rrty
+		Start: 32
+		Facings: 32
+	icon: rrtyicnh.tem
+		AddExtension: False
+
+rrty.destroyed:
+	idle: rrty
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+	turret: rrty
+        Start: 32
+		Facings: 32
+		UseClassicFacings: True
+		ZOffset: -512
+
+ssm:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	empty-idle:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	icon: ssmicnh.shp
+		AddExtension: False
+
+scud:
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Facings: 32
+		UseClassicFacings: True
+	empty-idle:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	aim:
+		Start: 64
+		Facings: 32
+		UseClassicFacings: True
+	empty-aim:
+		Start: 96
+		Facings: 32
+		UseClassicFacings: True
+	icon: scudicnh.tem
+		AddExtension: False
+

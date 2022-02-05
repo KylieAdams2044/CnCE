@@ -1,0 +1,2084 @@
+MCV:
+	Buildable:
+        Prerequisites: ~anytech, ~techlevel.high
+        Queue: Vehicle.GDI, Vehicle.Nod, Vehicle.SEA, Vehicle.IND, Vehicle.PLA
+	Health:
+		HP: 60000
+	RevealsShroud:
+		Range: 2c0
+
+HARV:
+	Buildable:
+		Queue: Vehicle.GDI, Vehicle.Nod, Vehicle.SEA, Vehicle.PLA
+	Mobile:
+        Speed: 71
+	GpsDot:
+		String: Harvester
+	RevealsShroud:
+		Range: 6c0
+	WithHarvesterPipsDecoration:
+		RequiresSelection: false
+
+ARV:
+	Inherits: ^Tank
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Armored Recovery Vehicle
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 90
+		Prerequisites: vehicleproduction, fix
+		Queue: Vehicle.SEA
+		Description: Slow repair unit.\n  Repairs all nearby friendly units up to 50%.
+	Mobile:
+        Speed: 71
+	Health:
+		HP: 40000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 4c0
+    ProximityExternalCondition:
+        Condition: ARVHeal
+        Range: 3c512
+        MaximumVerticalOffset: 1c0
+    WithRangeCircle:
+        Range: 3c512
+	SpawnActorOnDeath:
+		Actor: ARV.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+        
+BGGY:
+   	Buildable:
+		Prerequisites: vehicleproduction
+	RevealsShroud:
+		Range: 5c0
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 200
+        RequiresCondition: MovementInaccuracy
+
+ROVR:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Land Rover
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: ~disabled
+		Queue: Vehicle.GDI
+		Description: Unarmed fast scout and transport.\n  Weak vs All
+	Mobile:
+		TurnSpeed: 40
+		Speed: 170
+	Health:
+		HP: 14000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 6c0
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+	SpawnActorOnDeath:
+		Actor: ROVR.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+
+JEEP:
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Health:
+		HP: 15000
+   	Buildable:
+		Queue: Vehicle.GDI
+		Description: Fast scout and anti-infantry vehicle.\n Can carry 5x infantry. \n Strong vs Infantry\n  Weak vs Tanks
+    RenderSprites:
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 200
+        RequiresCondition: MovementInaccuracy
+	RevealsShroud:
+		Range: 4c0
+    -Armament:
+    Armament@PRIMARY:
+        Weapon: M60
+		MuzzleSequence: muzzle
+		LocalOffset: 171,0,25
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+    Armament@SECONDARY:
+		Name: secondary
+        Weapon: M60.AA
+		MuzzleSequence: muzzle
+		LocalOffset: 171,0,285
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+    Turreted:
+   		Offset: 0,0,200
+    AutoTargetPriority@Air:
+		ValidTargets: Air
+		Priority: 2
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	WithSpriteTurret:
+		RequiresCondition: !attack-air
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+
+SEAJEEP:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Hum-Vee
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+   	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: vehicleproduction
+		Queue: Vehicle.SEA
+		Description: Fast scout and anti-infantry vehicle.\n Can carry 5x infantry.\n  Strong vs Infantry\n  Weak vs Tanks
+    RenderSprites:
+	Mobile:
+		TurnSpeed: 40
+		Speed: 156
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 200
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 14000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 5c0
+	Turreted:
+		TurnSpeed: 40
+   		Offset: 0,0,200
+    Armament@PRIMARY:
+        Weapon: 50Cal
+		MuzzleSequence: muzzle
+		LocalOffset: 250,0,5
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+    Armament@SECONDARY:
+		Name: secondary
+        Weapon: 50Cal.AA
+		MuzzleSequence: muzzle
+		LocalOffset: 171,0,100
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	AutoTargetPriority@Air:
+		ValidTargets: Air
+		Priority: 2
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	WithSpriteTurret:
+		RequiresCondition: !attack-air
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air
+	AttackTurreted:
+	WithMuzzleOverlay:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+	SpawnActorOnDeath:
+		Actor: SEAJEEP.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+PLAJEEP:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Light Strike Vehicle
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+   	Buildable:
+		Prerequisites: vehicleproduction
+		BuildPaletteOrder: 30
+		Queue: Vehicle.PLA
+		Description: Fast scout and anti-infantry vehicle.\n Strong vs Infantry\n  Weak vs Tanks
+    RenderSprites:
+	Mobile:
+		TurnSpeed: 40
+		Speed: 146
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 200
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 16000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 40
+		Offset: 0,0,256
+    Armament:
+        Weapon: QLZ87
+		MuzzleSequence: muzzle
+		LocalOffset: 200,30,96
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+	SpawnActorOnDeath:
+		Actor: PLAJEEP.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+GTRK:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: Gun Truck
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: vehicleproduction
+		Queue: Vehicle.IND
+		Description: Scout and anti-infantry vehicle. Can carry some infantry.\n  Strong vs infantry, aircraft\n  Weak vs tanks
+	RenderSprites:
+	RevealsShroud:
+		Range: 5c0
+	Mobile:
+		TurnSpeed: 40
+		Speed: 120
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 350
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 12000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	Turreted:
+		TurnSpeed: 30
+		Offset: -256,0,50
+    Armament@PRIMARY:
+        Weapon: ZU-23-2
+		Recoil: 10
+		RecoilRecovery: 8
+		LocalOffset: 171,30,256, 171,-20,256
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	Armament@SECONDARY:
+        Weapon: ZU-23-2.AA
+		Recoil: 10
+		RecoilRecovery: 8
+		LocalOffset: 225,20,256, 225,-20,256
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	Cargo:
+		Types: Infantry
+		MaxWeight: 2
+        EjectOnDeath: true
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+		RequiresCondition: !attack-air
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air
+	SpawnActorOnDeath:
+		Actor: GTRK.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+JEEPGTRK:
+    Inherits: GTRK
+	Buildable:
+		BuildPaletteOrder: 99
+		Prerequisites: ~disabled
+		Queue: Vehicle.IND
+	Tooltip:
+		Name: Humvee Technical
+  	Mobile:
+		TurnSpeed: 40
+		Speed: 156
+	Health:
+		HP: 16000
+	RenderSprites:
+        Image: jeepgtrk
+ 	SpawnActorOnDeath:
+		Actor: JEEPGTRK.Husk
+
+HGTRK:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: Heavy Gun Truck
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 99
+		Prerequisites: ~disabled
+		Queue: Vehicle.IND
+		Description: Scout and anti-infantry vehicle. Can carry some infantry.\n  Strong vs infantry, aircraft\n  Weak vs tanks
+	RenderSprites:
+	RevealsShroud:
+		Range: 5c0
+	Mobile:
+		TurnSpeed: 40
+		Speed: 96
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 500
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 600
+	Armor:
+		Type: Light
+	Turreted:
+		TurnSpeed: 30
+		Offset: -256,0,50
+    Armament@PRIMARY:
+        Weapon: ZU-23-2
+		Recoil: 10
+		RecoilRecovery: 8
+		LocalOffset: 171,30,256, 171,-20,256
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	Armament@SECONDARY:
+        Weapon: ZU-23-2.AA
+		Recoil: 10
+		RecoilRecovery: 8
+		LocalOffset: 225,20,256, 225,-20,256
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+		RequiresCondition: !attack-air
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air
+	SpawnActorOnDeath:
+		Actor: HGTRK.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+BIKE:
+   	Buildable:
+		Prerequisites: vehicleproduction
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 4c0
+	Armor:
+		Type: Light
+
+
+TOWJEEP:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: TOW Carrier
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: vehicleproduction
+		Queue: Vehicle.SEA
+		Description: Anti-tank vehicle.\n  Strong vs Tanks\n  Weak vs Infantry
+    RenderSprites:
+	Mobile:
+		TurnSpeed: 40
+		Speed: 156
+	Health:
+		HP: 16000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 6c512
+	Turreted:
+		TurnSpeed: 30
+		Offset: 0,0,256
+	Armament@PRIMARY:
+		Weapon: TOW
+		LocalOffset: 171,0,85
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 100,0,90
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	AttackTurreted:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: TOWJEEP.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+SAMJEEP:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Avenger
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+   	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: ~disabled
+		Queue: Vehicle.SEA, Vehicle.GDI
+		Description: Anti-air vehicle.\n  Strong vs Aircraft\n  Weak vs Tanks, Infantry
+    RenderSprites:
+	Mobile:
+		TurnSpeed: 40
+		Speed: 156
+        RequiresCondition: !Firing
+	Health:
+		HP: 14000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 5c0
+	Turreted:
+		TurnSpeed: 30
+   		Offset: -320,0,150
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 32
+        ArmamentNames: primary
+        MaximumInstances: 1
+    Armament@PRIMARY:
+        Weapon: Stinger
+		LocalOffset: 0,-64,128, 0,64,128
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 100,128,90
+		MuzzleSequence: muzzle
+	AutoTargetPriority@Air:
+		ValidTargets: Air
+		Priority: 2
+	WithSpriteTurret:
+	AttackTurreted:
+	WithMuzzleOverlay:
+	SpawnActorOnDeath:
+		Actor: SAMJEEP.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+
+MUTT:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: SPG Jeep
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 60
+		Queue: Vehicle.IND
+		Description: Fast light artillery vehicle.\n  Strong vs Light Vehicles and Infantry\n  Weak vs Heavy Vehicles, Aircraft
+    RenderSprites:
+	Mobile:
+		TurnSpeed: 40
+		Speed: 130
+        RequiresCondition: !Firing
+	Health:
+		HP: 12000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 6c512
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+	Turreted:
+		TurnSpeed: 30
+		Offset: -85,0,256
+	Armament:
+		Weapon: 105mmSPG
+		LocalOffset: 371,0,85
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: MUTT.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+        
+CRGJEEP:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Troop Transport
+   	Buildable:
+		Prerequisites: ~disabled
+    RenderSprites:
+	Mobile:
+		TurnSpeed: 40
+		Speed: 146
+	Health:
+		HP: 16000
+	Repairable:
+		HpPerStep: 1819
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 40
+		Offset: -85,0,128
+    Armament:
+        Weapon: M60
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+   	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		InitialUnits: E1,E1,E3
+	SpawnActorOnDeath:
+		Actor: CRGJEEP.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+
+TRUK:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 150
+	Tooltip:
+		Name: Troop Truck
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 10
+		Prerequisites: vehicleproduction, ~tent
+		Queue: Vehicle.IND
+		Description: Unarmed infantry transport.\n  Weak vs Vehicles, Infantry\n  Self repairs to 2/3 health.
+        IconPalette: raplayer
+	Mobile:
+		TurnSpeed: 40
+		Speed: 110
+	Health:
+		HP: 15000
+	Repairable:
+		HpPerStep: 1440
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+	Cargo:
+		Types: Infantry
+		MaxWeight: 10
+		EjectOnDeath: true
+	SpawnActorOnDeath:
+		Actor: TRUK.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+APC:
+    Buildable:
+        Prerequisites: vehicleproduction,~pyle
+		Description: Armed infantry transport with a TOW launcher.\n   Strong vs Vehicles\n  Weak vs Infantry, Aircraft, Structures
+	Health:
+		HP: 20000
+	Valued:
+		Cost: 700
+	Armament:
+		Weapon: TOW
+		LocalOffset: 171,0,85
+		MuzzleSequence: muzzle
+    Turreted:
+  		Offset: -43,0,128
+	RevealsShroud:
+		Range: 4c0
+	WithLandingCraftAnimation:
+    -Armament@PRIMARY:
+	-Armament@SECONDARY:
+
+BTR:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: BTR
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: vehicleproduction
+		Queue: Vehicle.SEA, Vehicle.IND
+		Description: Armed infantry transport.\nCan attack Aircraft.\n  Strong vs Infantry\n  Weak vs Vehicles
+	Mobile:
+		TurnSpeed: 20
+		Speed: 110
+		PauseOnCondition: notmobile
+	Health:
+		HP: 35000
+	Repairable:
+		HpPerStep: 1440
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 30
+		Offset: 130,0,250
+	AutoTargetPriority@Air:
+		ValidTargets: Air
+		Priority: 2
+	Armament@PRIMARY:
+		Weapon: KPV
+		Offset: 200,0,150
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: KPV.AA
+		Offset: 100,0,250
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		LoadingCondition: notmobile
+	Explodes:
+		Weapon: UnitExplodeBig
+		EmptyWeapon: UnitExplodeBig
+	SpawnActorOnDeath:
+		Actor: BTR.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+
+HAPC:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Heavy APC
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 99
+        Prerequisites: ~disabled
+		Queue: Vehicle.IND
+		Description: Armed infantry transport.\n  Strong vs Infantry\n  Weak vs Aircraft\n  Self repairs to 2/3 health.
+	RenderSprites:
+	Mobile:
+		TurnSpeed: 20
+		Speed: 85
+		PauseOnCondition: notmobile
+	Health:
+		HP: 35000
+	Repairable:
+		HpPerStep: 1440
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 4c0
+	WithLandingCraftAnimation:
+	Turreted:
+		TurnSpeed: 60
+		Offset: -25,0,0
+	Armament:
+		Weapon: 50Cal
+		LocalOffset: 171,0,43
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		LoadingCondition: notmobile
+	Explodes:
+		Weapon: UnitExplodeBig
+		EmptyWeapon: UnitExplodeBig
+	SpawnActorOnDeath:
+		Actor: HAPC.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+    -Carryable:
+
+FTNK:
+	Health:
+		HP: 30000
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 2c512
+    -Carryable:
+
+ZSU:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Shilka
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 99
+		Prerequisites: ~disabled
+		Queue: Vehicle.IND
+		Description: Self-propelled AA gun.\n Strong vs Infantry, Aircraft, Light Vehicles\n Weak vs Tanks\n  Self repairs to 2/3 health.
+	Mobile:
+		Speed: 80
+	Health:
+		HP: 15000
+	Repairable:
+		HpPerStep: 2274
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 5c0
+	Turreted:
+		TurnSpeed: 55
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 150
+        RequiresCondition: MovementInaccuracy
+	Armament@PRIMARY:
+		Weapon: ZSU-23-4
+		Recoil: 48
+		RecoilRecovery: 18
+		LocalOffset: 255,50,0, 255,-50,0
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: ZSU-23-4.AA
+		Recoil: 48
+		RecoilRecovery: 18
+		LocalOffset: 175,100,299, 175,-100,299
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Explodes:
+		Weapon: UnitExplodeBig
+		Chance: 50
+	SpawnActorOnDeath:
+		Actor: ZSU.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+	Selectable:
+		DecorationBounds: 28,28
+    -Carryable:
+    
+SPRK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Sparka
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 99
+		Prerequisites: ~disabled
+		Queue: Vehicle.IND
+		Description: Self-propelled AA gun.\n Strong vs Infantry, Aircraft, Light Vehicles\n Weak vs Tanks\n  Self repairs to 2/3 health.
+	Mobile:
+		Speed: 80
+	Health:
+		HP: 25000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 2c0
+	Turreted:
+		TurnSpeed: 25
+		Offset: 0,0,184
+	AutoTargetPriority@Air:
+		ValidTargets: Air
+		Priority: 2
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 500
+        RequiresCondition: MovementInaccuracy
+	Armament@PRIMARY:
+		Weapon: S68Dual
+		Recoil: 76
+		RecoilRecovery: 18
+		LocalOffset: 775,50,100, 775,-50,100
+		MuzzleSequence: muzzle
+		PauseOnCondition: reload-air
+		ReloadingCondition: reload-ground
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: S68Dual.AA
+		Recoil: 76
+		RecoilRecovery: 18
+		LocalOffset: 675,50,400, 675,-50,400
+		MuzzleSequence: muzzle-air
+		PauseOnCondition: reload-ground
+		ReloadingCondition: reload-air
+	GrantConditionOnAttack:
+		Condition: attack-air
+		ArmamentNames: secondary
+		RevokeDelay: 18
+		RevokeOnNewTarget: False
+		RevokeAll: True
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+		RequiresCondition: !attack-air
+	WithSpriteTurret@AIR:
+		Sequence: turret-air
+		RequiresCondition: attack-air
+	SpawnActorOnDeath:
+		Actor: SPRK.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+	Selectable:
+		DecorationBounds: 28,28
+    -Carryable:
+
+
+MRV:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Medium Recon
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 40
+		Prerequisites: vehicleproduction
+		Queue: Vehicle.SEA
+		Description: Light tank.\n  Strong vs Vehicles\n  Weak vs Infantry
+	Mobile:
+		TurnSpeed: 20
+		Speed: 132
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 350
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 21000
+	Repairable:
+		HpPerStep: 1440
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 28
+        Offset: 0,0,176
+	Armament@PRIMARY:
+		Weapon: 76mm
+		Recoil: 85
+		RecoilRecovery: 17
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 100,0,90
+		MuzzleSequence: muzzle2
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Explodes:
+		Weapon: UnitExplodeBig
+		EmptyWeapon: UnitExplodeBig
+	SpawnActorOnDeath:
+		Actor: MRV.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+BMP:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@TRANSPORT: ^Transport
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: BMP
+    RenderSprites:
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: vehicleproduction, ~techlevel.medium
+		Queue: Vehicle.PLA
+		Description: Armed infantry transport.\n  Strong vs Infantry\n  Weak vs Vehicles
+	Mobile:
+		TurnSpeed: 20
+		Speed: 132
+		PauseOnCondition: notmobile
+	Health:
+		HP: 25000
+	Repairable:
+		HpPerStep: 1440
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 28
+        Offset: 0,0,0
+	Armament@PRIMARY:
+		Weapon: 73mmHEF
+		Recoil: 45
+		RecoilRecovery: 20
+		LocalOffset: 512,0,90
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		LoadingCondition: notmobile
+	Explodes:
+		Weapon: UnitExplodeBig
+		EmptyWeapon: UnitExplodeBig
+	SpawnActorOnDeath:
+		Actor: BMP.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+TNKD:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Recon Car
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 30
+		Prerequisites: vehicleproduction
+		Queue: Vehicle.IND
+		Description: Anti-tank and scout unit.\n   Strong vs Tanks\n  Weak vs Infantry
+	Mobile:
+		TurnSpeed: 28
+		Speed: 156
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 200
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 25000
+	Repairable:
+		HpPerStep: 2062
+    RevealOnFire: 
+	RevealsShroud:
+		Range: 5c0
+	Armor:
+		Type: Light
+	Turreted:
+		TurnSpeed: 50
+	Armament@PRIMARY:
+		Weapon: 90mm
+		Recoil: 85
+		RecoilRecovery: 17
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 100,0,90
+		MuzzleSequence: muzzle2
+	HitShape:
+		Type: Circle
+			Radius: 256
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AmmoPool:
+		Ammo: 6
+		AmmoCondition: ammo
+        Armaments: primary
+	ReloadAmmoPool:
+		Delay: 40
+		Count: 1
+	SpawnActorOnDeath:
+		Actor: TNKD.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+
+LTNK:
+	Inherits@TRANSPORT: ^Transport
+    Buildable:
+		Queue: Vehicle.Nod, Vehicle.PLA
+		Prerequisites: ~techlevel.medium
+		Description: General-Purpose Infantry Fighting Vehicle.\n  Strong vs Infantry, Vehicles, Tanks\n  Can carry a squad of infantry.  \n Special ability: TOW Missiles
+	Health:
+		HP: 30000
+	RevealsShroud:
+		Range: 4c0
+	-Armament:
+	Armament@PRIMARY:
+		Weapon: 20mm
+		Recoil: 25
+		RecoilRecovery: 4
+		LocalOffset: 384,0,90
+		MuzzleSequence: muzzle
+        PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Weapon: TOW.LTNK
+		LocalOffset: 64,-128,100
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	AmmoPool:
+		Ammo: 4
+        Armaments: primary
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 50
+		Count: 4
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		LoadingCondition: notmobile
+    -Carryable:
+
+MTNK:
+    Buildable:
+		Prerequisites: ~techlevel.medium
+		Description: General-Purpose GDI Tank.\n  Strong vs Tanks, Vehicles\n  Special ability: Canister Shot
+	Health:
+		HP: 40000
+	RevealsShroud:
+		Range: 3c0
+    RevealOnFire: 
+	WithSpriteTurret:
+	-Armament:
+    GrantConditionOnAttack:
+        Condition: MainGun
+        ArmamentNames: primary
+        MaximumInstances: 1
+        RevokeOnNewTarget: true
+	Armament@PRIMARY:
+		Weapon: 105mm
+		Recoil: 128
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Weapon: 105mmCanister
+		Recoil: 128
+		RecoilRecovery: 26
+		LocalOffset: 708,0,90
+		MuzzleSequence: canistermuzzle
+		PauseOnCondition: !ammo
+        RequiresCondition: !MainGun
+    Turreted:
+        Offset: 16,0,64
+    AttackTurreted:
+	ReloadAmmoPool:
+		Delay: 40
+		Count: 4
+	AmmoPool:
+		Ammo: 4
+		AmmoCondition: ammo
+    -Carryable:
+
+STNK:
+	Buildable:
+		Prerequisites: anyhq, ~techlevel.high
+	RevealsShroud:
+		Range: 3c0
+    -Carryable:
+
+SCTNK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Scout Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+		Queue: Vehicle.SEA
+		Description: General-Purpose SEA Tank.\n  Strong vs Tanks, Vehicles\n  Weak vs Infantry
+	Mobile:
+		Speed: 110
+	Health:
+		HP: 35000
+	Repairable:
+		HpPerStep: 2062
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 5c0
+   	JamsMissiles:
+		Range: 0c512
+ 		Chance: 50
+        DeflectionRelationships: enemy
+    RevealOnFire: 
+	Turreted:
+		TurnSpeed: 45
+        Offset: 0,0,128
+	Armament@PRIMARY:
+		Weapon: 105mm.LTNK
+		Recoil: 80
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 220,0,90
+		MuzzleSequence: muzzle2
+    ReloadAmmoPool:
+		Delay: 40
+		Count: 1
+	AmmoPool:
+        Armaments: primary
+		Ammo: 4
+		AmmoCondition: ammo
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: SCTNK.Husk
+
+
+1TNK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: T-55 Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 99
+		Prerequisites: ~disabled
+		Queue: Vehicle.IND
+		Description: General-Purpose IND Tank.\n   Strong vs Tanks, Vehicles\n  Weak vs Infantry
+	Mobile:
+		Speed: 85
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 150
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 30000
+	Repairable:
+		HpPerStep: 2062
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 2c0
+    RevealOnFire: 
+	Turreted:
+		TurnSpeed: 20
+        Offset: 0,0,184
+	Armament@PRIMARY:
+		Weapon: 100mm
+		Recoil: 80
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		MuzzleSequence: muzzle
+		PauseOnCondition: !ammo
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 220,0,90
+		MuzzleSequence: muzzle2
+	ReloadAmmoPool:
+		Delay: 40
+		Count: 1
+	AmmoPool:
+        Armaments: primary
+		Ammo: 4
+		AmmoCondition: ammo
+	Explodes:
+		Weapon: ArtilleryShell
+		EmptyWeapon: UnitExplode
+		LoadedChance: 75
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: 1TNK.Husk
+    -Carryable:
+
+1TNK.T34:
+	Inherits: 1TNK
+	RenderSprites:
+        Image: t34
+	Tooltip:
+		Name: T-34 Tank
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 71
+    InaccuracyMultiplier:
+        Modifier: 250
+	Turreted:
+		TurnSpeed: 18
+        Offset: 0,0,0
+	ReloadAmmoPool:
+		Delay: 70
+	Armament@PRIMARY:
+		Weapon: 105mm.SHRM
+		Recoil: 80
+		RecoilRecovery: 40
+	SpawnActorOnDeath:
+		Actor: 1TNK.T34.Husk
+
+
+1TNK.SHRM:
+	Inherits: 1TNK
+	RenderSprites:
+        Image: shrm
+	Tooltip:
+		Name: Sherman Tank
+	Armor:
+		Type: Light
+    InaccuracyMultiplier:
+        Modifier: 250
+	Turreted:
+		TurnSpeed: 18
+        Offset: 0,0,0
+	ReloadAmmoPool:
+		Delay: 70
+	Armament@PRIMARY:
+		Weapon: 105mm.SHRM
+		Recoil: 80
+		RecoilRecovery: 40
+	SpawnActorOnDeath:
+		Actor: 1TNK.SHRM.Husk
+
+
+1TNK.LEO1:
+	Inherits: 1TNK
+	RenderSprites:
+        Image: leo1
+	Tooltip:
+		Name: Leopard Tank
+	Mobile:
+		Speed: 110
+	Health:
+		HP: 30000
+    Armor:
+		Type: Light
+	Turreted:
+		TurnSpeed: 22
+        Offset: -20,0,0
+	Armament@PRIMARY:
+		Weapon: 105mm.LEO1
+	SpawnActorOnDeath:
+		Actor: 1TNK.LEO1.Husk
+
+1TNK.M60:
+	Inherits: 1TNK
+	RenderSprites:
+        Image: m60
+	Tooltip:
+		Name: M-60 Tank
+	Mobile:
+        Speed: 71
+	Health:
+		HP: 30000
+	RevealsShroud:
+		Range: 2c515
+	Armor:
+		Type: Heavy
+    -InaccuracyMultiplier:
+	Turreted:
+		TurnSpeed: 18
+        Offset: 0,0,0
+	ReloadAmmoPool:
+		Delay: 70
+	Armament@PRIMARY:
+		Weapon: 105mm
+		Recoil: 80
+		RecoilRecovery: 40
+	SpawnActorOnDeath:
+		Actor: 1TNK.M60.Husk
+
+1TNK.M602K:
+	Inherits: 1TNK
+	RenderSprites:
+        Image: m602k
+	Tooltip:
+		Name: M-60/2000 Tank
+	Health:
+		HP: 35000
+	Armor:
+		Type: Heavy
+    -InaccuracyMultiplier:
+	Turreted:
+		TurnSpeed: 18
+        Offset: 0,0,25
+	ReloadAmmoPool:
+		Delay: 70
+	Armament@PRIMARY:
+		Weapon: 120mm
+		Recoil: 80
+		RecoilRecovery: 40
+	SpawnActorOnDeath:
+		Actor: 1TNK.M602K.Husk
+
+
+2TNK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Medium Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: fix, ~techlevel.high
+		Queue: Vehicle.SEA
+		Description: General-Purpose ASEAN Tank.\n  Can engage helicopters with ATGMs.\n  Strong vs Tanks, Vehicles, Helicopters.\n  Weak vs Infantry, buildings, planes.
+	Mobile:
+		Speed: 80
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 250
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 40000
+	Repairable:
+		HpPerStep: 2274
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 3c0
+    RevealOnFire: 
+   	JamsMissiles:
+		Range: 0c512
+ 		Chance: 50
+        DeflectionRelationships: enemy
+	WithSpriteTurret:
+    Turreted:
+		TurnSpeed: 12
+        Offset: -25,0,150
+	Armament@PRIMARY:
+		Weapon: 125mm
+		Recoil: 100
+		RecoilRecovery: 26
+		LocalOffset: 850,0,50
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Weapon: GLATGM
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		PauseOnCondition: !ammo
+	Armament@TERTIARY:
+		Weapon: GLATGMAA
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		PauseOnCondition: !ammo
+    AttackTurreted:
+		Turrets: primary,secondary,tertiary
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: ArtilleryShell
+		EmptyWeapon: UnitExplodeBig
+		LoadedChance: 50
+	SpawnActorOnDeath:
+		Actor: 2TNK.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+	Selectable:
+		DecorationBounds: 28,28
+	AmmoPool:
+		Ammo: 1
+		AmmoCondition: ammo
+	ReloadAmmoPool:
+		Delay: 125
+		Count: 1
+        ResetOnFire: true
+    -Carryable:
+
+3TNK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Heavy Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: ~anytech, ~techlevel.high
+		Queue: Vehicle.PLA
+		Description: Heavily armored PLA Tank.\n  Strong vs Everything
+	Mobile:
+		Speed: 105
+	Health:
+		HP: 60000
+	Repairable:
+		HpPerStep: 2120
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 3c0
+    RevealOnFire: 
+	Turreted:
+		TurnSpeed: 25
+        Offset: 0,0,64
+	Armament:
+		Weapon: 105mmAutoloader
+		Recoil: 128
+		RecoilRecovery: 26
+		LocalOffset: 768,0,90
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: 3TNK.Husk
+    -Carryable:
+
+4TNK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Heavy Tank
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: ~disabled
+		Queue: Vehicle.GDI
+		Description: Heavily armored NATO Tank.\n  Strong vs Everything
+	Mobile:
+		Speed: 96
+	Health:
+		HP: 40000
+	Repairable:
+		HpPerStep: 2120
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 4c0
+    RevealOnFire: 
+	Turreted:
+		TurnSpeed: 25
+        Offset: 0,0,0
+	Armament@PRIMARY:
+		Weapon: 120mm
+		Recoil: 128
+		RecoilRecovery: 26
+		LocalOffset: 800,0,0
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: MachineGunT55
+		LocalOffset: 200,10,0
+		MuzzleSequence: muzzle2
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: 4TNK.Husk
+    -Carryable:
+
+HTNK:
+    Buildable:
+        Prerequisites: fix, ~techlevel.high
+    RevealOnFire: 
+   	JamsMissiles:
+		Range: 1c512
+ 		Chance: 50
+        DeflectionRelationships: enemy
+	Health:
+		HP: 60000
+	Valued:
+		Cost: 1500
+	RevealsShroud:
+		Range: 2c0
+    GrantConditionOnAttack:
+        Condition: MainGun
+        ArmamentNames: primary
+        MaximumInstances: 1
+        RevokeOnNewTarget: true
+	Armament@SECONDARY:
+        RequiresCondition: !MainGun
+    -Carryable:
+
+SAMTNK:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetAir
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: SAM Carrier
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 70
+		Prerequisites: anyhq, ~techlevel.medium
+		Queue: Vehicle.PLA
+		Description: Powerful anti-air unit.\nCannot attack Ground units.
+	Mobile:
+		Speed: 80
+		TurnSpeed: 28
+	Health:
+		HP: 10000
+	Repairable:
+		HpPerStep: 1364
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+	Turreted:
+		TurnSpeed: 32
+		Offset: 0,0,256
+	Armament:
+		Weapon: Tor-M1
+		LocalOffset: 0,-171,0, 0,171,0
+	AmmoPool:
+		Ammo: 2
+		AmmoCondition: ammo
+	AttackTurreted:
+	WithSpriteTurret:
+	RenderRangeCircle:
+	SpawnActorOnDeath:
+		Actor: SAMTNK.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+	Explodes:
+		Weapon: ArtilleryShell
+		EmptyWeapon: UnitExplode
+		LoadedChance: 75
+	ReloadAmmoPool:
+		Delay: 90
+		Count: 1
+
+MSAM:
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Valued:
+		Cost: 800
+    Buildable:
+        Prerequisites: eye, ~techlevel.high
+    Mobile:
+        RequiresCondition: !Firing
+	RevealsShroud:
+		Range: 2c0
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+    RevealOnFire: 
+	-Armament@SECONDARY:
+	-AttackFrontal:
+	AttackTurreted:
+	Turreted:
+		TurnSpeed: 20
+    -Carryable:
+
+MLRS:
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Tooltip:
+		Name: SSM Launcher
+    Buildable:
+        Prerequisites: ~obli, ~techlevel.high
+    Mobile:
+        RequiresCondition: !Firing
+	Armament:
+		Weapon: HonestJohn
+		LocalOffset: 0,-171,0, 0,171,0
+	RevealsShroud:
+		Range: 2c0
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+    AttackTurreted:
+   		OpportunityFire: false
+	ReloadAmmoPool:
+		Delay: 150
+		Count: 1
+    -Carryable:
+
+ARTY:
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Valued:
+		Cost: 450
+    RevealOnFire:
+	Armament:
+		Weapon: 155mm
+    AttackFrontal:
+		OpportunityFire: false
+	Mobile:
+        Speed: 71
+        RequiresCondition: !Firing
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+    -Carryable:
+
+
+HWTZ:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: Self Propelled Howitzer
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 60
+		Prerequisites: vehicleproduction,~anyhq
+		Queue: Vehicle.IND, Vehicle.PLA
+		Description: Howitzer.\n  Strong vs All.\n  Weak vs Aircraft
+	Mobile:
+		TurnSpeed: 28
+		Speed: 110
+        RequiresCondition: !Firing
+    GrantConditionOnMovement: 
+        Condition: MovementInaccuracy
+    InaccuracyMultiplier:
+        Modifier: 400
+        RequiresCondition: MovementInaccuracy
+	Health:
+		HP: 20000
+	Repairable:
+		HpPerStep: 2062
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 4c0
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+	Turreted:
+		TurnSpeed: 28
+		Offset: 0,0,0
+	Armament:
+		Weapon: 122mmSPG
+		Recoil: 105
+		RecoilRecovery: 17
+		LocalOffset: 720,0,90
+		MuzzleSequence: muzzle
+	AttackTurreted:
+	WithMuzzleOverlay:
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: HWTZ.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+	Explodes:
+		Weapon: UnitExplodeBig
+		EmptyWeapon: UnitExplode
+		LoadedChance: 75
+
+HWTZ.M109:
+	Inherits: HWTZ
+	Buildable:
+    	Queue: Vehicle.GDI, Vehicle.SEA
+		Prerequisites: ~disabled
+	Mobile:
+		Speed: 85
+	Health:
+		HP: 15000
+	Armor:
+		Type: Heavy
+	Turreted:
+		TurnSpeed: 18
+		Offset: 0,0,0
+	Armament:
+		Weapon: 155mmHE
+		Recoil: 170
+		RecoilRecovery: 42
+		LocalOffset: 768,0,190
+		MuzzleSequence: muzzle
+	SpawnActorOnDeath:
+		Actor: HWTZ.M109.Husk
+	Explodes:
+		Weapon: ArtilleryShell
+		EmptyWeapon: UnitExplodeBig
+		LoadedChance: 25
+
+
+RRTY:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Rocket Artillery
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 70
+		Prerequisites: anytech, ~techlevel.high
+		Queue: Vehicle.SEA
+		Description: Long range rocket artillery.\n  Strong vs all Ground units.
+	Mobile:
+		Speed: 75
+		TurnSpeed: 16
+        RequiresCondition: !Firing
+	Health:
+		HP: 10000
+	Repairable:
+		HpPerStep: 606
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 2c0
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+	Turreted:
+		TurnSpeed: 30
+		Offset: -300,0,150
+	Armament:
+		Weapon: 122mm
+		LocalOffset: 213,128,0, 213,-128,0
+	AttackTurreted:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: RRTY.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+    -Carryable:
+
+MORT:
+	Inherits: ^Tank
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@CLOAK: ^AcceptsCloakCrate
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Mortar Carrier
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: ~techlevel.medium
+		Queue: Vehicle.SEA
+		Description: Medium-range mortar unit.\n  Strong vs Infantry and light vehicles 
+	RenderSprites:
+	Mobile:
+		TurnSpeed: 20
+		Speed: 132
+        RequiresCondition: !Firing
+	Health:
+		HP: 20000
+	Repairable:
+		HpPerStep: 568
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 3c0
+    GrantConditionOnAttack:
+        Condition: Firing
+        RevokeDelay: 20
+        ArmamentNames: primary
+        MaximumInstances: 1
+    Armament:
+		Weapon: Mortar
+		Offset: 50,0,250
+	AttackFrontal:
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+	WithMuzzleOverlay:
+	AutoTarget:
+	SpawnActorOnDeath:
+		Actor: MORT.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+	Explodes:
+		Weapon: ArtilleryShell
+		EmptyWeapon: UnitExplode
+		LoadedChance: 75
+
+TRUCK:
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Vehicle.GDI, Vehicle.Nod, Vehicle.SEA, Vehicle.PLA
+
+SSM:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Buildable:
+		Queue: Vehicle.PLA
+		BuildPaletteOrder: 90
+		Prerequisites: ~disabled
+		Description: Long-range rocket artillery.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+        IconPalette: raplayer
+	RenderSprites:
+	Valued:
+		Cost: 1900
+	Tooltip:
+		Name: SSM Launcher
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 12000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 2c0
+	Armament:
+		Weapon: SCUD
+		ReloadingCondition: reloading
+	AutoTarget:
+		ScanRadius: 10
+	AttackFrontal:
+		OpportunityFire: false
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+	WithFacingSpriteBody:
+		RequiresCondition: !reloading
+		Name: loaded
+	WithFacingSpriteBody@EMPTY:
+		RequiresCondition: reloading
+		Sequence: empty-idle
+		Name: reloading
+	Explodes:
+		Weapon: ArtilleryShell
+	Selectable:
+		DecorationBounds: 28,28
+    -Carryable:
+
+
+SCUD:
+	Inherits: ^Vehicle
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Buildable:
+		Queue: Vehicle.PLA
+		BuildPaletteOrder: 90
+		Prerequisites: ~anytech, ~techlevel.high
+		Description: Long-range rocket artillery.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft
+	RenderSprites:
+        Image: SCUD
+	Valued:
+		Cost: 1900
+	Tooltip:
+		Name: SCUD Launcher
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Health:
+		HP: 12000
+	Armor:
+		Type: Light
+	Mobile:
+		Speed: 85
+	HitShape:
+   		Radius: 256
+	RevealsShroud:
+		Range: 2c0
+	Armament:
+		Weapon: SCUD.vertical
+		ReloadingCondition: reloading
+    GrantConditionOnMovement: 
+        Condition: moving
+	AutoTarget:
+		ScanRadius: 10
+	AttackFrontal:
+		OpportunityFire: false
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+        FacingTolerance: 512
+	WithFacingSpriteBody:
+		RequiresCondition: !reloading && moving
+		Name: loaded
+		Sequence: idle
+	WithFacingSpriteBody@AIMED:
+		RequiresCondition: !reloading && !moving
+		Name: loadedaimed
+		Sequence: aim
+	WithFacingSpriteBody@EMPTY:
+		RequiresCondition: reloading && !moving
+		Sequence: empty-aim
+		Name: reloading
+	WithFacingSpriteBody@EMPTYUNAIMED:
+		RequiresCondition: reloading && moving
+		Sequence: empty-idle
+		Name: reloading
+	Explodes:
+		Weapon: ArtilleryShell
+	Selectable:
+		DecorationBounds: 28,28
+    -Carryable:
+

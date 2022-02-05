@@ -1,0 +1,7 @@
+Player:
+	GpsWatcher:
+	ResourceStorageWarning:
+        AdviceInterval: 40
+	EnemyWatcher:
+    PowerManager:
+        AdviceInterval: 540

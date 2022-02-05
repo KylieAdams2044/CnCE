@@ -1,0 +1,370 @@
+^AutoTargetGround:
+	AutoTarget:
+		AttackAnythingCondition: stance-attackanything
+	AutoTargetPriority@DEFAULT:
+		RequiresCondition: !stance-attackanything
+		ValidTargets: Infantry, Tank, Vehicle, Creep, Water, Defense
+		InvalidTargets: NoAutoTarget
+	AutoTargetPriority@ATTACKANYTHING:
+		RequiresCondition: stance-attackanything
+		ValidTargets: Infantry, Tank, Vehicle, Creep, Water, Structure, Defense
+		InvalidTargets: NoAutoTarget
+
+^AutoTargetAll:
+	AutoTarget:
+		AttackAnythingCondition: stance-attackanything
+	AutoTargetPriority@DEFAULT:
+		RequiresCondition: !stance-attackanything
+		ValidTargets: Infantry, Tank, Vehicle, Creep, Water, Helicopter, Aircraft, Air, Defense
+		InvalidTargets: NoAutoTarget
+	AutoTargetPriority@ATTACKANYTHING:
+		RequiresCondition: stance-attackanything
+		ValidTargets: Infantry, Tank, Vehicle, Creep, Water, Helicopter, Aircraft, Air, Structure, Defense
+		InvalidTargets: NoAutoTarget
+
+
+
+^Transport:
+	WithCargoPipsDecoration:
+		RequiresSelection: false
+
+^StoresResources:
+	WithResourceStoragePipsDecoration:
+		RequiresSelection: false
+
+
+^GainsExperience:
+	ChangesHealth@ELITE:
+        PercentageStep: 1
+		Step: 0
+		Delay: 20
+		StartIfBelow: 50
+		DamageCooldown: 200
+		RequiresCondition: rank-elite
+
+
+^Vehicle:
+	Repairable:
+		RepairActors: fix, fix.ind
+	Targetable:
+		RequiresCondition: !parachute
+	Targetable@REPAIR:
+		RequiresCondition: !parachute && damaged
+		TargetTypes: Repair
+	GrantConditionOnDamageState@DAMAGED:
+		Condition: damaged
+		ValidDamageStates: Light, Medium, Heavy, Critical
+	Parachutable:
+		FallRate: 26
+		KilledOnImpassableTerrain: true
+		ParachutingCondition: parachute
+	WithParachute:
+		ShadowImage: parach-shadow
+		ShadowSequence: idle
+		Image: parach
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,200
+		RequiresCondition: parachute
+	GpsDot:
+		String: Vehicle
+    GrantConditionOnFaction@GDI:
+        Condition: GDIUpgrade
+        Factions: gdi
+    GrantConditionOnFaction@Nod:
+        Condition: NodUpgrade
+        Factions: nod
+    GrantConditionOnFaction@IND:
+        Condition: INDUpgrade
+        Factions: ind
+    GrantConditionOnFaction@SEA:
+        Condition: SEAUpgrade
+        Factions: sea
+    ChangesHealth:
+		PercentageStep: 1
+		Delay: 200
+		StartIfBelow: 66
+		DamageCooldown: 200
+        RequiresCondition: INDUpgrade
+    Carryable:
+		CarriedCondition: notmobile
+		ReservedCondition: carryall-reserved
+		LockedCondition: notmobile
+    ChangesHealth@WeapHeal:
+        RequiresCondition: WeapHeal
+        PercentageStep: 1
+		Step: 0
+		Delay: 50
+		StartIfBelow: 100
+		DamageCooldown: 200
+    ExternalCondition@WeapHeal:
+        Condition: WeapHeal
+        TotalCap: 1
+    ChangesHealth@ARVHeal:
+        RequiresCondition: ARVHeal
+        PercentageStep: 1
+		Step: 0
+		Delay: 20
+		StartIfBelow: 50
+		DamageCooldown: 200
+    ExternalCondition@ARVHeal:
+        Condition: ARVHeal
+        TotalCap: 1
+    GrantConditionOnDamageState@Medium:
+        Condition: damagemedium
+        ValidDamageStates: Medium
+    GrantConditionOnDamageState@Critical:
+        Condition: damagecritical
+        ValidDamageStates: Critical
+    SpeedMultiplier@Critical:
+        Modifier: 75
+        RequiresCondition: damagecritical
+    SpeedMultiplier@Medium:
+        Modifier: 95
+        RequiresCondition: damagemedium        
+    ReloadDelayMultiplier@Critical:
+        Modifier: 75
+        RequiresCondition: damagecritical
+    ReloadDelayMultiplier@Medium:
+        Modifier: 95
+        RequiresCondition: damagemedium
+
+^Tank:
+	Targetable:
+		TargetTypes: Ground, Tank
+
+
+^Infantry:
+	Targetable:
+		RequiresCondition: !parachute
+	Targetable@HEAL:
+		RequiresCondition: !parachute && damaged
+		TargetTypes: Heal
+	GrantConditionOnDamageState@DAMAGED:
+		Condition: damaged
+		ValidDamageStates: Light, Medium, Heavy, Critical
+    ChangesHealth@RaxHeal:
+        RequiresCondition: BarracksHeal
+		Step: 1000
+		Delay: 200
+		StartIfBelow: 100
+		DamageCooldown: 200
+    GrantConditionOnFaction:
+        Condition: INDCapture
+        Factions: ind
+    CaptureManager:
+    Captures@CAPTURES:
+        CaptureTypes: husk
+        RequiresCondition: INDCapture
+    ExternalCondition@BarracksHeal:
+        Condition: BarracksHeal
+        TotalCap: 1
+	Parachutable:
+		FallRate: 26
+		KilledOnImpassableTerrain: true
+		GroundCorpseSequence: corpse
+		GroundImpactSound: squishy2.aud
+		WaterImpactSound: splash9.aud
+		WaterCorpseSequence: small_splash
+		ParachutingCondition: parachute
+	WithParachute:
+		ShadowImage: parach-shadow
+		ShadowSequence: idle
+		Image: parach
+		Sequence: idle
+		OpeningSequence: open
+		Offset: 0,0,427
+		RequiresCondition: parachute
+	GpsDot:
+		String: Infantry
+	EdibleByLeap:
+    WithInfantryBody:
+        MinIdleDelay: 60
+        MaxIdleDelay: 220
+
+^Soldier:
+	ChangesHealth:
+		Step: 50
+		Delay: 200
+		StartIfBelow: 33
+		DamageCooldown: 200
+
+^Plane:
+	GpsDot:
+		String: Plane
+	Targetable@AIRBORNE:
+		RequiresCondition: airborne
+		TargetTypes: AirborneActor
+	Voiced:
+		VoiceSet: VehicleVoice
+	HiddenUnderFog:
+		Type: GroundPosition
+		AlwaysVisibleRelationships: None
+
+^Ship:
+	Mobile:
+		Locomotor: naval
+
+
+^Plane:
+	HiddenUnderFog:
+
+
+^CombatPlane:
+	Inherits: ^Plane
+	Selectable:
+	-RejectsOrders:
+	Repairable:
+		RepairActors: astp, fix, afld, afld.ind
+	Aircraft:
+		AirborneCondition: airborne
+		CruisingCondition: cruising
+        TakeOffOnResupply: True
+	Targetable@GROUND:
+		RequiresCondition: !airborne
+		TargetTypes: Ground, Vehicle
+	Targetable@AIRBORNE:
+		RequiresCondition: airborne
+		TargetTypes: Aircraft,Air
+	Targetable@REPAIR:
+		RequiresCondition: !airborne && damaged
+		TargetTypes: Repair
+   	JamsMissiles:
+		Range: 1c512
+ 		Chance: 50
+        DeflectionRelationships: enemy
+	ActorLostNotification:
+	MapEditorData:
+		Categories: Aircraft
+	SpawnActorOnDeath:
+		RequiresCondition: airborne
+
+
+^Helicopter:
+	Repairable:
+		RepairActors: fix, hpad, hpad.ind, astp, afld.ind
+	GpsDot:
+		String: Helicopter
+   	JamsMissiles:
+		Range: 1c512
+ 		Chance: 25
+        DeflectionRelationships: enemy
+	Aircraft:
+		TakeOffOnResupply: false
+        TakeOffOnCreation: false
+	Targetable@AIRBORNE:
+		RequiresCondition: airborne
+		TargetTypes: Helicopter,Air
+
+        
+^Building:
+	GpsDot:
+		String: Structure
+	FrozenUnderFog:
+	FrozenUnderFogUpdatedByGps:
+	SoundOnDamageTransition:
+		DamagedSounds: xplobig4.aud,kaboom1.aud
+		DestroyedSounds: crumble.aud, xplobig4.aud
+
+^BaseBuilding:
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 2
+    GrantConditionOnFaction@GDI:
+        Condition: GDIUpgradeBuilding
+        Factions: gdi
+    GrantConditionOnFaction@Nod:
+        Condition: NodUpgradeBuilding
+        Factions: nod
+    GrantConditionOnFaction@IND:
+        Condition: INDUpgradeBuilding
+        Factions: ind
+    GrantConditionOnFaction@SEA:
+        Condition: SEAUpgradeBuilding
+        Factions: sea
+
+^TechBuilding:
+	FrozenUnderFog:
+
+^Wall:
+	FrozenUnderFog:
+	FrozenUnderFogUpdatedByGps:
+
+^BasicHusk:
+	Interactable:
+	Health:
+		HP: 28000
+	Armor:
+		Type: Heavy
+	HiddenUnderFog:
+		Type: CenterPosition
+		AlwaysVisibleRelationships: None
+	ScriptTriggers:
+	WithFacingSpriteBody:
+	HitShape:
+	MapEditorData:
+		Categories: Husk
+	ChangesHealth:
+		Step: -2
+		StartIfBelow: 101
+		Delay: 200
+
+^LightHusk:
+	Inherits: ^Husk
+	Health:
+		HP: 14000
+
+^HelicopterHusk:
+	FallsToEarth:
+		Moves: True
+
+
+^PlaneHusk:
+	Inherits: ^BasicHusk
+	Inherits@2: ^SpriteActor
+	Targetable:
+		TargetTypes: Air, Husk, NoAutoTarget
+	WithShadow:
+		Offset: 43, 128, 0
+		ZOffset: -129
+	Tooltip:
+		GenericName: Destroyed Plane
+	Aircraft:
+	FallsToEarth:
+		Moves: True
+		Velocity: 86
+		Explosion: UnitExplodePlane
+		MaximumSpinSpeed: 0
+	-MapEditorData:
+
+^DINO:
+	HiddenUnderFog:
+
+^Viceroid:
+	HiddenUnderFog:
+
+
+^Crate:
+	Parachutable:
+		FallRate: 26
+		KilledOnImpassableTerrain: false
+		ParachutingCondition: parachute
+	Passenger:
+	WithParachute:
+		Image: parach
+		Sequence: idle
+		OpeningSequence: open
+		ShadowImage: parach-shadow
+		ShadowSequence: idle
+		RequiresCondition: parachute
+        
+^CargoPips:
+	WithCargoPipsDecoration:
+		Position: BottomLeft
+		Margin: 4, 3
+		RequiresSelection: true
+		CustomPipSequences:
+			gray: pip-gray
+			yellow: pip-yellow
+			blue: pip-blue
+			red: pip-red
